@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fake-arduino-iot-pictures
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3005
+  selector:
+    app: fake-arduino-iot-pictures
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-arduino-iot-pictures
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fake-arduino-iot-pictures
+  template:
+    metadata:
+      labels:
+        app: fake-arduino-iot-pictures
+    spec:
+      containers:
+      - name: fake-arduino-iot-pictures
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/fake-arduino-iot-pictures:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3005
+        env:
+        - name: PORT
+          value: "3005"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+      tolerations:
+      - key: "cloud.google.com/gke-spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"

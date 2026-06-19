@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: microk8s-hostpath
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"  # optional, don't make it default
+provisioner: k8s.io/minikube-hostpath   # ← minikube's provisioner
+reclaimPolicy: Delete
+volumeBindingMode: Immediate

@@ -1,0 +1,124 @@
+{
+  "consumer": {
+    "name": "OrchestratorMS"
+  },
+  "interactions": [
+    {
+      "description": "a request for an AI prediction",
+      "providerStates": [
+        {
+          "name": "AI model is trained"
+        }
+      ],
+      "request": {
+        "body": {
+          "ip": "192.168.1.50",
+          "measure": "humidity",
+          "recent_values": [
+            50.1,
+            51.2,
+            50.5
+          ],
+          "username": "testuser"
+        },
+        "headers": {
+          "Content-Type": "application/json",
+          "x-internal-api-key": "testkey"
+        },
+        "matchingRules": {
+          "body": {
+            "$.recent_values": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "POST",
+        "path": "/predict"
+      },
+      "response": {
+        "body": {
+          "prediction": 52.1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.prediction": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to train AI",
+      "providerStates": [
+        {
+          "name": "AI service is available"
+        }
+      ],
+      "request": {
+        "body": {
+          "ip": "192.168.1.50",
+          "limit": 1000,
+          "measure": "humidity",
+          "username": "testuser"
+        },
+        "headers": {
+          "Content-Type": "application/json",
+          "x-internal-api-key": "testkey"
+        },
+        "method": "POST",
+        "path": "/train"
+      },
+      "response": {
+        "body": {
+          "message": "Model trained successfully"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.message": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "16.2.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.28",
+      "models": "1.3.5"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "AIMS"
+  }
+}

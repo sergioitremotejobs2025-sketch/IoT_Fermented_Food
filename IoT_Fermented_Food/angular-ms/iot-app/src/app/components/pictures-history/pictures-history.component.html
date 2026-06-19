@@ -1,0 +1,88 @@
+<main class="container history-page" *ngIf="micro()">
+    <div class="header-section">
+        <app-dashboard-microcontroller [isHistory]="true" [micro]="micro()"></app-dashboard-microcontroller>
+    </div>
+
+    <div class="controls-card glass-panel">
+        <div class="controls-layout">
+            <form class="ph-form" [formGroup]="historyForm" (ngSubmit)="loadHistory(historyForm.value)">
+                <div class="date-range">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha inicial</mat-label>
+                        <input formControlName="init_date" [matDatepicker]="initPicker" matInput>
+                        <mat-datepicker-toggle [for]="initPicker" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #initPicker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha final</mat-label>
+                        <input formControlName="end_date" [matDatepicker]="endPicker" matInput>
+                        <mat-datepicker-toggle [for]="endPicker" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #endPicker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <button color="primary" [disabled]="historyForm.invalid || isLoading()" mat-flat-button
+                    class="submit-btn">
+                    <mat-icon>refresh</mat-icon>
+                    <span>Cargar</span>
+                </button>
+            </form>
+
+            <div class="advanced-filters" *ngIf="pictures().length > 0">
+                <mat-form-field appearance="outline">
+                    <mat-label>Filtrar por Etapa</mat-label>
+                    <mat-select [ngModel]="currentStageFilter()" (ngModelChange)="currentStageFilter.set($event)">
+                        <mat-option *ngFor="let stage of stages" [value]="stage.value">
+                            {{ stage.label }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button [color]="isTimelapsePlaying() ? 'accent' : ''" mat-stroked-button (click)="toggleTimelapse()"
+                    [disabled]="filteredPictures().length === 0" class="timelapse-btn">
+                    <mat-icon>{{ isTimelapsePlaying() ? 'stop' : 'play_arrow' }}</mat-icon>
+                    <span>Timelapse</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timelapse Screen -->
+    <div class="timelapse-overlay glass-panel" *ngIf="isTimelapsePlaying() && filteredPictures().length > 0">
+        <div class="timelapse-frame">
+            <img [src]="filteredPictures()[timelapseIndex()].image_url" alt="Timelapse frame">
+            <div class="frame-info">
+                <span class="badge">{{ stageLabel(filteredPictures()[timelapseIndex()].stage) }}</span>
+                <span class="date">{{ filteredPictures()[timelapseIndex()].timestamp | date:'dd/MM/yy HH:mm' }}</span>
+                <span class="count">{{ timelapseIndex() + 1 }} / {{ filteredPictures().length }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading state -->
+    <div class="status-box glass-panel" *ngIf="isLoading()">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Capturando historia…</p>
+    </div>
+
+    <!-- Empty state -->
+    <div class="status-box glass-panel empty" *ngIf="noResults() && !isLoading()">
+        <mat-icon>image_not_supported</mat-icon>
+        <p>No hay capturas disponibles para estos criterios.</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" *ngIf="filteredPictures().length > 0 && !isLoading() && !isTimelapsePlaying()">
+        <div class="gallery-item glass-panel" *ngFor="let pic of filteredPictures()">
+            <div class="img-wrapper">
+                <img [src]="pic.image_url" [alt]="pic.stage">
+                <div class="img-overlay">
+                    <span class="badge">{{ stageLabel(pic.stage) }}</span>
+                </div>
+            </div>
+            <div class="item-meta">
+                <span class="date">{{ pic.timestamp | date:'shortTime' }}</span>
+                <span class="day">{{ pic.timestamp | date:'dd MMM' }}</span>
+            </div>
+        </div>
+    </div>
+</main>

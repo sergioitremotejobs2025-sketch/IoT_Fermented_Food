@@ -1,0 +1,86 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: stats-ms
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        # Scale to zero when idle
+        autoscaling.knative.dev/min-scale: "0"
+        autoscaling.knative.dev/max-scale: "5"
+    spec:
+      containerConcurrency: 10
+      containers:
+      - image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/stats-ms:latest
+        env:
+        - name: MONGO_DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_DATABASE_NAME
+              name: env-configmap
+        - name: MONGO_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOSTNAME
+              name: env-configmap
+        - name: MONGO_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_SERVICE_PORT
+              name: env-configmap
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_INITDB_ROOT_USERNAME
+              name: secrets
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_INITDB_ROOT_PASSWORD
+              name: secrets
+        - name: QUEUE_HUMIDITY_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_HUMIDITY_NAME
+              name: env-configmap
+        - name: QUEUE_LIGHT_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_LIGHT_NAME
+              name: env-configmap
+        - name: QUEUE_TEMPERATURE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_TEMPERATURE_NAME
+              name: env-configmap
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_USER
+              name: secrets
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_PASS
+              name: secrets
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_SERVICE_PORT
+              name: env-configmap
+        - name: METRICS_PORT
+          value: '8080' # Knative usually expects 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi

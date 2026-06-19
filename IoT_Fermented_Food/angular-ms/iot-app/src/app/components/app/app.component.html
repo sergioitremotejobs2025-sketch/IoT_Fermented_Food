@@ -1,0 +1,52 @@
+<app-navbar (opened)="toggle($event)"></app-navbar>
+<nav>
+  <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+    <mat-sidenav-container>
+      <mat-sidenav [fixedInViewport]="mobileQuery.matches" fixedTopGap="110"
+        [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="opened" style="background-color: rgb(60, 81, 130);">
+        <mat-nav-list>
+          <a class="menu-icon white" mat-list-item routerLink="/">
+            <mat-icon>home</mat-icon>
+            <span>Inicio</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/dashboard">
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/measure/temperature">
+            <i class="fas fa-thermometer-half"></i>
+            <span>Temperatura</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/measure/humidity">
+            <i class="fas fa-humidity"></i>
+            <span>Humedad</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/measure/light">
+            <mat-icon>wb_incandescent</mat-icon>
+            <span>Luces</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/measure/pictures">
+            <mat-icon>camera_alt</mat-icon>
+            <span>Imágenes de planta</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/my-microcontrollers">
+            <mat-icon>memory</mat-icon>
+            <span>Microcontroladores</span>
+          </a>
+          <a class="menu-icon white" mat-list-item routerLink="/health">
+            <mat-icon>monitor_heart</mat-icon>
+            <span>Salud del Sistema</span>
+          </a>
+          <a class="menu-icon white" mat-list-item (click)="opened = !opened">
+            <mat-icon>close</mat-icon>
+            <span>Cerrar</span>
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+        <footer></footer>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</nav>

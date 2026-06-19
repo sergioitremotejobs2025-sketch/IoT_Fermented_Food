@@ -1,0 +1,55 @@
+<mat-card class="glass shadow-sm">
+  <div class="card-header">
+    <mat-card-title>Tiempo real</mat-card-title>
+    <button mat-icon-button (click)="getCurrentMeasure(false)" class="refresh-btn">
+      <mat-icon>sync</mat-icon>
+    </button>
+  </div>
+
+  <mat-card-content *ngIf="isChartReady">
+    <div class="dashboard-flex-container">
+      <div class="chart-section">
+        <div class="chart-container doughnut-container">
+          <canvas baseChart 
+                  [data]="chartData" 
+                  [options]="chartOptions" 
+                  [type]="chartType">
+          </canvas>
+          <div class="chart-overlay">
+            <span class="percentage">{{ lastHumidity }}%</span>
+            <span class="label">Humedad</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-section">
+        <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
+      </div>
+
+      <div class="table-section">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Estado del suelo</mat-header-cell>
+            <mat-cell [class.current-humidity]="element.min <= lastHumidity && lastHumidity < element.max" *matCellDef="let element">
+              {{element.status}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="min">
+            <mat-header-cell *matHeaderCellDef>Mínimo</mat-header-cell>
+            <mat-cell [class.current-humidity]="element.min <= lastHumidity && lastHumidity < element.max" *matCellDef="let element">
+              {{element.min}} %
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="max">
+            <mat-header-cell *matHeaderCellDef>Máximo</mat-header-cell>
+            <mat-cell [class.current-humidity]="element.min <= lastHumidity && lastHumidity < element.max" *matCellDef="let element">
+              {{element.max}} %
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

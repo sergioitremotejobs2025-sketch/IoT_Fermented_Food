@@ -1,0 +1,44 @@
+<main class="container">
+    <div class="analytics-header">
+        <h1>📊 {{ 'ANALYTICS.TITLE' | translate }}</h1>
+        <p class="text-muted">Compara tendencias entre múltiples dispositivos en tiempo real.</p>
+    </div>
+
+    <div class="analytics-layout">
+        <!-- Sidebar: Device Selector -->
+        <div class="device-selector glass shadow-sm">
+            <h3>Seleccionar Dispositivos</h3>
+            <div class="device-list">
+                <div *ngFor="let dev of arduinos()" 
+                     class="dev-item" 
+                     [class.selected]="selectedDevices().includes(dev)"
+                     (click)="toggleDevice(dev)">
+                    <mat-icon>{{ dev.measure | measureIcon }}</mat-icon>
+                    <div class="dev-info">
+                        <span class="name">{{ dev.name }}</span>
+                        <span class="measure">{{ dev.measure | translate }}</span>
+                    </div>
+                    <div class="checkbox">
+                        <mat-icon>{{ selectedDevices().includes(dev) ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Area: Large Chart -->
+        <div class="chart-container glass shadow-lg">
+            <div class="empty-chart" *ngIf="selectedDevices().length === 0">
+                <mat-icon>trending_up</mat-icon>
+                <p>Selecciona al menos un dispositivo para visualizar las tendencias</p>
+            </div>
+            
+            <div class="chart-wrapper" *ngIf="selectedDevices().length > 0">
+                <canvas baseChart 
+                        [data]="chartData()" 
+                        [options]="chartOptions" 
+                        [type]="'line'">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</main>

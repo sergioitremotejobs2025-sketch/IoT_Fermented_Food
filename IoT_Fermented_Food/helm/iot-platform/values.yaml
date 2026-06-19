@@ -1,0 +1,54 @@
+# Global settings for the IoT Platform
+global:
+  namespace: default
+  tier: backend
+  imagePullPolicy: IfNotPresent
+
+# Subchart configurations
+ai-ms:
+  enabled: true
+  image: sergioitremotejobs2025/ai-ms:latest
+  replicaCount: 1
+  hpa:
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPU: 70
+
+orchestrator-ms:
+  enabled: true
+  image: sergioitremotejobs2025/orchestrator-ms:latest
+  replicaCount: 1
+  hpa:
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPU: 70
+
+measure-ms:
+  enabled: true
+  image: sergioitremotejobs2025/measure-ms:latest
+  replicaCount: 1
+
+microcontrollers-ms:
+  enabled: true
+  image: sergioitremotejobs2025/microcontrollers-ms:latest
+  replicaCount: 1
+
+auth-ms:
+  enabled: true
+  image: sergioitremotejobs2025/auth-ms:latest
+  replicaCount: 1
+
+publisher-ms:
+  enabled: true
+  image: sergioitremotejobs2025/publisher-ms:latest
+  replicaCount: 1
+
+stats-ms:
+  enabled: true
+  image: sergioitremotejobs2025/stats-ms:latest
+  replicaCount: 1
+
+angular-ms:
+  enabled: true
+  image: sergioitremotejobs2025/angular-ms:latest
+  replicaCount: 1

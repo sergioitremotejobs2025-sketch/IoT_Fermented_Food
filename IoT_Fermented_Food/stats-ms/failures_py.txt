@@ -1,0 +1,131 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+django: version: 5.2.10
+rootdir: /Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/stats-ms
+configfile: pytest.ini
+plugins: anyio-4.12.0, xdist-3.8.0, django-webtest-1.9.14, django-4.11.1, langsmith-0.5.0, Faker-40.1.2, cov-7.0.0
+collected 6 items
+
+test/test_coverage.py ..F.FF
+ERROR: Coverage failure: total of 64 is less than fail-under=85
+                                                                         [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_queue_processing _____________________________
+
+mock_get_channel = <MagicMock name='get_channel' id='4627085504'>
+
+    @patch('src.queue.queue.get_channel')
+    def test_queue_processing(mock_get_channel):
+        mock_channel = MagicMock()
+        mock_get_channel.return_value = mock_channel
+    
+        mock_controller = MagicMock()
+        mock_controller.queue = 'test_queue'
+        mock_controller.max_items = 2
+        mock_controller.calculate_stats.return_value = {'ip': '1.1.1.1', 'avg': 10}
+    
+        # Helper to capture the internal callback
+        callback_capture = []
+        def mock_consume(queue, auto_ack, on_message_callback):
+            callback_capture.append(on_message_callback)
+    
+        mock_channel.basic_consume.side_effect = mock_consume
+    
+        # Instantiate Queue (this will start consuming in a real scenario, but we mock it)
+>       with patch('src.queue.queue.Queue.connect', return_value=None): # Not needed if we mock get_channel before
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test/test_coverage.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/miniconda3/lib/python3.13/unittest/mock.py:1497: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x113b43bf0>
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+>           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: <class 'src.queue.queue.Queue'> does not have the attribute 'connect'
+
+/opt/miniconda3/lib/python3.13/unittest/mock.py:1467: AttributeError
+_________________________________ test_metrics _________________________________
+
+client = <FlaskClient <Flask 'src.__main__'>>
+
+    def test_metrics(client):
+        res = client.get('/metrics')
+        assert res.status_code == 200
+>       assert 'process_cpu_seconds_total' in res.data.decode()
+E       assert 'process_cpu_seconds_total' in '# HELP python_gc_objects_collected_total Objects collected during gc\n# TYPE python_gc_objects_collected_total counte...PE python_info gauge\npython_info{implementation="CPython",major="3",minor="13",patchlevel="5",version="3.13.5"} 1.0\n'
+E        +  where '# HELP python_gc_objects_collected_total Objects collected during gc\n# TYPE python_gc_objects_collected_total counte...PE python_info gauge\npython_info{implementation="CPython",major="3",minor="13",patchlevel="5",version="3.13.5"} 1.0\n' = <built-in method decode of bytes object at 0x7fe057919000>()
+E        +    where <built-in method decode of bytes object at 0x7fe057919000> = b'# HELP python_gc_objects_collected_total Objects collected during gc\n# TYPE python_gc_objects_collected_total count...PE python_info gauge\npython_info{implementation="CPython",major="3",minor="13",patchlevel="5",version="3.13.5"} 1.0\n'.decode
+E        +      where b'# HELP python_gc_objects_collected_total Objects collected during gc\n# TYPE python_gc_objects_collected_total count...PE python_info gauge\npython_info{implementation="CPython",major="3",minor="13",patchlevel="5",version="3.13.5"} 1.0\n' = <WrapperTestResponse 1035 bytes [200 OK]>.data
+
+test/test_coverage.py:109: AssertionError
+______________________________ test_main_startup _______________________________
+
+mock_queue = <MagicMock name='Queue' id='4629138800'>
+mock_thread = <MagicMock name='Thread' id='4629136448'>
+
+    @patch('src.__main__.Thread')
+    @patch('src.__main__.Queue')
+    def test_main_startup(mock_queue, mock_thread):
+        main()
+        # 1 thread for metrics + 3 threads for controllers (Humidity, Light, Temperature)
+        assert mock_thread.call_count == 4
+>       assert mock_queue.call_count == 3
+E       AssertionError: assert 0 == 3
+E        +  where 0 = <MagicMock name='Queue' id='4629138800'>.call_count
+
+test/test_coverage.py:118: AssertionError
+----------------------------- Captured stdout call -----------------------------
+main
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.13.5-final-0 _______________
+
+Name                          Stmts   Miss  Cover
+-------------------------------------------------
+src/__init__.py                   0      0   100%
+src/__main__.py                  29      3    90%
+src/config/__init__.py            0      0   100%
+src/config/config.py             14      0   100%
+src/database/__init__.py          0      0   100%
+src/database/dao.py              12      0   100%
+src/measures/__init__.py          0      0   100%
+src/measures/humidity.py         23     16    30%
+src/measures/light.py            22     15    32%
+src/measures/measure.py           6      0   100%
+src/measures/temperature.py      23     16    30%
+src/models.py                    31      0   100%
+src/queue/__init__.py             0      0   100%
+src/queue/queue.py               23     19    17%
+src/queue/rabbitmq.py             9      0   100%
+-------------------------------------------------
+TOTAL                           192     69    64%
+FAIL Required test coverage of 85% not reached. Total coverage: 64.06%
+=========================== short test summary info ============================
+FAILED test/test_coverage.py::test_queue_processing - AttributeError: <class ...
+FAILED test/test_coverage.py::test_metrics - assert 'process_cpu_seconds_tota...
+FAILED test/test_coverage.py::test_main_startup - AssertionError: assert 0 == 3
+========================= 3 failed, 3 passed in 1.32s ==========================

@@ -1,0 +1,78 @@
+<main class="container history-page" *ngIf="micro()">
+  <div class="header-section">
+    <app-dashboard-microcontroller [isHistory]="true" [micro]="micro()"></app-dashboard-microcontroller>
+  </div>
+
+  <div class="controls-card glass-panel">
+    <form [formGroup]="historyForm" (ngSubmit)="getPreviousMeasures(historyForm.value)" class="history-form">
+      <div class="form-row">
+        <div class="date-range">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Fecha inicial</mat-label>
+            <input formControlName="init_date" [matDatepicker]="init_datepicker" matInput>
+            <mat-datepicker-toggle [for]="init_datepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #init_datepicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Fecha final</mat-label>
+            <input formControlName="end_date" [matDatepicker]="end_datepicker" matInput>
+            <mat-datepicker-toggle [for]="end_datepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #end_datepicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="comparison-toggle">
+          <mat-slide-toggle [ngModel]="isComparing()" (ngModelChange)="isComparing.set($event)" [ngModelOptions]="{standalone: true}" color="accent">
+            Comparar periodos
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <div class="form-row comparison-row" *ngIf="isComparing()">
+        <div class="date-range">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Inicio comparación</mat-label>
+            <input formControlName="compare_init_date" [matDatepicker]="comp_init_datepicker" matInput>
+            <mat-datepicker-toggle [for]="comp_init_datepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #comp_init_datepicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Fin comparación</mat-label>
+            <input formControlName="compare_end_date" [matDatepicker]="comp_end_datepicker" matInput>
+            <mat-datepicker-toggle [for]="comp_end_datepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #comp_end_datepicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <mat-form-field appearance="outline" class="view-stats-select" floatLabel="always">
+          <mat-label>Métricas</mat-label>
+          <mat-select [disabled]="!data().length" multiple [ngModel]="currentStats()"
+            [ngModelOptions]="{standalone: true}" (selectionChange)="setCurrentStats($event.value)">
+            <mat-option [disabled]="isOptionDisabled(micro()!, stat)" *ngFor="let stat of stats" [value]="stat.value">{{
+              stat.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button color="primary" [disabled]="historyForm.invalid" mat-flat-button type="submit" class="submit-btn">
+          <mat-icon>analytics</mat-icon>
+          <span>Analizar Datos</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="chart-container glass-panel">
+    <div class="chart-header">
+      <h3>Visualización Interactiva</h3>
+      <div class="chart-hints">
+        <span><mat-icon>zoom_in</mat-icon> Arrastra para hacer zoom</span>
+        <span><mat-icon>settings_backup_restore</mat-icon> Click derecho para resetear</span>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <google-chart [data]="chart"></google-chart>
+    </div>
+  </div>
+</main>

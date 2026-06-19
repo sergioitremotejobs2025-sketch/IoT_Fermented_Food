@@ -1,0 +1,61 @@
+name: CI/CD Performance Regression tests
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - 'performance-tests/**'
+      - 'orchestrator-ms/**'
+      - '.github/workflows/performance-tests.yml'
+  pull_request:
+    paths:
+      - 'performance-tests/**'
+      - 'orchestrator-ms/**'
+      - '.github/workflows/performance-tests.yml'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  load-test:
+    name: Run k6 Load Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node and Services
+        env:
+          PERF_TEST_API_URL: ${{ secrets.PERF_TEST_API_URL }}
+        run: |
+          if [ -z "$PERF_TEST_API_URL" ]; then
+            echo "⚠️ No PERF_TEST_API_URL secret found. Starting mock server for safety..."
+            npm init -y
+            npm install fastify
+            node -e "
+              const app = require('fastify')();
+              app.get('/health', async () => ({ status: 'ok' }));
+              app.listen({ port: 3000 }, () => console.log('Mock server is up'));
+            " &
+            sleep 5
+            echo "MOCK_URL=http://localhost:3000" >> $GITHUB_ENV
+          else
+            echo "🚀 Targeting real production endpoint: $PERF_TEST_API_URL"
+            echo "REAL_URL=$PERF_TEST_API_URL" >> $GITHUB_ENV
+          fi
+
+      - name: Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6
+
+      - name: Run Performance Testing (K6)
+        run: |
+          # Use REAL_URL if assigned, otherwise fallback to MOCK_URL
+          TARGET_URL="${REAL_URL:-$MOCK_URL}"
+          k6 run -e API_URL="$TARGET_URL" performance-tests/k6/load-test.js

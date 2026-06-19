@@ -1,0 +1,179 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-shard-eu
+  namespace: default
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+  clusterIP: None
+  selector:
+    app: mongo-shard-eu
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo-shard-eu
+  namespace: default
+spec:
+  serviceName: mongo-shard-eu
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-shard-eu
+  template:
+    metadata:
+      labels:
+        app: mongo-shard-eu
+    spec:
+      containers:
+      - name: mongo-shard-eu
+        image: mongo:4.2.5
+        command:
+        - mongod
+        - "--shardsvr"
+        - "--replSet"
+        - "shard-eurs"
+        - "--port"
+        - "27017"
+        - "--bind_ip_all"
+        ports:
+        - containerPort: 27017
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 999
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        - name: run-volume
+          mountPath: /var/run/mongodb
+        - name: shard-eu-data
+          mountPath: /data/db
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "1.5Gi"
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+      securityContext:
+        fsGroup: 999
+        runAsNonRoot: true
+        runAsUser: 999
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      - name: run-volume
+        emptyDir: {}
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+      tolerations:
+      - key: "cloud.google.com/gke-spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+  volumeClaimTemplates:
+  - metadata:
+      name: shard-eu-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-shard-us
+  namespace: default
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+  clusterIP: None
+  selector:
+    app: mongo-shard-us
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo-shard-us
+  namespace: default
+spec:
+  serviceName: mongo-shard-us
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-shard-us
+  template:
+    metadata:
+      labels:
+        app: mongo-shard-us
+    spec:
+      containers:
+      - name: mongo-shard-us
+        image: mongo:4.2.5
+        command:
+        - mongod
+        - "--shardsvr"
+        - "--replSet"
+        - "shard-usrs"
+        - "--port"
+        - "27017"
+        - "--bind_ip_all"
+        ports:
+        - containerPort: 27017
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 999
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        - name: run-volume
+          mountPath: /var/run/mongodb
+        - name: shard-us-data
+          mountPath: /data/db
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "1.5Gi"
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+      securityContext:
+        fsGroup: 999
+        runAsNonRoot: true
+        runAsUser: 999
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      - name: run-volume
+        emptyDir: {}
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+      tolerations:
+      - key: "cloud.google.com/gke-spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+  volumeClaimTemplates:
+  - metadata:
+      name: shard-us-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi

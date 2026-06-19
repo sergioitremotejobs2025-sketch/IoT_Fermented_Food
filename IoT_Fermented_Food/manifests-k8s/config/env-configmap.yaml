@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  ANGULAR_MS_HOSTNAME: angular-ms
+  AUTH_MS_HOSTNAME: auth-ms
+  MEASURE_MS_HOSTNAME: measure-ms
+  MICROCONTROLLERS_MS_HOSTNAME: microcontrollers-ms
+  AI_MS_HOSTNAME: ai-ms
+  MONGO_DATABASE_NAME: iot
+  MONGO_HOSTNAME: mongo
+  MYSQL_DATABASE_NAME: iot
+  MYSQL_HOSTNAME: mysql
+  ORCHESTRATOR_MS_HOSTNAME: orchestrator-ms
+  QUEUE_HUMIDITY_NAME: humidities
+  QUEUE_LIGHT_NAME: lights
+  QUEUE_TEMPERATURE_NAME: temperatures
+  RABBITMQ_HOSTNAME: rabbitmq
+  STATS_MS_HOSTNAME: stats-ms
+  # Service Ports
+  AUTH_MS_SERVICE_PORT: "80"
+  MEASURE_MS_SERVICE_PORT: "80"
+  MICROCONTROLLERS_MS_SERVICE_PORT: "80"
+  AI_MS_SERVICE_PORT: "5000"
+  ORCHESTRATOR_MS_SERVICE_PORT: "80"
+  MYSQL_SERVICE_PORT: "3306"
+  MONGO_SERVICE_PORT: "27017"
+  RABBITMQ_SERVICE_PORT: "5672"
+kind: ConfigMap
+metadata:
+  name: env-configmap
+  namespace: default

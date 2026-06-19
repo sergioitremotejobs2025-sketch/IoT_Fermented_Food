@@ -1,0 +1,59 @@
+<div class="health-container">
+  <div class="header">
+    <h2>Estatus de Salud del Nodo</h2>
+    <p class="text-muted">Métricas de rendimiento en tiempo real para tus microcontroladores.</p>
+    <button mat-stroked-button color="primary" (click)="refreshHealth()">
+      <mat-icon>refresh</mat-icon> Actualizar
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-state">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+  } @else {
+    <div class="health-grid">
+      @for (item of healthData(); track item.ip + item.measure) {
+        <div class="health-card glass" [class.warning]="item.status === 'warning'" [class.offline]="item.status === 'offline'">
+          <div class="card-status-indicator" [class]="item.status"></div>
+          
+          <div class="card-header">
+            <div class="icon-box shadow-sm">
+                <mat-icon>{{ item.measure | measureIcon }}</mat-icon>
+            </div>
+            <div class="node-info">
+              <h3>{{ item.sensor }}</h3>
+              <code>{{ item.ip }}</code>
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-item">
+              <span class="label">Latencia</span>
+              <span class="value">{{ item.latency }}ms</span>
+              <mat-progress-bar mode="determinate" [value]="100 - (item.latency / 2)"></mat-progress-bar>
+            </div>
+            
+            <div class="metric-item">
+              <span class="label">Uptime</span>
+              <span class="value">{{ item.uptime }}%</span>
+              <mat-progress-bar mode="determinate" [value]="item.uptime" color="accent"></mat-progress-bar>
+            </div>
+
+            @if (item.battery !== null) {
+              <div class="metric-item">
+                <span class="label">Batería</span>
+                <span class="value">{{ item.battery }}%</span>
+                <mat-progress-bar mode="determinate" [value]="item.battery" [color]="item.battery < 20 ? 'warn' : 'primary'"></mat-progress-bar>
+              </div>
+            }
+          </div>
+
+          <div class="card-footer">
+            <span class="status-text">{{ item.status | uppercase }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

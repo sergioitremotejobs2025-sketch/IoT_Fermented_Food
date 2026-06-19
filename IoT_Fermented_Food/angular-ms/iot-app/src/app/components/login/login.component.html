@@ -1,0 +1,19 @@
+<span class="float-right nav-user-container" *ngIf="!isLogged">
+  <button mat-button (click)="openDialog()" style="font-size: 22px;" type="button">
+    <mat-icon>person</mat-icon>
+    <span style="margin: 0 10%;">Acceder</span>
+  </button>
+</span>
+<span class="float-right nav-user-container" *ngIf="isLogged">
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item *ngFor="let opt of options" [routerLink]="opt.link">{{ opt.name }}</button>
+    <button mat-menu-item (click)="openChangePasswordDialog()">Cambiar contraseña</button>
+    <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="appMenu" (menuClosed)="menuClosed()" (menuOpened)="menuOpened()"
+    style="font-size: 22px;" type="button">
+    <mat-icon>person</mat-icon>
+    <span style="margin: 0 10%;">{{ username }}</span>
+    <mat-icon>{{ icon }}</mat-icon>
+  </button>
+</span>

@@ -1,0 +1,396 @@
+
+> publisher-ms@1.0.0 test
+> jest --coverage
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+PASS test/request.module.spec.js
+PASS test/queue.module.spec.js
+  ● Console
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.error
+      [AMQP] connection failed: conn fail
+
+      43 |       }
+      44 |     } catch (error) {
+    > 45 |       console.error('[AMQP] connection failed:', error.message)
+         |               ^
+      46 |       this.reconnect(retryCount)
+      47 |     }
+      48 |   }
+
+      at Queue.connect (src/modules/queue.module.js:45:15)
+
+    console.log
+      [AMQP] retrying connection in 1000ms...
+
+      at Queue.reconnect (src/modules/queue.module.js:52:13)
+
+    console.log
+      [AMQP] channel not ready, queuing message
+
+      at Queue.publish (src/modules/queue.module.js:60:17)
+
+    console.error
+      [AMQP] connection failed: conn fail
+
+      43 |       }
+      44 |     } catch (error) {
+    > 45 |       console.error('[AMQP] connection failed:', error.message)
+         |               ^
+      46 |       this.reconnect(retryCount)
+      47 |     }
+      48 |   }
+
+      at Queue.connect (src/modules/queue.module.js:45:15)
+
+    console.log
+      [AMQP] retrying connection in 1000ms...
+
+      at Queue.reconnect (src/modules/queue.module.js:52:13)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+PASS test/app.spec.js (5.466s)
+  ● Console
+
+    console.log
+      [humidity] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 0)
+
+    console.log
+      [humidity] Requesting http://192.168.1.50/humidity...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 0)
+
+    console.log
+      [light] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 1)
+
+    console.log
+      [light] Requesting http://192.168.1.50/light...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 1)
+
+    console.log
+      [temperature] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 2)
+
+    console.log
+      [temperature] Requesting http://192.168.1.50/temperature...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 2)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [AMQP] connected
+
+      at Queue.connect (src/modules/queue.module.js:28:15)
+
+    console.log
+      [humidity] Got response from 192.168.1.50, publishing...
+
+      at src/app/app.js:18:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 0)
+
+    console.log
+      [AMQP] channel not ready, queuing message
+
+      at Queue.publish (src/modules/queue.module.js:60:17)
+          at async Promise.all (index 0)
+          at async Promise.all (index 0)
+
+    console.log
+      [light] Got response from 192.168.1.50, publishing...
+
+      at src/app/app.js:18:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 1)
+
+    console.log
+      [AMQP] channel not ready, queuing message
+
+      at Queue.publish (src/modules/queue.module.js:60:17)
+          at async Promise.all (index 0)
+          at async Promise.all (index 1)
+
+    console.log
+      [temperature] Got response from 192.168.1.50, publishing...
+
+      at src/app/app.js:18:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 2)
+
+    console.log
+      [AMQP] channel not ready, queuing message
+
+      at Queue.publish (src/modules/queue.module.js:60:17)
+          at async Promise.all (index 0)
+          at async Promise.all (index 2)
+
+FAIL test/app.branch.spec.js (10.451s)
+  ● Console
+
+    console.log
+      [humidity] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 0)
+
+    console.log
+      [humidity] Requesting http://1.2.3.4/humidity...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 0)
+
+    console.log
+      [light] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 1)
+
+    console.log
+      [light] Requesting http://1.2.3.4/light...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 1)
+
+    console.log
+      [temperature] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 2)
+
+    console.log
+      [temperature] Requesting http://1.2.3.4/temperature...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 2)
+
+    console.log
+      [humidity] Got response from 1.2.3.4, publishing...
+
+      at src/app/app.js:18:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 0)
+
+    console.log
+      [light] Got response from 1.2.3.4, publishing...
+
+      at src/app/app.js:18:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 1)
+
+    console.log
+      [temperature] Got response from 1.2.3.4, publishing...
+
+      at src/app/app.js:18:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 2)
+
+    console.log
+      [humidity] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 0)
+
+    console.log
+      [humidity] Requesting http://5.6.7.8/humidity...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 0)
+
+    console.log
+      [light] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 1)
+
+    console.log
+      [light] Requesting http://5.6.7.8/humidity...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 1)
+
+    console.log
+      [temperature] Found 1 microcontrollers
+
+      at publishMeasure (src/app/app.js:11:11)
+          at async Promise.all (index 2)
+
+    console.log
+      [temperature] Requesting http://5.6.7.8/humidity...
+
+      at map (src/app/app.js:15:15)
+          at Array.map (<anonymous>)
+          at async Promise.all (index 2)
+
+    console.log
+      [humidity] Failed to get response from 5.6.7.8
+
+      at src/app/app.js:21:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 0)
+
+    console.log
+      [light] Failed to get response from 5.6.7.8
+
+      at src/app/app.js:21:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 1)
+
+    console.log
+      [temperature] Failed to get response from 5.6.7.8
+
+      at src/app/app.js:21:17
+          at async Promise.all (index 0)
+          at async Promise.all (index 2)
+
+  ● publisher app branch coverage › main publishes when requestMeasure returns a response (truthy branch)
+
+    : Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.Error:
+
+      23 |     });
+      24 |
+    > 25 |     test('main publishes when requestMeasure returns a response (truthy branch)', async () => {
+         |     ^
+      26 |         // Each measure returns one microcontroller
+      27 |         getMicrocontrollers.mockImplementation(measure => Promise.resolve([
+      28 |             { ip: '1.2.3.4', measure }
+
+      at new Spec (node_modules/jest-jasmine2/build/jasmine/Spec.js:116:22)
+      at Suite.<anonymous> (test/app.branch.spec.js:25:5)
+      at Object.<anonymous> (test/app.branch.spec.js:18:1)
+
+  ● publisher app branch coverage › main skips publishing when requestMeasure returns undefined (falsy branch)
+
+    expect(received).toHaveBeenCalledWith(...expected)
+
+    Matcher error: received value must be a mock or spy function
+
+    Received has value: undefined
+
+      40 |         expect(QueueModule).toHaveBeenCalledTimes(measures.length);
+      41 |         QueueModule.mock.instances.forEach(inst => {
+    > 42 |             expect(inst.publish).toHaveBeenCalledWith({ payload: 'msg' });
+         |                                  ^
+      43 |         });
+      44 |     });
+      45 |
+
+      at forEach (test/app.branch.spec.js:42:34)
+          at Array.forEach (<anonymous>)
+      at Object.<anonymous> (test/app.branch.spec.js:41:36)
+
+  ● publisher app branch coverage › main skips publishing when requestMeasure returns undefined (falsy branch)
+
+    : Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.Error:
+
+      44 |     });
+      45 |
+    > 46 |     test('main skips publishing when requestMeasure returns undefined (falsy branch)', async () => {
+         |     ^
+      47 |         getMicrocontrollers.mockResolvedValue([
+      48 |             { ip: '5.6.7.8', measure: 'humidity' }
+      49 |         ]);
+
+      at new Spec (node_modules/jest-jasmine2/build/jasmine/Spec.js:116:22)
+      at Suite.<anonymous> (test/app.branch.spec.js:46:5)
+      at Object.<anonymous> (test/app.branch.spec.js:18:1)
+
+--------------------|---------|----------|---------|---------|-------------------
+File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------|---------|----------|---------|---------|-------------------
+All files           |   98.96 |    94.29 |   94.74 |     100 |                   
+ app                |     100 |      100 |     100 |     100 |                   
+  app.js            |     100 |      100 |     100 |     100 |                   
+ config             |     100 |      100 |     100 |     100 |                   
+  config.js         |     100 |      100 |     100 |     100 |                   
+ modules            |   98.59 |    86.67 |   93.33 |     100 |                   
+  message.module.js |     100 |      100 |     100 |     100 |                   
+  queue.module.js   |   97.92 |       75 |   90.91 |     100 | 19-50             
+  request.module.js |     100 |      100 |     100 |     100 |                   
+--------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       2 failed, 13 passed, 15 total
+Snapshots:   0 total
+Time:        11.547s, estimated 12s
+Ran all test suites.

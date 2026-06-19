@@ -1,0 +1,97 @@
+.health-container {
+  padding: 2rem;
+  
+  .header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    h2 { margin: 0; font-size: 2rem; font-weight: 300; }
+    button { align-self: flex-start; margin-top: 1rem; }
+  }
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.health-card {
+  position: relative;
+  padding: 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  }
+
+  .card-status-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    
+    &.online { background: #10b981; }
+    &.warning { background: #f59e0b; }
+    &.offline { background: #ef4444; }
+  }
+
+  .card-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      mat-icon { color: white; }
+    }
+
+    .node-info {
+      h3 { margin: 0; font-size: 1.1rem; }
+      code { font-size: 0.8rem; opacity: 0.6; }
+    }
+  }
+
+  .metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .metric-item {
+      .label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px; }
+      .value { display: block; font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+      mat-progress-bar { height: 6px; border-radius: 3px; }
+    }
+  }
+
+  .card-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: right;
+    
+    .status-text {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+}

@@ -1,0 +1,126 @@
+.device-overview {
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+      }
+      
+      mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .search-field {
+      width: 300px;
+      ::ng-deep .mat-mdc-form-field-subscript-wrapper { display: none; }
+    }
+  }
+
+  .table-container {
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+    table {
+      width: 100%;
+      background: transparent;
+
+      th {
+        background: #f8fafc;
+        color: #64748b;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+
+      .device-row {
+        transition: background 0.2s ease;
+        &:hover { background: #f1f5f9; }
+      }
+
+      .ip-cell {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 500;
+        color: #334155;
+      }
+
+      .measure-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #475569;
+        
+        mat-icon { font-size: 18px; width: 18px; height: 18px; }
+      }
+
+      .active-chip {
+        background-color: #dcfce7 !important;
+        color: #15803d !important;
+      }
+
+      .inactive-chip {
+        background-color: #fee2e2 !important;
+        color: #b91c1c !important;
+      }
+    }
+  }
+
+  .no-results {
+    padding: 3rem;
+    text-align: center;
+    color: #94a3b8;
+
+    mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+:host-context(.dark-theme) {
+  .device-overview {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    .header .title-row h2 { color: #f8fafc; }
+    
+    .table-container {
+      background: #1e293b;
+      
+      table {
+        th { background: #0f172a; color: #94a3b8; }
+        .device-row:hover { background: #334155; }
+        .ip-cell { color: #e2e8f0; }
+        .measure-cell { color: #94a3b8; }
+        
+        .active-chip { background-color: rgba(34, 197, 94, 0.2) !important; color: #4ade80 !important; }
+        .inactive-chip { background-color: rgba(239, 68, 68, 0.2) !important; color: #f87171 !important; }
+      }
+    }
+  }
+}

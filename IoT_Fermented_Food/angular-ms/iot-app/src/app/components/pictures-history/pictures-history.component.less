@@ -1,0 +1,209 @@
+.history-page {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.glass-panel {
+    background: var(--color-glass);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--color-glass-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+}
+
+.controls-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ph-form {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .date-range {
+        display: flex;
+        gap: 16px;
+        flex-grow: 1;
+
+        mat-form-field {
+            flex-grow: 1;
+        }
+    }
+}
+
+.advanced-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-glass-border);
+    gap: 16px;
+
+    mat-form-field {
+        width: 250px;
+    }
+}
+
+.timelapse-btn {
+    height: 56px;
+    padding: 0 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.timelapse-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+
+    .timelapse-frame {
+        position: relative;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-2xl);
+
+        img {
+            width: 100%;
+            display: block;
+            transition: opacity 0.1s ease;
+        }
+
+        .frame-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+
+            .date {
+                font-size: 14px;
+                opacity: 0.9;
+            }
+
+            .count {
+                font-size: 12px;
+                opacity: 0.6;
+            }
+        }
+    }
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-8px);
+
+        .img-overlay {
+            opacity: 1;
+        }
+    }
+
+    .img-wrapper {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    }
+
+    .item-meta {
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .date {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .day {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+    }
+}
+
+.status-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 60px;
+    text-align: center;
+    opacity: 0.8;
+
+    mat-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+}
+
+.badge {
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 600px) {
+    .advanced-filters {
+        flex-direction: column;
+        align-items: stretch;
+
+        mat-form-field,
+        .timelapse-btn {
+            width: 100%;
+        }
+    }
+}

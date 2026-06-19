@@ -1,0 +1,10 @@
+node_modules
+dist
+.angular
+*.md
+.git
+.gitignore
+coverage
+e2e
+*.spec.ts
+.dockerignore

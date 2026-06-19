@@ -1,0 +1,54 @@
+name: Release — v1.0.0 Official Launch
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate Release Notes
+        id: release_notes
+        run: |
+          echo "## 🚀 IoT Microservices v1.0.0 - 'The Engineering Manifesto Edition'" > release_notes.md
+          echo "" >> release_notes.md
+          echo "We are proud to announce the first official open-source release of the IoT Microservices project. This release marks the transition from a local Minikube environment to a fully-distributed GKE Autopilot architecture." >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### 📦 Core Features" >> release_notes.md
+          echo "- **Polyglot Microservices**: Go (Auth), Node.js (Orchestrator, Measure), Python (Stats, AI)." >> release_notes.md
+          echo "- **GKE Autopilot Infrastructure**: Seamless cloud-native scaling in europe-west1." >> release_notes.md
+          echo "- **Real-time Synchronization**: RabbitMQ and Socket.io bridge for zero-latency telemetry." >> release_notes.md
+          echo "- **AI-Powered Forecasting**: Integrated LSTM models for predictive sensor monitoring." >> release_notes.md
+          echo "- **100% Test Coverage**: Guaranteed architectural stability with TDD Hard Blocks." >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### 📔 Documentation" >> release_notes.md
+          echo "The architectural manifesto is included in this release as **Book_Version_1.md**. Read it for a deep dive into the engineering philosophy behind this project." >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### 🛠️ Distribution" >> release_notes.md
+          echo "All artifacts are now published to the **GitHub Container Registry (GHCR)**. Use the following images:" >> release_notes.md
+          echo '`ghcr.io/${{ github.repository }}/{service}:latest`' >> release_notes.md
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release_notes.md
+          files: |
+            Documentation/Version_1/Book_Version_1.md
+            Documentation/Version_1/Book_Version_1.pdf
+            recreate_full_system.sh
+            Scripts/*.sh
+          draft: true
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}

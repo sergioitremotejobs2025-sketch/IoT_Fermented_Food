@@ -1,0 +1,76 @@
+<mat-card>
+  <form (ngSubmit)="submitMicrocontroller(measureForm.value.measure, ipForm.value.ip, sensorForm.value.sensor)">
+    <mat-vertical-stepper [linear]="false" #stepper>
+      <mat-step [stepControl]="measureForm">
+        <form [formGroup]="measureForm">
+          <ng-template matStepLabel>Selecciona la magnitud a medir</ng-template>
+          <mat-form-field>
+            <mat-label>Magnitud</mat-label>
+            <mat-select formControlName="measure" (selectionChange)="resetSensors()">
+              <mat-option *ngFor="let measure of measures" [value]="measure.name">{{ measure.view }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="ipForm">
+        <form [formGroup]="ipForm">
+          <ng-template matStepLabel>Escribe la dirección del microcontrolador</ng-template>
+          <mat-form-field>
+            <mat-label>IP</mat-label>
+            <input matInput formControlName="ip" placeholder="Dirección IP" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="sensorForm">
+        <form [formGroup]="sensorForm">
+          <ng-template matStepLabel>Seleccione el sensor que va a utilizar</ng-template>
+          <mat-form-field>
+            <mat-label>Sensor</mat-label>
+            <mat-select formControlName="sensor">
+              <mat-option *ngFor="let sensor of availableSensors()" [value]="sensor">{{
+                sensor }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thresholdForm">
+        <form [formGroup]="thresholdForm">
+          <ng-template matStepLabel>Configura umbrales de alerta (Opcional)</ng-template>
+          <div class="threshold-container">
+            <mat-form-field>
+              <mat-label>Valor Mínimo</mat-label>
+              <input matInput type="number" formControlName="thresholdMin" placeholder="Ej: 10">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Valor Máximo</mat-label>
+              <input matInput type="number" formControlName="thresholdMax" placeholder="Ej: 35">
+            </mat-form-field>
+          </div>
+          <p class="hint">Se mostrará una notificación si el valor sale de este rango.</p>
+          <div>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="lastForm">
+        <ng-template matStepLabel>Listo</ng-template>
+        <div>
+          <button mat-raised-button color="primary" type="submit">{{ isEdit() ? 'Actualizar' : 'Añadir' }}</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </form>
+</mat-card>
+<img class="absolute" src="assets/images/microcontroller.jpg">

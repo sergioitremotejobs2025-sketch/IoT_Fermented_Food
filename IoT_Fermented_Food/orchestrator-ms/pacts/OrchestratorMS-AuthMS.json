@@ -1,0 +1,205 @@
+{
+  "consumer": {
+    "name": "OrchestratorMS"
+  },
+  "interactions": [
+    {
+      "description": "a request for login",
+      "providerStates": [
+        {
+          "name": "user exists with valid credentials"
+        }
+      ],
+      "request": {
+        "body": {
+          "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+          "refreshToken": "some-token",
+          "username": "testuser"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.refreshToken": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "POST",
+        "path": "/login"
+      },
+      "response": {
+        "body": "true",
+        "headers": {
+          "Content-Type": "text/plain; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for login with wrong password",
+      "providerStates": [
+        {
+          "name": "user exists but invalid credentials"
+        }
+      ],
+      "request": {
+        "body": {
+          "password": "8ecd67dceb90a898b1f94bddf570ce1c23629cd328140d81f1e02e43d42eb44e",
+          "refreshToken": "some-token",
+          "username": "testuser"
+        },
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.refreshToken": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "POST",
+        "path": "/login"
+      },
+      "response": {
+        "body": "false",
+        "headers": {
+          "Content-Type": "text/plain; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for password change",
+      "providerStates": [
+        {
+          "name": "user exists for password change"
+        }
+      ],
+      "request": {
+        "body": {
+          "password": "c822a0abf4ef0a5fc2a4c2010ed111e16af3ae95cee462a55e7877b8623ade36",
+          "username": "testuser"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "PUT",
+        "path": "/change-password"
+      },
+      "response": {
+        "body": "true",
+        "headers": {
+          "Content-Type": "text/plain; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for refresh",
+      "providerStates": [
+        {
+          "name": "valid refresh tokens"
+        }
+      ],
+      "request": {
+        "body": {
+          "newRefreshToken": "new-token",
+          "refreshToken": "old-token",
+          "username": "testuser"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.newRefreshToken": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "POST",
+        "path": "/refresh"
+      },
+      "response": {
+        "body": "true",
+        "headers": {
+          "Content-Type": "text/plain; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for registration",
+      "providerStates": [
+        {
+          "name": "user does not exist"
+        }
+      ],
+      "request": {
+        "body": {
+          "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+          "refreshToken": "some-token",
+          "username": "newuser"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.refreshToken": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "POST",
+        "path": "/register"
+      },
+      "response": {
+        "body": "true",
+        "headers": {
+          "Content-Type": "text/plain; charset=utf-8"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "16.2.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.28",
+      "models": "1.3.5"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "AuthMS"
+  }
+}

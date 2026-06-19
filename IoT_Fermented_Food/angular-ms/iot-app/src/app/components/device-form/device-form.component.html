@@ -1,0 +1,58 @@
+<div class="device-form-container glass-container">
+  <div class="header">
+    <mat-icon color="primary">{{ isEditMode ? 'edit' : 'add_circle' }}</mat-icon>
+    <h2>{{ isEditMode ? 'Editar Dispositivo' : 'Registrar Nuevo Dispositivo' }}</h2>
+  </div>
+
+  <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()" class="device-form">
+    
+    <div class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Dirección IP</mat-label>
+        <input matInput formControlName="ip" placeholder="Ej. 192.168.1.36">
+        <mat-icon matSuffix>dns</mat-icon>
+        <mat-error *ngIf="deviceForm.get('ip')?.hasError('required')">La IP es obligatoria</mat-error>
+        <mat-error *ngIf="deviceForm.get('ip')?.hasError('pattern')">Formato de IP inválido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de Medida</mat-label>
+        <mat-select formControlName="measure">
+          <mat-option *ngFor="let m of measures" [value]="m">
+            {{ m | titlecase }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>sensors</mat-icon>
+        <mat-error *ngIf="deviceForm.get('measure')?.hasError('required')">La medida es obligatoria</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Modelo del Sensor</mat-label>
+        <input matInput formControlName="sensor" placeholder="Ej. DHT11, LDR, etc.">
+        <mat-icon matSuffix>memory</mat-icon>
+        <mat-error *ngIf="deviceForm.get('sensor')?.hasError('required')">El sensor es obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción / Ubicación</mat-label>
+        <textarea matInput formControlName="description" placeholder="Ej. Invernadero Zona A" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-banner">
+      <mat-icon>warning</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="onCancel()" [disabled]="isSaving">
+        Cancelar
+      </button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="deviceForm.invalid || isSaving">
+        <mat-icon *ngIf="!isSaving">{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+        <mat-spinner diameter="20" *ngIf="isSaving" color="accent"></mat-spinner>
+        <span>{{ isSaving ? 'Guardando...' : (isEditMode ? 'Guardar' : 'Registrar') }}</span>
+      </button>
+    </div>
+  </form>
+</div>

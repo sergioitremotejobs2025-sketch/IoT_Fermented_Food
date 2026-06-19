@@ -1,0 +1,157 @@
+
+> v15-app@0.0.0 test
+> ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadless
+
+    TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI. To control ECMA version and features use the Browerslist configuration. For more information, see https://angular.io/guide/build#configuring-browser-compatibility
+    NOTE: You can set the "target" to "ES2022" in the project's tsconfig to remove this warning.
+28 02 2026 16:06:29.996:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+28 02 2026 16:06:29.998:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+28 02 2026 16:06:30.010:INFO [launcher]: Starting browser ChromeHeadless
+28 02 2026 16:06:32.906:INFO [Chrome Headless 145.0.0.0 (Mac OS 10.15.7)]: Connected on socket Lci6hTbG1qR42wEdAAAB with id 72285966
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 0 of 73 SUCCESS (0 secs / 0 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 1 of 73 SUCCESS (0 secs / 0.231 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 2 of 73 SUCCESS (0 secs / 0.247 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 3 of 73 SUCCESS (0 secs / 0.272 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 4 of 73 SUCCESS (0 secs / 0.29 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 5 of 73 SUCCESS (0 secs / 0.306 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 6 of 73 SUCCESS (0 secs / 0.308 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 7 of 73 SUCCESS (0 secs / 0.312 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 8 of 73 SUCCESS (0 secs / 0.314 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 9 of 73 SUCCESS (0 secs / 0.316 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 10 of 73 SUCCESS (0 secs / 0.318 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 11 of 73 SUCCESS (0 secs / 0.32 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 12 of 73 SUCCESS (0 secs / 0.321 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) TemperatureChartComponent should create and fetch temperature FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 13 of 73 (1 FAILED) (0 secs / 5.335 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) TemperatureChartComponent should create and fetch temperature FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) TemperatureChartComponent should handle real-time temperature updates FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 14 of 73 (2 FAILED) (0 secs / 10.344 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) TemperatureChartComponent should handle real-time temperature updates FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 15 of 73 (2 FAILED) (0 secs / 10.346 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 16 of 73 (2 FAILED) (0 secs / 10.348 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 17 of 73 (2 FAILED) (0 secs / 10.387 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 18 of 73 (2 FAILED) (0 secs / 10.389 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 19 of 73 (2 FAILED) (0 secs / 10.39 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 20 of 73 (2 FAILED) (0 secs / 10.402 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 21 of 73 (2 FAILED) (0 secs / 10.41 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 22 of 73 (2 FAILED) (0 secs / 10.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 23 of 73 (2 FAILED) (0 secs / 10.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 24 of 73 (2 FAILED) (0 secs / 10.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 25 of 73 (2 FAILED) (0 secs / 10.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 26 of 73 (2 FAILED) (0 secs / 10.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 27 of 73 (2 FAILED) (0 secs / 10.419 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 28 of 73 (2 FAILED) (0 secs / 10.419 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 29 of 73 (2 FAILED) (0 secs / 10.42 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 30 of 73 (2 FAILED) (0 secs / 10.538 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 31 of 73 (2 FAILED) (0 secs / 10.581 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 32 of 73 (2 FAILED) (0 secs / 10.617 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 33 of 73 (2 FAILED) (0 secs / 10.633 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 34 of 73 (2 FAILED) (0 secs / 10.649 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 35 of 73 (2 FAILED) (0 secs / 10.656 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 36 of 73 (2 FAILED) (0 secs / 10.661 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 37 of 73 (2 FAILED) (0 secs / 10.679 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 38 of 73 (2 FAILED) (0 secs / 10.693 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 39 of 73 (2 FAILED) (0 secs / 10.707 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 73 (2 FAILED) (0 secs / 10.719 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 41 of 73 (2 FAILED) (0 secs / 10.733 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 42 of 73 (2 FAILED) (0 secs / 10.74 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 43 of 73 (2 FAILED) (0 secs / 10.754 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should handle slide change FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 44 of 73 (3 FAILED) (0 secs / 15.765 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should handle slide change FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should handle real-time light updates FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 45 of 73 (4 FAILED) (0 secs / 20.774 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should handle real-time light updates FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should create and fetch light status FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 46 of 73 (5 FAILED) (0 secs / 25.784 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should create and fetch light status FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 47 of 73 (5 FAILED) (0 secs / 25.798 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityChartComponent should create and fetch initial measure FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 48 of 73 (6 FAILED) (0 secs / 30.808 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityChartComponent should create and fetch initial measure FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityChartComponent should handle real-time updates FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 49 of 73 (7 FAILED) (0 secs / 35.82 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityChartComponent should handle real-time updates FAILED
+	Error: Timeout - Async function did not complete within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 50 of 73 (7 FAILED) (0 secs / 35.822 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 73 (7 FAILED) (0 secs / 35.824 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 52 of 73 (7 FAILED) (0 secs / 35.825 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 53 of 73 (7 FAILED) (0 secs / 35.827 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 54 of 73 (7 FAILED) (0 secs / 35.829 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 55 of 73 (7 FAILED) (0 secs / 35.844 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 56 of 73 (7 FAILED) (0 secs / 35.854 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 57 of 73 (7 FAILED) (0 secs / 35.865 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 58 of 73 (7 FAILED) (0 secs / 35.875 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 59 of 73 (7 FAILED) (0 secs / 35.883 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 60 of 73 (7 FAILED) (0 secs / 35.889 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 61 of 73 (7 FAILED) (0 secs / 35.89 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 62 of 73 (7 FAILED) (0 secs / 35.891 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 63 of 73 (7 FAILED) (0 secs / 35.891 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 64 of 73 (7 FAILED) (0 secs / 35.891 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 65 of 73 (7 FAILED) (0 secs / 35.919 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 66 of 73 (7 FAILED) (0 secs / 35.927 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 67 of 73 (7 FAILED) (0 secs / 35.933 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 68 of 73 (7 FAILED) (0 secs / 35.941 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 69 of 73 (7 FAILED) (0 secs / 35.949 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 70 of 73 (7 FAILED) (0 secs / 35.957 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 71 of 73 (7 FAILED) (0 secs / 35.963 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 72 of 73 (7 FAILED) (0 secs / 35.97 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 73 of 73 (7 FAILED) (0 secs / 35.976 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 73 of 73 (7 FAILED) (36.115 secs / 35.976 secs)
+TOTAL: 7 FAILED, 66 SUCCESS
+TOTAL: 7 FAILED, 66 SUCCESS
+28 02 2026 16:07:11.369:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (55.81%) does not meet global threshold (85%)
+28 02 2026 16:07:11.370:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (44.54%) does not meet global threshold (85%)
+28 02 2026 16:07:11.370:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (56.02%) does not meet global threshold (85%)
+28 02 2026 16:07:11.370:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (48.14%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 55.81% ( 408/731 )
+Branches     : 44.54% ( 102/229 )
+Functions    : 48.14% ( 117/243 )
+Lines        : 56.02% ( 381/680 )
+================================================================================
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 73 of 73 (7 FAILED) ERROR (36.115 secs / 35.976 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 73 of 73 (7 FAILED) ERROR (36.295 secs / 35.976 secs)
+28 02 2026 16:07:11.488:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (55.81%) does not meet global threshold (85%)
+28 02 2026 16:07:11.489:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (44.54%) does not meet global threshold (85%)
+28 02 2026 16:07:11.489:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (56.02%) does not meet global threshold (85%)
+28 02 2026 16:07:11.489:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (48.14%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 55.81% ( 408/731 )
+Branches     : 44.54% ( 102/229 )
+Functions    : 48.14% ( 117/243 )
+Lines        : 56.02% ( 381/680 )
+================================================================================

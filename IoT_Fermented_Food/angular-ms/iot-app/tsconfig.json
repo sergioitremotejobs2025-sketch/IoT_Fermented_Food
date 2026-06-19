@@ -1,0 +1,69 @@
+{
+  "angularCompilerOptions": {
+    "enableIvy": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
+  "compileOnSave": false,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
+    "paths": {
+      "@alias/*": [
+        "src/app/alias/*"
+      ],
+      "@components/*": [
+        "src/app/components/*"
+      ],
+      "@guards/*": [
+        "src/app/guards/*"
+      ],
+      "@helpers/*": [
+        "src/app/helpers/*"
+      ],
+      "@interceptors/*": [
+        "src/app/interceptors/*"
+      ],
+      "@mocks/*": [
+        "src/app/mocks/*"
+      ],
+      "@models/*": [
+        "src/app/models/*"
+      ],
+      "@modules/*": [
+        "src/app/modules/*"
+      ],
+      "@pipes/*": [
+        "src/app/pipes/*"
+      ],
+      "@routes/*": [
+        "src/app/routes/*"
+      ],
+      "@services/*": [
+        "src/app/services/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@stubs/*": [
+        "src/app/stubs/*"
+      ]
+    },
+    "sourceMap": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}

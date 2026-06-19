@@ -1,0 +1,44 @@
+@import './colors.less';
+
+:root {
+    // Brand Colors
+    --color-primary: @primary;
+    --color-primary-hover: @primary-hover;
+    --color-secondary: @secondary;
+    --color-accent: @accent;
+    --color-danger: @danger;
+
+    // Semantic Colors (Default Light Mode)
+    --color-background: @background-light;
+    --color-surface: @surface-light;
+    --color-text: @text-light;
+    --color-text-muted: @text-muted-light;
+    --color-border: #e2e8f0;
+
+    // Effects
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-blur: blur(16px);
+
+    // Transitions
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+    --color-background: @background-dark;
+    --color-surface: @surface-dark;
+    --color-text: @text-dark;
+    --color-text-muted: @text-muted-dark;
+    --color-border: #334155;
+
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.15);
+
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+    --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.6);
+    --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.8);
+}

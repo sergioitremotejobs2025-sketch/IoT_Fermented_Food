@@ -1,0 +1,182 @@
+
+> microcontrollers-ms@1.0.0 test
+> jest --coverage
+
+  console.log
+    2026-02-28T11:00:54.160Z - GET /temperature - undefined
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:00:54.206Z - GET /?username=Rocky - undefined
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:00:54.231Z - POST / - {"ip":"192.168.1.222","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:04.233Z - POST / - {"ip":"fake-arduino-iot.eu-gb.mybluemix.net","measure":"temperature","sensor":"Fake Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:14.234Z - POST / - {"ip":"192.168.1.50","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:24.237Z - POST / - {"ip":"192.168.1.350","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:24.246Z - PUT / - {"ip":"192.168.1.222","measure":"temperature","old_ip":"192.168.1.50","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:34.248Z - PUT / - {"ip":"192.168.1.50","measure":"temperature","old_ip":"192.168.1.200","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:44.250Z - PUT / - {"ip":"192.168.1.350","measure":"temperature","old_ip":"192.168.1.50","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:44.258Z - DELETE / - {"ip":"192.168.1.50","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+  console.log
+    2026-02-28T11:01:44.266Z - DELETE / - {"ip":"192.168.1.222","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+FAIL test/microcontrollers.spec.js (50.866 s)
+  Microcontrollers endpoints from microservices
+    ✓ should return list of measure microcontrollers (75 ms)
+  Microcontrollers endpoints from UI
+    ✓ should return list of users microcontrollers (10 ms)
+    ✕ should insert a new microcontroller (10002 ms)
+    ✕ should insert a new microcontroller (10001 ms)
+    ✕ should not insert a new microcontroller (10003 ms)
+    ✓ should not insert a new microcontroller (9 ms)
+    ✕ should update a microcontroller (10002 ms)
+    ✕ should not update a microcontroller (10001 ms)
+    ✓ should not update a microcontroller (7 ms)
+    ✓ should delete a microcontroller (7 ms)
+    ✓ should not delete a microcontroller (7 ms)
+
+  ● Microcontrollers endpoints from UI › should insert a new microcontroller
+
+    thrown: "Exceeded timeout of 10000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      36 |   }, 10000)
+      37 |
+    > 38 |   it('should insert a new microcontroller', async () => {
+         |   ^
+      39 |     const res = await request(app)
+      40 |       .post('/')
+      41 |       .send({
+
+      at it (test/microcontrollers.spec.js:38:3)
+      at Object.describe (test/microcontrollers.spec.js:22:1)
+
+  ● Microcontrollers endpoints from UI › should insert a new microcontroller
+
+    thrown: "Exceeded timeout of 10000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      59 |   }, 10000)
+      60 |
+    > 61 |   it('should insert a new microcontroller', async () => {
+         |   ^
+      62 |     const res = await request(app)
+      63 |       .post('/')
+      64 |       .send({
+
+      at it (test/microcontrollers.spec.js:61:3)
+      at Object.describe (test/microcontrollers.spec.js:22:1)
+
+  ● Microcontrollers endpoints from UI › should not insert a new microcontroller
+
+    thrown: "Exceeded timeout of 10000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      82 |   }, 10000)
+      83 |
+    > 84 |   it('should not insert a new microcontroller', async () => {
+         |   ^
+      85 |     const res = await request(app)
+      86 |       .post('/')
+      87 |       .send({
+
+      at it (test/microcontrollers.spec.js:84:3)
+      at Object.describe (test/microcontrollers.spec.js:22:1)
+
+  ● Microcontrollers endpoints from UI › should update a microcontroller
+
+    thrown: "Exceeded timeout of 10000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      108 |   }, 10000)
+      109 |
+    > 110 |   it('should update a microcontroller', async () => {
+          |   ^
+      111 |     const res = await request(app)
+      112 |       .put('/')
+      113 |       .send({
+
+      at it (test/microcontrollers.spec.js:110:3)
+      at Object.describe (test/microcontrollers.spec.js:22:1)
+
+  ● Microcontrollers endpoints from UI › should not update a microcontroller
+
+    thrown: "Exceeded timeout of 10000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      133 |   }, 10000)
+      134 |
+    > 135 |   it('should not update a microcontroller', async () => {
+          |   ^
+      136 |     const res = await request(app)
+      137 |       .put('/')
+      138 |       .send({
+
+      at it (test/microcontrollers.spec.js:135:3)
+      at Object.describe (test/microcontrollers.spec.js:22:1)
+
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+All files                        |   81.35 |    68.88 |   86.95 |   84.11 |                   
+ app                             |      85 |      100 |   33.33 |   89.47 |                   
+  app.js                         |      85 |      100 |   33.33 |   89.47 | 27-28             
+ app/controllers                 |   76.92 |       60 |     100 |   81.39 |                   
+  microcontrollers.controller.js |   76.92 |       60 |     100 |   81.39 | 42-46,60-65,79    
+ app/routes                      |     100 |      100 |     100 |     100 |                   
+  microcontrollers.routes.js     |     100 |      100 |     100 |     100 |                   
+ config                          |     100 |      100 |     100 |     100 |                   
+  mysql.config.js                |     100 |      100 |     100 |     100 |                   
+ database                        |   73.07 |    28.57 |    92.3 |   73.07 |                   
+  dao.js                         |   73.07 |    28.57 |    92.3 |   73.07 | 24-25,30-33,61,69 
+ helpers                         |     100 |     87.5 |     100 |     100 |                   
+  helpers.js                     |     100 |     87.5 |     100 |     100 | 8                 
+---------------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for statements (85%) not met: 81.35%
+Jest: "global" coverage threshold for branches (85%) not met: 68.88%
+Jest: "global" coverage threshold for lines (85%) not met: 84.11%
+Test Suites: 1 failed, 1 total
+Tests:       5 failed, 6 passed, 11 total
+Snapshots:   0 total
+Time:        51.079 s, estimated 52 s
+Ran all test suites.
+Jest did not exit one second after the test run has completed.
+
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.

@@ -1,0 +1,365 @@
+
+> v15-app@0.0.0 test
+> ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadless
+
+    TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI. To control ECMA version and features use the Browerslist configuration. For more information, see https://angular.io/guide/build#configuring-browser-compatibility
+    NOTE: You can set the "target" to "ES2022" in the project's tsconfig to remove this warning.
+28 02 2026 15:49:34.602:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+28 02 2026 15:49:34.604:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+28 02 2026 15:49:34.621:INFO [launcher]: Starting browser ChromeHeadless
+28 02 2026 15:49:37.237:INFO [Chrome Headless 145.0.0.0 (Mac OS 10.15.7)]: Connected on socket SUn8X44ymFs6g2S_AAAB with id 17174923
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 0 of 40 SUCCESS (0 secs / 0 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 1 of 40 SUCCESS (0 secs / 0.136 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 2 of 40 SUCCESS (0 secs / 0.136 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 3 of 40 SUCCESS (0 secs / 0.136 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 4 of 40 SUCCESS (0 secs / 0.136 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 5 of 40 SUCCESS (0 secs / 0.137 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 6 of 40 SUCCESS (0 secs / 0.137 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 7 of 40 SUCCESS (0 secs / 0.138 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 8 of 40 (1 FAILED) (0 secs / 0.159 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) LightChartComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) LightStatsComponent should create FAILED
+	Error: NG0304: 'mat-card' is not a known element (used in the 'LightStatsComponent' component template):
+	1. If 'mat-card' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+	2. If 'mat-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+	error properties: Object({ code: 304 })
+	    at validateElementIsKnown (node_modules/@angular/core/fesm2020/core.mjs:4888:23)
+	    at ɵɵelementStart (node_modules/@angular/core/fesm2020/core.mjs:13584:9)
+	    at templateFn (ng:///LightStatsComponent.js:9:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10263:13)
+	    at renderComponent (node_modules/@angular/core/fesm2020/core.mjs:11434:5)
+	    at renderChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10122:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10288:13)
+	    at ComponentFactory.create (node_modules/@angular/core/fesm2020/core.mjs:12178:13)
+	    at initComponent (node_modules/@angular/core/fesm2020/testing.mjs:24275:51)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 9 of 40 (2 FAILED) (0 secs / 0.167 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) LightStatsComponent should create FAILED
+	Error: NG0304: 'mat-card' is not a known element (used in the 'LightStatsComponent' component template):
+	1. If 'mat-card' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+	2. If 'mat-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+	error properties: Object({ code: 304 })
+	    at validateElementIsKnown (node_modules/@angular/core/fesm2020/core.mjs:4888:23)
+	    at ɵɵelementStart (node_modules/@angular/core/fesm2020/core.mjs:13584:9)
+	    at templateFn (ng:///LightStatsComponent.js:9:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10263:13)
+	    at renderComponent (node_modules/@angular/core/fesm2020/core.mjs:11434:5)
+	    at renderChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10122:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10288:13)
+	    at ComponentFactory.create (node_modules/@angular/core/fesm2020/core.mjs:12178:13)
+	    at initComponent (node_modules/@angular/core/fesm2020/testing.mjs:24275:51)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 10 of 40 (2 FAILED) (0 secs / 0.172 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 11 of 40 (2 FAILED) (0 secs / 0.194 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityStatsComponent should create FAILED
+	Error: NG0304: 'mat-card' is not a known element (used in the 'HumidityStatsComponent' component template):
+	1. If 'mat-card' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+	2. If 'mat-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+	error properties: Object({ code: 304 })
+	    at validateElementIsKnown (node_modules/@angular/core/fesm2020/core.mjs:4888:23)
+	    at ɵɵelementStart (node_modules/@angular/core/fesm2020/core.mjs:13584:9)
+	    at templateFn (ng:///HumidityStatsComponent.js:94:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10263:13)
+	    at renderComponent (node_modules/@angular/core/fesm2020/core.mjs:11434:5)
+	    at renderChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10122:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10288:13)
+	    at ComponentFactory.create (node_modules/@angular/core/fesm2020/core.mjs:12178:13)
+	    at initComponent (node_modules/@angular/core/fesm2020/testing.mjs:24275:51)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 12 of 40 (3 FAILED) (0 secs / 0.199 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityStatsComponent should create FAILED
+	Error: NG0304: 'mat-card' is not a known element (used in the 'HumidityStatsComponent' component template):
+	1. If 'mat-card' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+	2. If 'mat-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+	error properties: Object({ code: 304 })
+	    at validateElementIsKnown (node_modules/@angular/core/fesm2020/core.mjs:4888:23)
+	    at ɵɵelementStart (node_modules/@angular/core/fesm2020/core.mjs:13584:9)
+	    at templateFn (ng:///HumidityStatsComponent.js:94:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10263:13)
+	    at renderComponent (node_modules/@angular/core/fesm2020/core.mjs:11434:5)
+	    at renderChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10122:9)
+	    at renderView (node_modules/@angular/core/fesm2020/core.mjs:10288:13)
+	    at ComponentFactory.create (node_modules/@angular/core/fesm2020/core.mjs:12178:13)
+	    at initComponent (node_modules/@angular/core/fesm2020/testing.mjs:24275:51)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 13 of 40 (3 FAILED) (0 secs / 0.201 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) MicrocontrollersEditComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 14 of 40 (4 FAILED) (0 secs / 0.204 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) MicrocontrollersEditComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 15 of 40 (4 FAILED) (0 secs / 0.243 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 16 of 40 (4 FAILED) (0 secs / 0.256 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 17 of 40 (4 FAILED) (0 secs / 0.314 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 18 of 40 (4 FAILED) (0 secs / 0.333 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 19 of 40 (4 FAILED) (0 secs / 0.351 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 20 of 40 (4 FAILED) (0 secs / 0.367 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 21 of 40 (4 FAILED) (0 secs / 0.383 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 22 of 40 (4 FAILED) (0 secs / 0.393 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 23 of 40 (4 FAILED) (0 secs / 0.398 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 24 of 40 (4 FAILED) (0 secs / 0.435 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 25 of 40 (4 FAILED) (0 secs / 0.437 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 26 of 40 (4 FAILED) (0 secs / 0.438 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 27 of 40 (4 FAILED) (0 secs / 0.439 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 28 of 40 (4 FAILED) (0 secs / 0.44 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 29 of 40 (4 FAILED) (0 secs / 0.448 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 30 of 40 (4 FAILED) (0 secs / 0.455 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 31 of 40 (4 FAILED) (0 secs / 0.469 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) NavbarComponent should present date as 'DD/MM/YYYY' FAILED
+	Expected Date(Sat Feb 28 2026 15:49:39 GMT+0100 (Central European Standard Time)) to match /^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/components/navbar/navbar.component.spec.ts:33:29)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 32 of 40 (5 FAILED) (0 secs / 0.48 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) NavbarComponent should present date as 'DD/MM/YYYY' FAILED
+	Expected Date(Sat Feb 28 2026 15:49:39 GMT+0100 (Central European Standard Time)) to match /^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/components/navbar/navbar.component.spec.ts:33:29)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+[1A[2KERROR: 'Error during cleanup of component', Object{component: AppComponent{opened: false, shouldRun: true, mobileQuery: MediaQueryList{}, _mobileQueryListener: () => { ... }, __ngContext__: 149}, stacktrace: TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+    at LoginComponent.call [as ngOnDestroy] (http://localhost:9876/_karma_webpack_/webpack:/src/app/components/login/login.component.ts:60:15)
+    at executeOnDestroys (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5976:32)
+    at cleanUpView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5886:9)
+    at destroyViewTree (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5719:17)
+    at destroyLView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5864:9)
+    at RootViewRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:11804:9)
+    at ComponentRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:12226:23)
+    at ComponentFixture.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:213:31)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:24332:25
+    at Array.forEach (<anonymous>)}
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 32 of 40 (5 FAILED) (0 secs / 0.48 secs)
+ERROR: 'Error during cleanup of component', Object{component: AppComponent{opened: false, shouldRun: true, mobileQuery: MediaQueryList{}, _mobileQueryListener: () => { ... }, __ngContext__: 149}, stacktrace: TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+    at LoginComponent.call [as ngOnDestroy] (http://localhost:9876/_karma_webpack_/webpack:/src/app/components/login/login.component.ts:60:15)
+    at executeOnDestroys (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5976:32)
+    at cleanUpView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5886:9)
+    at destroyViewTree (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5719:17)
+    at destroyLView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5864:9)
+    at RootViewRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:11804:9)
+    at ComponentRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:12226:23)
+    at ComponentFixture.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:213:31)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:24332:25
+    at Array.forEach (<anonymous>)}
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) AppComponent should create the app FAILED
+	Error: 1 component threw errors during cleanup
+	    at TestBedImpl.destroyActiveFixtures (node_modules/@angular/core/fesm2020/testing.mjs:24344:19)
+	    at TestBedImpl.resetTestingModule (node_modules/@angular/core/fesm2020/testing.mjs:24154:18)
+	    at UserContext.apply (node_modules/@angular/core/fesm2020/testing.mjs:24498:21)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:43)
+	    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:34)
+	    at UserContext.<anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:20)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 33 of 40 (6 FAILED) (0 secs / 0.492 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) AppComponent should create the app FAILED
+	Error: 1 component threw errors during cleanup
+	    at TestBedImpl.destroyActiveFixtures (node_modules/@angular/core/fesm2020/testing.mjs:24344:19)
+	    at TestBedImpl.resetTestingModule (node_modules/@angular/core/fesm2020/testing.mjs:24154:18)
+	    at UserContext.apply (node_modules/@angular/core/fesm2020/testing.mjs:24498:21)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:43)
+	    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:34)
+	    at UserContext.<anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:20)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 34 of 40 (6 FAILED) (0 secs / 0.505 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 35 of 40 (6 FAILED) (0 secs / 0.513 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) MicrocontrollersComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 36 of 40 (7 FAILED) (0 secs / 0.516 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) MicrocontrollersComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityChartComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 37 of 40 (8 FAILED) (0 secs / 0.519 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) HumidityChartComponent should create FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ArduinoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ArduinoService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:7493:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7914:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2020/core.mjs:618:33)
+	    at ɵɵinject (node_modules/@angular/core/fesm2020/core.mjs:622:60)
+	    at Object.factory (ng:///ArduinoService/ɵfac.js:4:42)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2020/core.mjs:8015:35)
+	    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:7903:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:12084:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3201:39)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) DashboardMicrocontrollerComponent should use ArduinoService FAILED
+	TypeError: Cannot read properties of undefined (reading 'measure')
+	    at templateFn (ng:///DashboardMicrocontrollerComponent.js:71:67)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10326:13)
+	    at refreshComponent (node_modules/@angular/core/fesm2020/core.mjs:11385:13)
+	    at refreshChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10116:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10376:13)
+	    at detectChangesInternal (node_modules/@angular/core/fesm2020/core.mjs:11529:9)
+	    at RootViewRef.detectChanges (node_modules/@angular/core/fesm2020/core.mjs:12020:9)
+	    at ComponentFixture._tick (node_modules/@angular/core/fesm2020/testing.mjs:126:32)
+	    at node_modules/@angular/core/fesm2020/testing.mjs:139:22
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 38 of 40 (9 FAILED) (0 secs / 0.529 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) DashboardMicrocontrollerComponent should use ArduinoService FAILED
+	TypeError: Cannot read properties of undefined (reading 'measure')
+	    at templateFn (ng:///DashboardMicrocontrollerComponent.js:71:67)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10326:13)
+	    at refreshComponent (node_modules/@angular/core/fesm2020/core.mjs:11385:13)
+	    at refreshChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10116:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10376:13)
+	    at detectChangesInternal (node_modules/@angular/core/fesm2020/core.mjs:11529:9)
+	    at RootViewRef.detectChanges (node_modules/@angular/core/fesm2020/core.mjs:12020:9)
+	    at ComponentFixture._tick (node_modules/@angular/core/fesm2020/testing.mjs:126:32)
+	    at node_modules/@angular/core/fesm2020/testing.mjs:139:22
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) DashboardMicrocontrollerComponent should create FAILED
+	TypeError: Cannot read properties of undefined (reading 'measure')
+	    at templateFn (ng:///DashboardMicrocontrollerComponent.js:71:67)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10326:13)
+	    at refreshComponent (node_modules/@angular/core/fesm2020/core.mjs:11385:13)
+	    at refreshChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10116:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10376:13)
+	    at detectChangesInternal (node_modules/@angular/core/fesm2020/core.mjs:11529:9)
+	    at RootViewRef.detectChanges (node_modules/@angular/core/fesm2020/core.mjs:12020:9)
+	    at ComponentFixture._tick (node_modules/@angular/core/fesm2020/testing.mjs:126:32)
+	    at node_modules/@angular/core/fesm2020/testing.mjs:139:22
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 39 of 40 (10 FAILED) (0 secs / 0.537 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) DashboardMicrocontrollerComponent should create FAILED
+	TypeError: Cannot read properties of undefined (reading 'measure')
+	    at templateFn (ng:///DashboardMicrocontrollerComponent.js:71:67)
+	    at executeTemplate (node_modules/@angular/core/fesm2020/core.mjs:10441:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10326:13)
+	    at refreshComponent (node_modules/@angular/core/fesm2020/core.mjs:11385:13)
+	    at refreshChildComponents (node_modules/@angular/core/fesm2020/core.mjs:10116:9)
+	    at refreshView (node_modules/@angular/core/fesm2020/core.mjs:10376:13)
+	    at detectChangesInternal (node_modules/@angular/core/fesm2020/core.mjs:11529:9)
+	    at RootViewRef.detectChanges (node_modules/@angular/core/fesm2020/core.mjs:12020:9)
+	    at ComponentFixture._tick (node_modules/@angular/core/fesm2020/testing.mjs:126:32)
+	    at node_modules/@angular/core/fesm2020/testing.mjs:139:22
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 40 (10 FAILED) (0 secs / 0.553 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 40 (10 FAILED) (0.659 secs / 0.553 secs)
+TOTAL: 10 FAILED, 30 SUCCESS
+TOTAL: 10 FAILED, 30 SUCCESS
+28 02 2026 15:49:40.135:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (31.38%) does not meet global threshold (85%)
+28 02 2026 15:49:40.149:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (9.77%) does not meet global threshold (85%)
+28 02 2026 15:49:40.149:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (31.04%) does not meet global threshold (85%)
+28 02 2026 15:49:40.175:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (26.06%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 31.38% ( 226/720 )
+Branches     : 9.77% ( 22/225 )
+Functions    : 26.06% ( 61/234 )
+Lines        : 31.04% ( 208/670 )
+================================================================================
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 40 (10 FAILED) ERROR (0.659 secs / 0.553 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 40 (10 FAILED) ERROR (0.876 secs / 0.553 secs)
+28 02 2026 15:49:40.288:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (31.38%) does not meet global threshold (85%)
+28 02 2026 15:49:40.288:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (9.77%) does not meet global threshold (85%)
+28 02 2026 15:49:40.288:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (31.04%) does not meet global threshold (85%)
+28 02 2026 15:49:40.289:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (26.06%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 31.38% ( 226/720 )
+Branches     : 9.77% ( 22/225 )
+Functions    : 26.06% ( 61/234 )
+Lines        : 31.04% ( 208/670 )
+================================================================================

@@ -1,0 +1,197 @@
+
+> orchestrator-ms@1.0.0 test
+> jest --coverage
+
+PASS test/pictures.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:34:31.114Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.154Z - GET /pictures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.170Z - GET /pictures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.183Z - GET /pictures?path=pictures/history&ip=192.168.1.50&init_timestamp=0&end_timestamp=9999999999999
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.190Z - GET /health
+
+      at log (src/app/app.js:74:13)
+
+PASS test/measures.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:34:31.118Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.158Z - GET /temperature
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.168Z - GET /temperature
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.181Z - GET /temperature?path=temperatures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.194Z - GET /temperature?path=temperatures
+
+      at log (src/app/app.js:74:13)
+
+PASS test/microcontrollers.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:34:31.114Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.156Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.176Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.182Z - POST /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.190Z - POST /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.196Z - PUT /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.203Z - PUT /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.208Z - DELETE /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.215Z - DELETE /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+PASS test/auth.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:34:31.082Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.117Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.125Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.133Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.148Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.154Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:31.159Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:32.168Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:33.176Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:34.183Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:34.189Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:34:34.196Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   89.14 |    72.22 |   89.28 |    91.3 |                   
+ app                         |   93.54 |      100 |   66.66 |   93.33 |                   
+  app.js                     |   93.54 |      100 |   66.66 |   93.33 | 81-82             
+ app/controllers             |   81.52 |    64.81 |   88.23 |   85.18 |                   
+  orchestrator.controller.js |   77.61 |       70 |   81.81 |   81.03 | 38,49-52,117-127  
+  services.controller.js     |      92 |    58.33 |     100 |   95.65 | 31                
+ app/routes                  |     100 |       50 |     100 |     100 |                   
+  orchestrator.routes.js     |     100 |       50 |     100 |     100 | 240               
+ config                      |     100 |      100 |     100 |     100 |                   
+  jwt.config.js              |     100 |      100 |     100 |     100 |                   
+  services.config.js         |     100 |      100 |     100 |     100 |                   
+ helpers                     |     100 |      100 |     100 |     100 |                   
+  helpers.js                 |     100 |      100 |     100 |     100 |                   
+ modules                     |     100 |      100 |     100 |     100 |                   
+  jwt.module.js              |     100 |      100 |     100 |     100 |                   
+-----------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for branches (85%) not met: 72.22%
+
+Test Suites: 4 passed, 4 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        4.619 s, estimated 6 s
+Ran all test suites.

@@ -1,0 +1,16 @@
+[
+    {
+        "date": "Wed, 25 Feb 2026 10:00:00 GMT",
+        "timestamp": 1772000000000,
+        "ip": "192.168.1.50",
+        "sensor": "Tomato Plant Camera",
+        "username": "Rocky",
+        "measure": "pictures",
+        "stage": "ripe_fruit",
+        "stage_id": 5,
+        "elapsed_minutes": "120.5",
+        "image_url": "http://localhost:3005/images/stage_5.png",
+        "init_timestamp": 1772000000000,
+        "end_timestamp": 1772036000000
+    }
+]

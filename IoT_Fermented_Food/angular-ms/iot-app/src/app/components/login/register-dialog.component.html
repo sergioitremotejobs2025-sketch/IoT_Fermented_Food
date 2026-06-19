@@ -1,0 +1,34 @@
+<h1 class="metal-mania text-center" mat-dialog-title>IoT_Microservices</h1>
+<form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+  <div mat-dialog-content>
+    <mat-form-field class="login-register-input">
+      <mat-label>
+        <mat-icon>person</mat-icon>
+      </mat-label>
+      <input formControlName="username" matInput placeholder="Usuario" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="login-register-input">
+      <mat-label>
+        <mat-icon>lock</mat-icon>
+      </mat-label>
+      <input formControlName="password" matInput placeholder="Contraseña" type="password">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="login-register-input">
+      <mat-label>
+        <mat-icon>lock</mat-icon>
+      </mat-label>
+      <input formControlName="repeatPassword" matInput placeholder="Repetir contraseña" type="password">
+    </mat-form-field>
+  </div>
+  <br>
+  <div mat-dialog-actions>
+    <button class="bg-blue login-register-btn white" [disabled]="registerForm.invalid" mat-raised-button type="submit">Registrarse</button>
+  </div>
+</form>
+<br>
+<br>
+<div class="text-center" mat-dialog-content>
+  ¿Ya tienes cuenta? <a class="blue login-register-link" (click)="changeToLogin()">Inicia sesión</a>
+</div>

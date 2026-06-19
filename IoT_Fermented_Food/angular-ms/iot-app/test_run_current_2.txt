@@ -1,0 +1,142 @@
+
+> v15-app@0.0.0 test
+> ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadless
+
+    TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI. To control ECMA version and features use the Browerslist configuration. For more information, see https://angular.io/guide/build#configuring-browser-compatibility
+    NOTE: You can set the "target" to "ES2022" in the project's tsconfig to remove this warning.
+28 02 2026 15:56:30.213:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+28 02 2026 15:56:30.215:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+28 02 2026 15:56:30.227:INFO [launcher]: Starting browser ChromeHeadless
+28 02 2026 15:56:32.628:INFO [Chrome Headless 145.0.0.0 (Mac OS 10.15.7)]: Connected on socket F3KNWQWrOGyST41OAAAB with id 28546832
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 0 of 51 SUCCESS (0 secs / 0 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 1 of 51 SUCCESS (0 secs / 0.171 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 2 of 51 SUCCESS (0 secs / 0.173 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 3 of 51 SUCCESS (0 secs / 0.174 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 4 of 51 SUCCESS (0 secs / 0.176 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 5 of 51 SUCCESS (0 secs / 0.178 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 6 of 51 SUCCESS (0 secs / 0.181 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 7 of 51 SUCCESS (0 secs / 0.182 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 8 of 51 SUCCESS (0 secs / 0.183 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 9 of 51 SUCCESS (0 secs / 0.183 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 10 of 51 SUCCESS (0 secs / 0.183 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 11 of 51 SUCCESS (0 secs / 0.329 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 12 of 51 SUCCESS (0 secs / 0.4 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 13 of 51 SUCCESS (0 secs / 0.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 14 of 51 SUCCESS (0 secs / 0.424 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 15 of 51 SUCCESS (0 secs / 0.434 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 16 of 51 SUCCESS (0 secs / 0.454 secs)
+[1A[2KERROR: 'Error during cleanup of component', Object{component: AppComponent{opened: false, shouldRun: true, mobileQuery: Object{matches: ..., addListener: ..., removeListener: ...}, _mobileQueryListener: () => { ... }, __ngContext__: 159}, stacktrace: TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+    at LoginComponent.call [as ngOnDestroy] (http://localhost:9876/_karma_webpack_/webpack:/src/app/components/login/login.component.ts:60:15)
+    at executeOnDestroys (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5976:32)
+    at cleanUpView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5886:9)
+    at destroyViewTree (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5719:17)
+    at destroyLView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5864:9)
+    at RootViewRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:11804:9)
+    at ComponentRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:12226:23)
+    at ComponentFixture.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:213:31)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:24332:25
+    at Array.forEach (<anonymous>)}
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 16 of 51 SUCCESS (0 secs / 0.454 secs)
+ERROR: 'Error during cleanup of component', Object{component: AppComponent{opened: false, shouldRun: true, mobileQuery: Object{matches: ..., addListener: ..., removeListener: ...}, _mobileQueryListener: () => { ... }, __ngContext__: 159}, stacktrace: TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+TypeError: Cannot read properties of undefined (reading 'unsubscribe')
+    at LoginComponent.call [as ngOnDestroy] (http://localhost:9876/_karma_webpack_/webpack:/src/app/components/login/login.component.ts:60:15)
+    at executeOnDestroys (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5976:32)
+    at cleanUpView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5886:9)
+    at destroyViewTree (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5719:17)
+    at destroyLView (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:5864:9)
+    at RootViewRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:11804:9)
+    at ComponentRef.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/core.mjs:12226:23)
+    at ComponentFixture.destroy (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:213:31)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2020/testing.mjs:24332:25
+    at Array.forEach (<anonymous>)}
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) AppComponent should create the app FAILED
+	Error: 1 component threw errors during cleanup
+	    at TestBedImpl.destroyActiveFixtures (node_modules/@angular/core/fesm2020/testing.mjs:24344:19)
+	    at TestBedImpl.resetTestingModule (node_modules/@angular/core/fesm2020/testing.mjs:24154:18)
+	    at UserContext.apply (node_modules/@angular/core/fesm2020/testing.mjs:24498:21)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:43)
+	    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:34)
+	    at UserContext.<anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:20)
+	    at <Jasmine>
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 17 of 51 (1 FAILED) (0 secs / 0.47 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) AppComponent should create the app FAILED
+	Error: 1 component threw errors during cleanup
+	    at TestBedImpl.destroyActiveFixtures (node_modules/@angular/core/fesm2020/testing.mjs:24344:19)
+	    at TestBedImpl.resetTestingModule (node_modules/@angular/core/fesm2020/testing.mjs:24154:18)
+	    at UserContext.apply (node_modules/@angular/core/fesm2020/testing.mjs:24498:21)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:43)
+	    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:34)
+	    at UserContext.<anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:20)
+	    at <Jasmine>
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 18 of 51 (1 FAILED) (0 secs / 0.473 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 19 of 51 (1 FAILED) (0 secs / 0.475 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 20 of 51 (1 FAILED) (0 secs / 0.477 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 21 of 51 (1 FAILED) (0 secs / 0.478 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 22 of 51 (1 FAILED) (0 secs / 0.48 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 23 of 51 (1 FAILED) (0 secs / 0.492 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 24 of 51 (1 FAILED) (0 secs / 0.493 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 25 of 51 (1 FAILED) (0 secs / 0.493 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 26 of 51 (1 FAILED) (0 secs / 0.494 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 27 of 51 (1 FAILED) (0 secs / 0.494 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 28 of 51 (1 FAILED) (0 secs / 0.494 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 29 of 51 (1 FAILED) (0 secs / 0.494 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 30 of 51 (1 FAILED) (0 secs / 0.494 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 31 of 51 (1 FAILED) (0 secs / 0.509 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 32 of 51 (1 FAILED) (0 secs / 0.522 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 33 of 51 (1 FAILED) (0 secs / 0.53 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 34 of 51 (1 FAILED) (0 secs / 0.543 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 35 of 51 (1 FAILED) (0 secs / 0.552 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 36 of 51 (1 FAILED) (0 secs / 0.558 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 37 of 51 (1 FAILED) (0 secs / 0.566 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 38 of 51 (1 FAILED) (0 secs / 0.572 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 39 of 51 (1 FAILED) (0 secs / 0.578 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 51 (1 FAILED) (0 secs / 0.589 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 41 of 51 (1 FAILED) (0 secs / 0.61 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 42 of 51 (1 FAILED) (0 secs / 0.625 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 43 of 51 (1 FAILED) (0 secs / 0.64 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 44 of 51 (1 FAILED) (0 secs / 0.655 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 45 of 51 (1 FAILED) (0 secs / 0.669 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 46 of 51 (1 FAILED) (0 secs / 0.672 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 47 of 51 (1 FAILED) (0 secs / 0.673 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 48 of 51 (1 FAILED) (0 secs / 0.675 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 49 of 51 (1 FAILED) (0 secs / 0.676 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 50 of 51 (1 FAILED) (0 secs / 0.677 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 51 (1 FAILED) (0 secs / 0.679 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 51 (1 FAILED) (0.777 secs / 0.679 secs)
+TOTAL: 1 FAILED, 50 SUCCESS
+TOTAL: 1 FAILED, 50 SUCCESS
+28 02 2026 15:56:36.672:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (41.66%) does not meet global threshold (85%)
+28 02 2026 15:56:36.672:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (18.22%) does not meet global threshold (85%)
+28 02 2026 15:56:36.672:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (41.64%) does not meet global threshold (85%)
+28 02 2026 15:56:36.673:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (38.03%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 41.66% ( 300/720 )
+Branches     : 18.22% ( 41/225 )
+Functions    : 38.03% ( 89/234 )
+Lines        : 41.64% ( 279/670 )
+================================================================================
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 51 (1 FAILED) ERROR (0.777 secs / 0.679 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 51 (1 FAILED) ERROR (0.952 secs / 0.679 secs)
+28 02 2026 15:56:36.805:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (41.66%) does not meet global threshold (85%)
+28 02 2026 15:56:36.805:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (18.22%) does not meet global threshold (85%)
+28 02 2026 15:56:36.805:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (41.64%) does not meet global threshold (85%)
+28 02 2026 15:56:36.805:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (38.03%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 41.66% ( 300/720 )
+Branches     : 18.22% ( 41/225 )
+Functions    : 38.03% ( 89/234 )
+Lines        : 41.64% ( 279/670 )
+================================================================================

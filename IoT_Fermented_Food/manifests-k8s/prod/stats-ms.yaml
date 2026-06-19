@@ -1,0 +1,170 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stats-ms
+  annotations:
+    io.cilium/global-service: "true"
+spec:
+  ports:
+  - name: http-stats
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: stats-ms
+    tier: backend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stats-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stats-ms
+      tier: backend
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+        prometheus.io/path: "/metrics"
+      labels:
+        app: stats-ms
+        tier: backend
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+      tolerations:
+      - key: "cloud.google.com/gke-spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+      containers:
+      - env:
+        - name: MONGO_DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_DATABASE_NAME
+              name: env-configmap
+        - name: MONGO_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOSTNAME
+              name: env-configmap
+        - name: MONGO_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_SERVICE_PORT
+              name: env-configmap
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_INITDB_ROOT_USERNAME
+              name: secrets
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_INITDB_ROOT_PASSWORD
+              name: secrets
+        - name: QUEUE_HUMIDITY_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_HUMIDITY_NAME
+              name: env-configmap
+        - name: QUEUE_LIGHT_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_LIGHT_NAME
+              name: env-configmap
+        - name: QUEUE_TEMPERATURE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_TEMPERATURE_NAME
+              name: env-configmap
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_USER
+              name: secrets
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_PASS
+              name: secrets
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_SERVICE_PORT
+              name: env-configmap
+        - name: METRICS_PORT
+          value: '3000'
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/stats-ms:latest
+        imagePullPolicy: IfNotPresent
+        name: stats-ms
+        ports:
+        - name: http-stats
+          containerPort: 3000
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          limits:
+            cpu: 250m
+            memory: 64Mi
+          requests:
+            cpu: 100m
+            memory: 32Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      initContainers:
+      - command:
+        - 'sh'
+        - '-c'
+        - 'until nslookup $MONGO_HOSTNAME && nslookup $RABBITMQ_HOSTNAME; do :; sleep 2; done;'
+        env:
+        - name: MONGO_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        image: busybox:1.28
+        name: init-stats-ms

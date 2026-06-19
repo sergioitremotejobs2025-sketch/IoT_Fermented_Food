@@ -1,0 +1,29 @@
+# Prune large metadata and history files to save tokens
+**/*.md
+!README.md
+!TODO.md
+
+# Prune simulation logs and temporary files
+**/Log_Files/
+**/fake-arduino-iot-pictures/
+**/*.log
+**/*.pdf
+**/*.rtf
+
+# Prune build and coverage artifacts (already in .gitignore, but being explicit)
+**/node_modules/
+**/coverage/
+**/mutants/
+**/reports/
+**/.stryker-tmp/
+**/.mutmut-cache/
+**/.pytest_cache/
+
+# Prune version control
+.git/
+.github/
+
+# Prune specific large binaries or assets if any
+**/*.jpg
+**/*.png
+**/*.svg

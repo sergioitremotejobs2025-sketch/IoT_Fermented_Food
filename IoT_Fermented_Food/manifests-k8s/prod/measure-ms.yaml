@@ -1,0 +1,159 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: measure-ms
+  annotations:
+    io.cilium/global-service: "true"
+spec:
+  ports:
+  - name: http-measure
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: measure-ms
+    tier: backend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: measure-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: measure-ms
+      tier: backend
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+        prometheus.io/path: "/metrics"
+      labels:
+        app: measure-ms
+        tier: backend
+    spec:
+      containers:
+      - env:
+        - name: MONGO_DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_DATABASE_NAME
+              name: env-configmap
+        - name: MONGO_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOSTNAME
+              name: env-configmap
+        - name: MONGO_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_SERVICE_PORT
+              name: env-configmap
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_INITDB_ROOT_USERNAME
+              name: secrets
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_INITDB_ROOT_PASSWORD
+              name: secrets
+        - name: MICROCONTROLLERS_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_HOSTNAME
+              name: env-configmap
+        - name: MICROCONTROLLERS_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_SERVICE_PORT
+              name: env-configmap
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_SERVICE_PORT
+              name: env-configmap
+        - name: INTERNAL_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: INTERNAL_API_KEY
+              name: secrets
+        - name: PORT
+          value: '3000'
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/measure-ms:latest
+
+        imagePullPolicy: Always
+
+        name: measure-ms
+        ports:
+        - name: http-measure
+          containerPort: 3000
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          limits:
+            cpu: 100m
+            memory: 64Mi
+          requests:
+            memory: 16Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      initContainers:
+      - command:
+        - sh
+        - -c
+        - until nslookup $MICROCONTROLLERS_MS_HOSTNAME && nslookup $MONGO_HOSTNAME; do :; sleep 2; done;
+        env:
+        - name: MICROCONTROLLERS_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_HOSTNAME
+              name: env-configmap
+        - name: MONGO_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        image: busybox:1.28
+        name: init-measure-ms

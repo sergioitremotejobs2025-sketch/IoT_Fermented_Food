@@ -1,0 +1,145 @@
+name: CI/CD — Build & Deploy to GKE
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PROJECT_ID: iot-microservices-gcp
+  GKE_CLUSTER: iot-cluster
+  GKE_REGION: europe-west1
+  REGISTRY: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Detect which microservices changed
+  # ─────────────────────────────────────────────
+  detect-changes:
+    name: Detect Changed Services
+    runs-on: ubuntu-latest
+    outputs:
+      services: ${{ steps.changed.outputs.services }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed microservice directories
+        id: changed
+        run: |
+          SERVICES=("ai-ms" "angular-ms" "auth-ms" "fake-arduino-iot-pictures" "fog-brain-ms" "measure-ms" "microcontrollers-ms" "orchestrator-ms" "publisher-ms" "stats-ms")
+          CHANGED=()
+          for svc in "${SERVICES[@]}"; do
+            if git diff --name-only HEAD~1 HEAD | grep -q "^$svc/"; then
+              CHANGED+=("$svc")
+            fi
+          done
+          echo "Changed services: ${CHANGED[*]}"
+          echo "services=$(echo "${CHANGED[*]}" | jq -Rc 'split(" ")')" >> $GITHUB_OUTPUT
+
+  # ─────────────────────────────────────────────
+  # Build & Push changed services to Artifact Registry
+  # ─────────────────────────────────────────────
+  build-and-push:
+    name: Build & Push — ${{ matrix.service }}
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.services != '[]' && needs.detect-changes.outputs.services != ''
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.detect-changes.outputs.services) }}
+      fail-fast: false
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker europe-west1-docker.pkg.dev --quiet
+
+      - name: Determine Dockerfile
+        id: dockerfile
+        run: |
+          if [ "${{ matrix.service }}" = "angular-ms" ]; then
+            echo "file=${{ matrix.service }}/Dockerfile.build" >> $GITHUB_OUTPUT
+          else
+            echo "file=${{ matrix.service }}/Dockerfile" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build & Push Docker image
+        run: |
+          docker build \
+            -t ${{ env.REGISTRY }}/${{ matrix.service }}:${{ github.sha }} \
+            -t ${{ env.REGISTRY }}/${{ matrix.service }}:latest \
+            -f ${{ steps.dockerfile.outputs.file }} \
+            ./${{ matrix.service }}
+          docker push ${{ env.REGISTRY }}/${{ matrix.service }}:${{ github.sha }}
+          docker push ${{ env.REGISTRY }}/${{ matrix.service }}:latest
+
+  # ─────────────────────────────────────────────
+  # Deploy to GKE (only on push to master)
+  # ─────────────────────────────────────────────
+  deploy:
+    name: Deploy to GKE
+    runs-on: ubuntu-latest
+    needs: [detect-changes, build-and-push]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Install gke-gcloud-auth-plugin
+        run: gcloud components install gke-gcloud-auth-plugin --quiet
+
+      - name: Configure kubectl
+        run: |
+          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} \
+            --region ${{ env.GKE_REGION }} \
+            --project ${{ env.PROJECT_ID }}
+
+      - name: Update image tags in manifests with new SHA
+        run: |
+          SERVICES=$(echo '${{ needs.detect-changes.outputs.services }}' | jq -r '.[]')
+          for svc in $SERVICES; do
+            kubectl set image deployment/$svc $svc=${{ env.REGISTRY }}/$svc:${{ github.sha }} || true
+          done
+
+      - name: Wait for rollout to complete
+        run: |
+          SERVICES=$(echo '${{ needs.detect-changes.outputs.services }}' | jq -r '.[]')
+          for svc in $SERVICES; do
+            kubectl rollout status deployment/$svc --timeout=5m || true
+          done
+
+      - name: Verify deployment
+        run: |
+          echo "=== Pod Status ==="
+          kubectl get pods -n default
+          echo "=== Services ==="
+          kubectl get services -n default

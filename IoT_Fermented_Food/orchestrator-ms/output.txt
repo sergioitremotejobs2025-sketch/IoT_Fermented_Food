@@ -1,0 +1,285 @@
+
+> orchestrator-ms@1.0.0 test
+> jest --coverage
+
+PASS test/pictures.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:42:12.536Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.583Z - GET /pictures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.597Z - GET /pictures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.615Z - GET /pictures?path=pictures/history&ip=192.168.1.50&init_timestamp=0&end_timestamp=9999999999999
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.630Z - GET /health
+
+      at log (src/app/app.js:74:13)
+
+PASS test/measures.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:42:12.533Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.580Z - GET /temperature
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.601Z - GET /temperature
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.615Z - GET /temperature?path=temperatures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.625Z - GET /temperature?path=temperatures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.633Z - POST /light
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.641Z - POST /light
+
+      at log (src/app/app.js:74:13)
+
+PASS test/microcontrollers.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:42:12.532Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.578Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.605Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.612Z - POST /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.622Z - POST /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.630Z - PUT /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.639Z - PUT /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.644Z - DELETE /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.652Z - DELETE /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+PASS test/app.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:42:12.523Z - GET /health
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.560Z - GET /metrics
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.588Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.598Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.606Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.612Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.618Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.631Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.635Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.641Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.646Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.650Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.660Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+PASS test/auth.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T10:42:12.546Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.588Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.596Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.611Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.620Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.627Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.634Z - PUT /change-password
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.644Z - PUT /change-password
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:12.650Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:13.659Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:14.666Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:15.671Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:15.677Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T10:42:15.684Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   97.15 |    84.93 |     100 |   98.76 |                   
+ app                         |     100 |      100 |     100 |     100 |                   
+  app.js                     |     100 |      100 |     100 |     100 |                   
+ app/controllers             |   95.65 |    81.81 |     100 |   98.76 |                   
+  orchestrator.controller.js |   95.52 |    83.33 |     100 |   98.27 | 38                
+  services.controller.js     |      96 |       80 |     100 |     100 | 14-18,28-37       
+ app/routes                  |      96 |       50 |     100 |      96 |                   
+  orchestrator.routes.js     |      96 |       50 |     100 |      96 | 243               
+ config                      |     100 |      100 |     100 |     100 |                   
+  jwt.config.js              |     100 |      100 |     100 |     100 |                   
+  services.config.js         |     100 |      100 |     100 |     100 |                   
+ helpers                     |     100 |      100 |     100 |     100 |                   
+  helpers.js                 |     100 |      100 |     100 |     100 |                   
+ modules                     |     100 |      100 |     100 |     100 |                   
+  jwt.module.js              |     100 |      100 |     100 |     100 |                   
+-----------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for branches (85%) not met: 84.93%
+
+Test Suites: 5 passed, 5 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        4.771 s, estimated 5 s
+Ran all test suites.

@@ -1,0 +1,110 @@
+
+> v15-app@0.0.0 test
+> ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadless
+
+    TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI. To control ECMA version and features use the Browerslist configuration. For more information, see https://angular.io/guide/build#configuring-browser-compatibility
+    NOTE: You can set the "target" to "ES2022" in the project's tsconfig to remove this warning.
+28 02 2026 16:04:30.109:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+28 02 2026 16:04:30.111:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+28 02 2026 16:04:30.122:INFO [launcher]: Starting browser ChromeHeadless
+28 02 2026 16:04:33.015:INFO [Chrome Headless 145.0.0.0 (Mac OS 10.15.7)]: Connected on socket qKqJ32LvRQN0yu1TAAAB with id 28891729
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 0 of 68 SUCCESS (0 secs / 0 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 1 of 68 SUCCESS (0 secs / 0.249 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 2 of 68 SUCCESS (0 secs / 0.266 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 3 of 68 SUCCESS (0 secs / 0.275 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 4 of 68 SUCCESS (0 secs / 0.289 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 5 of 68 SUCCESS (0 secs / 0.303 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 6 of 68 SUCCESS (0 secs / 0.323 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 7 of 68 SUCCESS (0 secs / 0.337 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 8 of 68 SUCCESS (0 secs / 0.338 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 9 of 68 SUCCESS (0 secs / 0.339 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 10 of 68 SUCCESS (0 secs / 0.339 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 11 of 68 SUCCESS (0 secs / 0.339 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 12 of 68 SUCCESS (0 secs / 0.339 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 13 of 68 SUCCESS (0 secs / 0.339 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 14 of 68 SUCCESS (0 secs / 0.339 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 15 of 68 SUCCESS (0 secs / 0.345 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 16 of 68 SUCCESS (0 secs / 0.349 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 17 of 68 SUCCESS (0 secs / 0.351 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 18 of 68 SUCCESS (0 secs / 0.353 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 19 of 68 SUCCESS (0 secs / 0.354 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 20 of 68 SUCCESS (0 secs / 0.356 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 21 of 68 SUCCESS (0 secs / 0.358 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 22 of 68 SUCCESS (0 secs / 0.36 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 23 of 68 SUCCESS (0 secs / 0.362 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 24 of 68 SUCCESS (0 secs / 0.399 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 25 of 68 SUCCESS (0 secs / 0.401 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 26 of 68 SUCCESS (0 secs / 0.403 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 27 of 68 SUCCESS (0 secs / 0.41 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 28 of 68 SUCCESS (0 secs / 0.418 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 29 of 68 SUCCESS (0 secs / 0.426 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 30 of 68 SUCCESS (0 secs / 0.433 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 31 of 68 SUCCESS (0 secs / 0.442 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 32 of 68 SUCCESS (0 secs / 0.461 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 33 of 68 SUCCESS (0 secs / 0.462 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 34 of 68 SUCCESS (0 secs / 0.477 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 35 of 68 SUCCESS (0 secs / 0.487 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 36 of 68 SUCCESS (0 secs / 0.504 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 37 of 68 SUCCESS (0 secs / 0.516 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 38 of 68 SUCCESS (0 secs / 0.528 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 39 of 68 SUCCESS (0 secs / 0.529 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 68 SUCCESS (0 secs / 0.529 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 41 of 68 SUCCESS (0 secs / 0.53 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 42 of 68 SUCCESS (0 secs / 0.531 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 43 of 68 SUCCESS (0 secs / 0.539 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 44 of 68 SUCCESS (0 secs / 0.546 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 45 of 68 SUCCESS (0 secs / 0.553 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 46 of 68 SUCCESS (0 secs / 0.559 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 47 of 68 SUCCESS (0 secs / 0.565 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 48 of 68 SUCCESS (0 secs / 0.606 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 49 of 68 SUCCESS (0 secs / 0.628 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 50 of 68 SUCCESS (0 secs / 0.643 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 68 SUCCESS (0 secs / 0.658 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 52 of 68 SUCCESS (0 secs / 0.672 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 53 of 68 SUCCESS (0 secs / 0.679 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 54 of 68 SUCCESS (0 secs / 0.681 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 55 of 68 SUCCESS (0 secs / 0.682 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 56 of 68 SUCCESS (0 secs / 0.684 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 57 of 68 SUCCESS (0 secs / 0.685 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 58 of 68 SUCCESS (0 secs / 0.686 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 59 of 68 SUCCESS (0 secs / 0.695 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 60 of 68 SUCCESS (0 secs / 0.702 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 61 of 68 SUCCESS (0 secs / 0.708 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 62 of 68 SUCCESS (0 secs / 0.731 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 63 of 68 SUCCESS (0 secs / 0.753 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 64 of 68 SUCCESS (0 secs / 0.769 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 65 of 68 SUCCESS (0 secs / 0.818 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 66 of 68 SUCCESS (0 secs / 0.855 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 67 of 68 SUCCESS (0 secs / 0.888 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 68 of 68 SUCCESS (0 secs / 0.897 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 68 of 68 SUCCESS (1.027 secs / 0.897 secs)
+TOTAL: 68 SUCCESS
+TOTAL: 68 SUCCESS
+28 02 2026 16:04:36.340:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (54.99%) does not meet global threshold (85%)
+28 02 2026 16:04:36.344:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (40.61%) does not meet global threshold (85%)
+28 02 2026 16:04:36.345:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (55.44%) does not meet global threshold (85%)
+28 02 2026 16:04:36.346:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (48.14%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 54.99% ( 402/731 )
+Branches     : 40.61% ( 93/229 )
+Functions    : 48.14% ( 117/243 )
+Lines        : 55.44% ( 377/680 )
+================================================================================
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 68 of 68 ERROR (1.027 secs / 0.897 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 68 of 68 ERROR (1.227 secs / 0.897 secs)
+28 02 2026 16:04:36.482:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (54.99%) does not meet global threshold (85%)
+28 02 2026 16:04:36.482:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (40.61%) does not meet global threshold (85%)
+28 02 2026 16:04:36.483:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (55.44%) does not meet global threshold (85%)
+28 02 2026 16:04:36.483:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (48.14%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 54.99% ( 402/731 )
+Branches     : 40.61% ( 93/229 )
+Functions    : 48.14% ( 117/243 )
+Lines        : 55.44% ( 377/680 )
+================================================================================

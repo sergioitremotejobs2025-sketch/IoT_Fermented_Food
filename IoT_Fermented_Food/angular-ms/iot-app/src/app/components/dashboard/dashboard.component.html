@@ -1,0 +1,129 @@
+<main class="container">
+  <!-- Loading Skeletons -->
+  @if (isLoading()) {
+    <div class="dashboard-loading">
+      @for (i of [1,2,3]; track i) {
+        <div class="loading-card glass shadow-sm">
+          <div class="skeleton-header">
+            <app-skeleton width="60px" height="60px" borderRadius="50%"></app-skeleton>
+            <div class="header-text">
+              <app-skeleton width="150px" height="24px"></app-skeleton>
+              <app-skeleton width="80px" height="16px"></app-skeleton>
+            </div>
+          </div>
+            <div class="skeleton-body">
+              <div class="skeleton-chart">
+                <app-skeleton width="100%" height="200px"></app-skeleton>
+              </div>
+              <div class="skeleton-stats">
+                <app-skeleton width="100%" height="150px"></app-skeleton>
+              </div>
+              <div class="skeleton-ai">
+                <app-skeleton width="100%" height="150px"></app-skeleton>
+              </div>
+            </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (!isLoading() && microcontrollers().length === 0) {
+    <div class="empty-state glass">
+      <div class="empty-icon shadow-lg">
+        <app-lottie-animation name="empty-state" width="120px" height="120px"></app-lottie-animation>
+      </div>
+      <h2>{{ 'DASHBOARD.EMPTY_STATE' | translate }}</h2>
+      <p class="text-muted">{{ 'DASHBOARD.EMPTY_SUB' | translate }}</p>
+      <button mat-flat-button color="primary" routerLink="/settings">{{ 'DASHBOARD.ADD_DEV' | translate }}</button>
+    </div>
+  }
+
+  @for (micro of microcontrollers(); track micro.ip) {
+    <div class="measure-section" [hidden]="isLoading()">
+      <div class="section-header">
+        <app-dashboard-microcontroller [isHistory]="false" [micro]="micro"></app-dashboard-microcontroller>
+      </div>
+
+
+
+      <!-- Humidity -->
+      @if (micro.measure === 'humidity') {
+        <div class="dashboard-grid" [class.focused-view]="measure()">
+          <div class="card chart-card shadow-sm" appThreeDHover>
+            @if (humidityStats) {
+              <app-humidity-chart (inactivity)="changeActivity($event)"
+                (measure)="humidityStats.newMeasure($event); updateRecentValues(micro, $event)" [micro]="micro">
+              </app-humidity-chart>
+            }
+          </div>
+          <div class="card stats-card shadow-sm" appThreeDHover>
+            <app-humidity-stats #humidityStats></app-humidity-stats>
+          </div>
+          <div class="card ai-card shadow-sm" appThreeDHover>
+            <app-ai-predictor [ip]="micro.ip" [measure]="micro.measure"
+              [recentValues]="getRecentValues(micro)"></app-ai-predictor>
+          </div>
+          <div class="card history-chart-card full-width shadow-sm" appThreeDHover>
+            <app-time-history-chart [micro]="micro"></app-time-history-chart>
+          </div>
+        </div>
+      }
+
+      <!-- Light -->
+      @if (micro.measure === 'light') {
+        <div class="dashboard-grid" [class.focused-view]="measure()">
+          <div class="card chart-card shadow-sm" appThreeDHover>
+            @if (lightStats) {
+              <app-light-chart (inactivity)="changeActivity($event)"
+                (measure)="lightStats.newMeasure($event); updateRecentValues(micro, $event)" [micro]="micro">
+              </app-light-chart>
+            }
+          </div>
+          <div class="card stats-card shadow-sm" appThreeDHover>
+            <app-light-stats #lightStats></app-light-stats>
+          </div>
+          <div class="card ai-card shadow-sm" appThreeDHover>
+            <app-ai-predictor [ip]="micro.ip" [measure]="micro.measure"
+              [recentValues]="getRecentValues(micro)"></app-ai-predictor>
+          </div>
+          <div class="card history-chart-card full-width shadow-sm" appThreeDHover>
+            <app-time-history-chart [micro]="micro"></app-time-history-chart>
+          </div>
+        </div>
+      }
+
+      <!-- Temperature -->
+      @if (micro.measure === 'temperature') {
+        <div class="dashboard-grid" [class.focused-view]="measure()">
+          <div class="card chart-card shadow-sm" appThreeDHover>
+            @if (temperatureStats) {
+              <app-temperature-chart (inactivity)="changeActivity($event)"
+                (measure)="temperatureStats.newMeasure($event); updateRecentValues(micro, $event)" [micro]="micro">
+              </app-temperature-chart>
+            }
+          </div>
+          <div class="card stats-card shadow-sm" appThreeDHover>
+            <app-temperature-stats #temperatureStats></app-temperature-stats>
+          </div>
+          <div class="card ai-card shadow-sm" appThreeDHover>
+            <app-ai-predictor [ip]="micro.ip" [measure]="micro.measure"
+              [recentValues]="getRecentValues(micro)"></app-ai-predictor>
+          </div>
+          <div class="card history-chart-card full-width shadow-sm" appThreeDHover>
+            <app-time-history-chart [micro]="micro"></app-time-history-chart>
+          </div>
+        </div>
+      }
+
+      <!-- Pictures -->
+      @if (micro.measure === 'pictures') {
+        <div class="dashboard-grid full-width">
+          <div class="card picture-card shadow-sm" appThreeDHover>
+            <app-pictures-chart (inactivity)="changeActivity($event)" [micro]="micro">
+            </app-pictures-chart>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</main>

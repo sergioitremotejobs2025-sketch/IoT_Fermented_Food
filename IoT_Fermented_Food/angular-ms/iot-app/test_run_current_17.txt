@@ -1,0 +1,224 @@
+
+> v15-app@0.0.0 test
+> ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadless
+
+    TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI. To control ECMA version and features use the Browerslist configuration. For more information, see https://angular.io/guide/build#configuring-browser-compatibility
+    NOTE: You can set the "target" to "ES2022" in the project's tsconfig to remove this warning.
+28 02 2026 16:31:47.932:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+28 02 2026 16:31:47.934:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+28 02 2026 16:31:47.951:INFO [launcher]: Starting browser ChromeHeadless
+28 02 2026 16:31:50.726:INFO [Chrome Headless 145.0.0.0 (Mac OS 10.15.7)]: Connected on socket 2psgj10YP-JYcXWqAAAB with id 70525099
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 0 of 106 SUCCESS (0 secs / 0 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 1 of 106 SUCCESS (0 secs / 0.207 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 2 of 106 SUCCESS (0 secs / 0.218 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 3 of 106 SUCCESS (0 secs / 0.227 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 4 of 106 SUCCESS (0 secs / 0.252 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 5 of 106 SUCCESS (0 secs / 0.265 secs)
+[1A[2KLOG: 'Real-time update received for light at 1.2.3.4'
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 5 of 106 SUCCESS (0 secs / 0.265 secs)
+LOG: 'Real-time update received for light at 1.2.3.4'
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 6 of 106 SUCCESS (0 secs / 0.277 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 7 of 106 SUCCESS (0 secs / 0.32 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 8 of 106 SUCCESS (0 secs / 0.333 secs)
+[1A[2KLOG: 'Real-time update received for humidity at 1.1.1.1'
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 8 of 106 SUCCESS (0 secs / 0.333 secs)
+LOG: 'Real-time update received for humidity at 1.1.1.1'
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 9 of 106 SUCCESS (0 secs / 0.346 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 10 of 106 SUCCESS (0 secs / 0.399 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 11 of 106 SUCCESS (0 secs / 0.417 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 12 of 106 SUCCESS (0 secs / 0.436 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 13 of 106 SUCCESS (0 secs / 0.452 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 14 of 106 SUCCESS (0 secs / 0.468 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 15 of 106 SUCCESS (0 secs / 0.485 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 16 of 106 SUCCESS (0 secs / 0.556 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 17 of 106 SUCCESS (0 secs / 0.563 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 18 of 106 SUCCESS (0 secs / 0.568 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 19 of 106 SUCCESS (0 secs / 0.591 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 20 of 106 SUCCESS (0 secs / 0.643 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 21 of 106 SUCCESS (0 secs / 0.683 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 22 of 106 SUCCESS (0 secs / 0.719 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 23 of 106 SUCCESS (0 secs / 0.736 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 24 of 106 SUCCESS (0 secs / 0.742 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 25 of 106 SUCCESS (0 secs / 0.748 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 26 of 106 SUCCESS (0 secs / 0.752 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 27 of 106 SUCCESS (0 secs / 0.754 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 28 of 106 SUCCESS (0 secs / 0.756 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 29 of 106 SUCCESS (0 secs / 0.757 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 30 of 106 SUCCESS (0 secs / 0.758 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 31 of 106 SUCCESS (0 secs / 0.76 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 32 of 106 SUCCESS (0 secs / 0.761 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 33 of 106 SUCCESS (0 secs / 0.77 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 34 of 106 SUCCESS (0 secs / 0.776 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 35 of 106 SUCCESS (0 secs / 0.782 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 36 of 106 SUCCESS (0 secs / 0.789 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 37 of 106 SUCCESS (0 secs / 0.796 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 38 of 106 SUCCESS (0 secs / 0.797 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 39 of 106 SUCCESS (0 secs / 0.798 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 40 of 106 SUCCESS (0 secs / 0.799 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 41 of 106 SUCCESS (0 secs / 0.801 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 42 of 106 SUCCESS (0 secs / 0.802 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 43 of 106 SUCCESS (0 secs / 0.803 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 44 of 106 SUCCESS (0 secs / 0.804 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 45 of 106 SUCCESS (0 secs / 0.805 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 46 of 106 SUCCESS (0 secs / 0.806 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 47 of 106 SUCCESS (0 secs / 0.807 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 48 of 106 SUCCESS (0 secs / 0.808 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 49 of 106 SUCCESS (0 secs / 0.809 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 50 of 106 SUCCESS (0 secs / 0.817 secs)
+[1A[2KLOG: 'Real-time update received for temperature at 1.2.3.4'
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 50 of 106 SUCCESS (0 secs / 0.817 secs)
+LOG: 'Real-time update received for temperature at 1.2.3.4'
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 51 of 106 SUCCESS (0 secs / 0.825 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 52 of 106 SUCCESS (0 secs / 0.832 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 53 of 106 SUCCESS (0 secs / 0.844 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 54 of 106 SUCCESS (0 secs / 0.853 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 55 of 106 SUCCESS (0 secs / 0.859 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 56 of 106 SUCCESS (0 secs / 0.859 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 57 of 106 SUCCESS (0 secs / 0.859 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 58 of 106 SUCCESS (0 secs / 0.859 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 59 of 106 SUCCESS (0 secs / 0.859 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 60 of 106 SUCCESS (0 secs / 0.86 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 61 of 106 SUCCESS (0 secs / 0.86 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 62 of 106 SUCCESS (0 secs / 0.86 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) MeasureIconPipe should return default icon for unknown measures FAILED
+	Expected 'sensors' to be 'device_unknown'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:22:43)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	Expected 'sensors' to be 'device_unknown'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:23:36)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 63 of 106 (1 FAILED) (0 secs / 0.862 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) MeasureIconPipe should return default icon for unknown measures FAILED
+	Expected 'sensors' to be 'device_unknown'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:22:43)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	Expected 'sensors' to be 'device_unknown'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:23:36)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) MeasureIconPipe should return correct icons for measures FAILED
+	Expected 'opacity' to be 'water_drop'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:15:44)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	Expected 'wb_sunny' to be 'lightbulb'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:16:41)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	Expected 'photo_camera' to be 'camera_alt'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:18:44)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 64 of 106 (2 FAILED) (0 secs / 0.863 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) MeasureIconPipe should return correct icons for measures FAILED
+	Expected 'opacity' to be 'water_drop'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:15:44)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	Expected 'wb_sunny' to be 'lightbulb'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:16:41)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+	Expected 'photo_camera' to be 'camera_alt'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/pipes/measure-icon.pipe.spec.ts:18:44)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:375:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:374:52)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 65 of 106 (2 FAILED) (0 secs / 0.863 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 66 of 106 (2 FAILED) (0 secs / 0.869 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 67 of 106 (2 FAILED) (0 secs / 0.878 secs)
+[1A[2KLOG: 'Real-time update received for pictures at 1.2.3.4'
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 67 of 106 (2 FAILED) (0 secs / 0.878 secs)
+LOG: 'Real-time update received for pictures at 1.2.3.4'
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 68 of 106 (2 FAILED) (0 secs / 0.885 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 69 of 106 (2 FAILED) (0 secs / 0.885 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 70 of 106 (2 FAILED) (0 secs / 0.885 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 71 of 106 (2 FAILED) (0 secs / 0.885 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 72 of 106 (2 FAILED) (0 secs / 0.885 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 73 of 106 (2 FAILED) (0 secs / 0.891 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 74 of 106 (2 FAILED) (0 secs / 0.892 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 75 of 106 (2 FAILED) (0 secs / 0.893 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 76 of 106 (2 FAILED) (0 secs / 0.894 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 77 of 106 (2 FAILED) (0 secs / 0.895 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 78 of 106 (2 FAILED) (0 secs / 0.896 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 79 of 106 (2 FAILED) (0 secs / 0.898 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 80 of 106 (2 FAILED) (0 secs / 0.899 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 81 of 106 (2 FAILED) (0 secs / 0.901 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 82 of 106 (2 FAILED) (0 secs / 0.902 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 83 of 106 (2 FAILED) (0 secs / 0.903 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 84 of 106 (2 FAILED) (0 secs / 0.912 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 85 of 106 (2 FAILED) (0 secs / 0.921 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 86 of 106 (2 FAILED) (0 secs / 0.935 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 87 of 106 (2 FAILED) (0 secs / 0.944 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 88 of 106 (2 FAILED) (0 secs / 0.946 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 89 of 106 (2 FAILED) (0 secs / 0.949 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 90 of 106 (2 FAILED) (0 secs / 0.951 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 91 of 106 (2 FAILED) (0 secs / 0.953 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 92 of 106 (2 FAILED) (0 secs / 0.954 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 93 of 106 (2 FAILED) (0 secs / 0.96 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 94 of 106 (2 FAILED) (0 secs / 0.965 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 95 of 106 (2 FAILED) (0 secs / 0.977 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 96 of 106 (2 FAILED) (0 secs / 0.989 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 97 of 106 (2 FAILED) (0 secs / 0.999 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 98 of 106 (2 FAILED) (0 secs / 1.009 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 99 of 106 (2 FAILED) (0 secs / 1.016 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 100 of 106 (2 FAILED) (0 secs / 1.021 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 101 of 106 (2 FAILED) (0 secs / 1.034 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 102 of 106 (2 FAILED) (0 secs / 1.042 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 103 of 106 (2 FAILED) (0 secs / 1.051 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 104 of 106 (2 FAILED) (0 secs / 1.062 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 105 of 106 (2 FAILED) (0 secs / 1.072 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 106 of 106 (2 FAILED) (0 secs / 1.082 secs)
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 106 of 106 (2 FAILED) (1.225 secs / 1.082 secs)
+TOTAL: 2 FAILED, 104 SUCCESS
+TOTAL: 2 FAILED, 104 SUCCESS
+28 02 2026 16:31:54.278:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (73.73%) does not meet global threshold (85%)
+28 02 2026 16:31:54.294:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (61.13%) does not meet global threshold (85%)
+28 02 2026 16:31:54.295:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (75%) does not meet global threshold (85%)
+28 02 2026 16:31:54.331:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (67.48%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 73.73% ( 539/731 )
+Branches     : 61.13% ( 140/229 )
+Functions    : 67.48% ( 164/243 )
+Lines        : 75% ( 510/680 )
+================================================================================
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 106 of 106 (2 FAILED) ERROR (1.225 secs / 1.082 secs)
+Chrome Headless 145.0.0.0 (Mac OS 10.15.7) ERROR
+  Some of your tests did a full page reload!
+[1A[2KChrome Headless 145.0.0.0 (Mac OS 10.15.7): Executed 106 of 106 (2 FAILED) ERROR (1.441 secs / 1.082 secs)
+28 02 2026 16:31:54.446:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for statements (73.73%) does not meet global threshold (85%)
+28 02 2026 16:31:54.447:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for branches (61.13%) does not meet global threshold (85%)
+28 02 2026 16:31:54.447:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for lines (75%) does not meet global threshold (85%)
+28 02 2026 16:31:54.447:ERROR [coverage]: Chrome Headless 145.0.0.0 (Mac OS 10.15.7): Coverage for functions (67.48%) does not meet global threshold (85%)
+
+=============================== Coverage summary ===============================
+Statements   : 73.73% ( 539/731 )
+Branches     : 61.13% ( 140/229 )
+Functions    : 67.48% ( 164/243 )
+Lines        : 75% ( 510/680 )
+================================================================================

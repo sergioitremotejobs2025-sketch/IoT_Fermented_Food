@@ -1,0 +1,20 @@
+[
+  {
+    "date": "Sun, 26 Apr 2020 13:21:34 GMT",
+    "digital_value": 1,
+    "ip": "192.168.1.50",
+    "measure": "light",
+    "sensor": "Smart LED",
+    "timestamp": 1587907294530,
+    "username": "Rocky"
+  },
+  {
+    "date": "Sun, 26 Apr 2020 13:21:35 GMT",
+    "digital_value": 0,
+    "ip": "192.168.1.50",
+    "measure": "light",
+    "sensor": "Smart LED",
+    "timestamp": 1587907295530,
+    "username": "Rocky"
+  }
+]

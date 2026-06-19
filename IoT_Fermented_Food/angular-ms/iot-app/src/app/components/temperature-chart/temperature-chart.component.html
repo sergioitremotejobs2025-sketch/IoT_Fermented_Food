@@ -1,0 +1,18 @@
+<mat-card class="glass shadow-sm">
+  <div class="card-header">
+    <mat-card-title>Tiempo real</mat-card-title>
+    <button mat-icon-button (click)="getCurrentMeasure(false)" class="refresh-btn">
+      <mat-icon>sync</mat-icon>
+    </button>
+  </div>
+  <mat-card-content *ngIf="isChartReady">
+    <div class="chart-container">
+      <canvas baseChart 
+              [data]="chartData" 
+              [options]="chartOptions" 
+              [type]="chartType"
+              [legend]="true">
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>

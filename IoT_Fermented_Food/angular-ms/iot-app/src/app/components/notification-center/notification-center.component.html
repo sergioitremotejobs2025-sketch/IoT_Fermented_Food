@@ -1,0 +1,28 @@
+<div class="notification-center glass-container">
+  <div class="header">
+    <div class="title-row">
+      <mat-icon color="primary">notifications</mat-icon>
+      <h2>Centro de Notificaciones</h2>
+    </div>
+    <button mat-icon-button color="warn" (click)="clearHistory()" matTooltip="Limpiar historial" [disabled]="alertHistory.history().length === 0">
+      <mat-icon>delete_sweep</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="content">
+    <div *ngIf="alertHistory.history().length === 0" class="empty-state">
+      <mat-icon>notifications_off</mat-icon>
+      <p>No hay notificaciones recientes.</p>
+    </div>
+
+    <mat-list *ngIf="alertHistory.history().length > 0">
+      <mat-list-item *ngFor="let alert of alertHistory.history()" class="notification-item">
+        <mat-icon matListItemIcon [class]="'icon-' + alert.type">{{ getTypeIcon(alert.type) }}</mat-icon>
+        <div matListItemTitle class="message">{{ alert.message }}</div>
+        <div matListItemLine class="timestamp">{{ alert.timestamp | date:'short' }}</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

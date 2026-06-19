@@ -1,0 +1,72 @@
+<div class="device-overview glass-container">
+  <div class="header">
+    <div class="title-row">
+      <mat-icon color="primary">router</mat-icon>
+      <h2>Estado de Dispositivos</h2>
+    </div>
+    
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar dispositivo</mat-label>
+      <input matInput [(ngModel)]="searchQuery" placeholder="IP, Medida o Sensor">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="filteredDevices()" class="device-table">
+      
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellAt> Estado </th>
+        <td mat-cell *matCellAt="let device">
+          <mat-chip-set>
+            <mat-chip [class.active-chip]="!device.isInactive" [class.inactive-chip]="device.isInactive">
+              {{ device.isInactive ? 'Offline' : 'Online' }}
+            </mat-chip>
+          </mat-chip-set>
+        </td>
+      </ng-container>
+
+      <!-- IP Column -->
+      <ng-container matColumnDef="ip">
+        <th mat-header-cell *matHeaderCellAt> IP </th>
+        <td mat-cell *matCellAt="let device" class="ip-cell"> {{ device.ip }} </td>
+      </ng-container>
+
+      <!-- Measure Column -->
+      <ng-container matColumnDef="measure">
+        <th mat-header-cell *matHeaderCellAt> Medida </th>
+        <td mat-cell *matCellAt="let device">
+          <div class="measure-cell">
+            <mat-icon>{{ getMeasureIcon(device.measure) }}</mat-icon>
+            <span>{{ device.measure | titlecase }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Sensor Column -->
+      <ng-container matColumnDef="sensor">
+        <th mat-header-cell *matHeaderCellAt> Sensor </th>
+        <td mat-cell *matCellAt="let device"> {{ device.sensor }} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellAt> Acciones </th>
+        <td mat-cell *matCellAt="let device">
+          <button mat-icon-button color="primary" matTooltip="Configurar" (click)="$event.stopPropagation()">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="device-row"></tr>
+    </table>
+
+    <div *ngIf="filteredDevices().length === 0" class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <p>No se encontraron dispositivos que coincidan con la búsqueda.</p>
+    </div>
+  </div>
+</div>

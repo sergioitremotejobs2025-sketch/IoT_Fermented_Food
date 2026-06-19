@@ -1,0 +1,43 @@
+<div class="threshold-container">
+  <h3>Configuración de Umbrales</h3>
+  <p class="description">Define los límites para alertas de {{ threshold.measure === 'temperature' ? 'temperatura' : 'humedad' }}.</p>
+
+  <form [formGroup]="thresholdForm" (ngSubmit)="onSubmit()" class="threshold-form">
+    <div class="fields-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Mínimo</mat-label>
+        <input matInput type="number" formControlName="min" placeholder="Ej. 15">
+        <mat-icon matSuffix>arrow_downward</mat-icon>
+        <mat-error *ngIf="thresholdForm.get('min')?.hasError('required')">El mínimo es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Máximo</mat-label>
+        <input matInput type="number" formControlName="max" placeholder="Ej. 30">
+        <mat-icon matSuffix>arrow_upward</mat-icon>
+        <mat-error *ngIf="thresholdForm.get('max')?.hasError('required')">El máximo es requerido</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="thresholdForm.hasError('minGreaterThanMax')" class="error-text">
+      El valor mínimo debe ser menor que el máximo.
+    </div>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" type="submit" [disabled]="thresholdForm.invalid || isSaving">
+        <mat-icon>{{ isSaving ? 'hourglass_empty' : 'save' }}</mat-icon>
+        {{ isSaving ? 'Guardando...' : 'Guardar Cambios' }}
+      </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-banner">
+      <mat-icon>error</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <div *ngIf="successMessage" class="success-banner">
+      <mat-icon>check_circle</mat-icon>
+      <span>{{ successMessage }}</span>
+    </div>
+  </form>
+</div>

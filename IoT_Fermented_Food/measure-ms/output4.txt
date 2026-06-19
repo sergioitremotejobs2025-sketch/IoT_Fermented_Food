@@ -1,0 +1,127 @@
+
+> measure-ms@1.0.0 test
+> NODE_ENV=test jest --coverage --forceExit test/app.spec.js
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+FAIL test/app.spec.js
+  Humidity endpoints
+    ✓ should return current humidity (48 ms)
+    ✓ should return an empty array (6 ms)
+    ✓ should return previous humidities (4 ms)
+    ✓ should not return previous humidities (3 ms)
+    ✓ should not return previous humidities (4 ms)
+    ✕ handles axios errors yielding undefined measure (26 ms)
+    ✓ should return 400 when getMeasures (findMeasures) throws an error (4 ms)
+  Light endpoints
+    ✓ should return current light (9 ms)
+    ✓ should return an empty array (5 ms)
+    ✓ should return previous lights (4 ms)
+    ✓ should not return previous lights (4 ms)
+    ✓ should not return previous lights (3 ms)
+    ✓ should turn light off (17 ms)
+    ✓ should turn light on (4 ms)
+  Temperature endpoints
+    ✓ should return current temperature (6 ms)
+    ✓ should return an empty array (4 ms)
+    ✓ should return previous temperatures (3 ms)
+    ✓ should not return previous temperatures (3 ms)
+    ✓ should not return previous temperatures (3 ms)
+  Pictures endpoints
+    ✓ should return current pictures (4 ms)
+    ✓ should return an empty array when no username provided (5 ms)
+    ✓ should return previous pictures (history) (3 ms)
+    ✓ should not return history without username (3 ms)
+  Internal Auth Middleware
+    ✓ should reject requests lacking x-internal-api-key when not testing environment (1 ms)
+    ✓ should pass requests with correct x-internal-api-key when not testing environment (1 ms)
+
+  ● Humidity endpoints › handles axios errors yielding undefined measure
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      110 |     jest.spyOn(axios, 'get').mockRejectedValueOnce(new Error('Down'))
+      111 |     const res = await request(app).get('/humidity?username=Rocky')
+    > 112 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      113 |     expect(res.body).toEqual([null]) // the Promise catch yields `return`, mapped to undefined -> res.json strips or sends null
+      114 |     jest.restoreAllMocks()
+      115 |   }, 100000)
+
+      at Object.toBe (test/app.spec.js:112:28)
+
+------------------------------|---------|----------|---------|---------|-------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------|---------|----------|---------|---------|-------------------
+All files                     |   90.17 |    86.95 |   85.71 |   90.74 |                   
+ app                          |   57.69 |       50 |       0 |      60 |                   
+  app.js                      |   57.69 |       50 |       0 |      60 | 21-22,32-40       
+ app/constants                |     100 |      100 |     100 |     100 |                   
+  constants.js                |     100 |      100 |     100 |     100 |                   
+ app/controllers              |   97.05 |    66.66 |     100 |   96.87 |                   
+  measure.controller.js       |   97.05 |    66.66 |     100 |   96.87 | 28                
+ app/middleware               |   81.81 |       70 |     100 |      80 |                   
+  internal-auth.middleware.js |   81.81 |       70 |     100 |      80 | 17,33             
+ app/models                   |     100 |      100 |     100 |     100 |                   
+  measure.model.js            |     100 |      100 |     100 |     100 |                   
+ app/routes                   |     100 |      100 |     100 |     100 |                   
+  measure.routes.js           |     100 |      100 |     100 |     100 |                   
+ config                       |     100 |      100 |     100 |     100 |                   
+  mongodb.config.js           |     100 |      100 |     100 |     100 |                   
+ database                     |   86.36 |      100 |      80 |   89.47 |                   
+  dao.js                      |   86.36 |      100 |      80 |   89.47 | 46-47             
+ database/models              |     100 |      100 |     100 |     100 |                   
+  humidity.model.js           |     100 |      100 |     100 |     100 |                   
+  light.model.js              |     100 |      100 |     100 |     100 |                   
+  picture.model.js            |     100 |      100 |     100 |     100 |                   
+  temperature.model.js        |     100 |      100 |     100 |     100 |                   
+ modules                      |     100 |      100 |     100 |     100 |                   
+  microcontrollers.module.js  |     100 |      100 |     100 |     100 |                   
+------------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 24 passed, 25 total
+Snapshots:   0 total
+Time:        1.181 s, estimated 2 s
+Ran all test suites matching test/app.spec.js.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,44 @@
+<div class="command-palette-container" (keydown)="onKeydown($event)">
+    <div class="search-header">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input #searchInput 
+               type="text" 
+               [ngModel]="query()" 
+               (ngModelChange)="updateQuery($event)" 
+               placeholder="Busca dispositivos, comandos o secciones..."
+               autocomplete="off">
+        <span class="esc-hint">ESC</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="results-list">
+        <div class="section-label" *ngIf="filteredItems().length > 0">Sugerencias</div>
+        
+        <div class="empty-state" *ngIf="filteredItems().length === 0">
+            <mat-icon>search_off</mat-icon>
+            <p>No se encontraron resultados para "{{ query() }}"</p>
+        </div>
+
+        <div class="result-item" 
+             *ngFor="let item of filteredItems()" 
+             (click)="selectItem(item)"
+             [class.device-type]="item.type === 'device'">
+            <mat-icon class="item-icon">{{ item.icon }}</mat-icon>
+            <div class="item-info">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-type">{{ item.type === 'nav' ? 'Navegación' : 'Hardware IoT' }}</span>
+            </div>
+            <mat-icon class="chevron">chevron_right</mat-icon>
+        </div>
+    </div>
+
+    <div class="palette-footer">
+        <div class="shortcut">
+            <span>↑↓</span> para navegar
+        </div>
+        <div class="shortcut">
+            <span>⏎</span> para seleccionar
+        </div>
+    </div>
+</div>

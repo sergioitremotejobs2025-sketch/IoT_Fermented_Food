@@ -1,0 +1,146 @@
+.ai-container {
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    .ai-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+
+        .limit-selector {
+            flex-grow: 1;
+            font-size: 13px;
+
+            ::ng-deep .mat-form-field-wrapper {
+                padding-bottom: 0px;
+            }
+
+            ::ng-deep .mat-form-field-underline {
+                display: none;
+            }
+        }
+
+        button[mat-icon-button] {
+            width: 40px !important;
+            overflow: visible !important;
+        }
+    }
+
+    .ai-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .performance-badge {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+
+            .mae {
+                font-size: 0.8rem;
+                color: #ffb74d;
+                font-weight: 500;
+            }
+
+            .samples {
+                font-size: 0.7rem;
+                color: rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        .prediction-box {
+            display: flex;
+            flex-direction: column;
+
+            .label {
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+            .value {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #03dac6;
+            }
+
+            .confidence-container {
+                margin-top: 8px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .conf-label {
+                    font-size: 0.7rem;
+                    color: rgba(255, 255, 255, 0.4);
+                }
+
+                .progress-bar {
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 2px;
+                    overflow: hidden;
+
+                    .progress-fill {
+                        height: 100%;
+                        transition: width 0.5s ease-out;
+                    }
+                }
+            }
+
+            .ai-suggestion {
+                margin-top: 16px;
+                padding: 12px;
+                font-size: 0.85rem;
+                border-radius: 8px;
+                background: rgba(var(--primary-rgb, 25, 118, 210), 0.05);
+                border: 1px solid rgba(var(--primary-rgb, 25, 118, 210), 0.2);
+                color: #fff;
+                line-height: 1.4;
+            }
+        }
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+.rotating {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 2s linear infinite !important;
+    transform-origin: center center;
+    color: var(--color-primary) !important;
+    opacity: 1 !important;
+    backface-visibility: hidden;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) translateZ(0);
+    }
+
+    to {
+        transform: rotate(360deg) translateZ(0);
+    }
+}

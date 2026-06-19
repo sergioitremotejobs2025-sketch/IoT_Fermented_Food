@@ -1,0 +1,119 @@
+
+> measure-ms@1.0.0 test
+> NODE_ENV=test jest --coverage --forceExit
+
+FAIL test/app.spec.js
+  ● Console
+
+    console.log
+      Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+    console.log
+      error
+
+      at log (src/database/dao.js:26:42)
+
+    console.log
+      Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+    console.log
+      error
+
+      at log (src/database/dao.js:26:42)
+
+    console.log
+      Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+    console.log
+      error
+
+      at log (src/database/dao.js:26:42)
+
+    console.log
+      Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+    console.log
+      error
+
+      at log (src/database/dao.js:26:42)
+
+  ● Humidity endpoints › handles axios errors yielding undefined measure
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      110 |     jest.spyOn(axios, 'get').mockRejectedValueOnce(new Error('Down'))
+      111 |     const res = await request(app).get('/humidity?username=Rocky')
+    > 112 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      113 |     expect(res.body).toEqual([null]) // the Promise catch yields `return`, mapped to undefined -> res.json strips or sends null
+      114 |     jest.restoreAllMocks()
+      115 |   }, 100000)
+
+      at Object.toBe (test/app.spec.js:112:28)
+
+  ● Humidity endpoints › should return 400 when getMeasures (findMeasures) throws an error
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 200
+
+      120 |     MeasureModel.prototype.findMeasures = jest.fn().mockRejectedValue(new Error('MongoError'))
+      121 |     const res = await request(app).get('/humidities?username=Rocky&init_timestamp=1587855634077&end_timestamp=1587862713879')
+    > 122 |     expect(res.statusCode).toBe(400)
+          |                            ^
+      123 |     MeasureModel.prototype.findMeasures = originalFindMeasures
+      124 |   }, 100000)
+      125 | })
+
+      at Object.toBe (test/app.spec.js:122:28)
+
+PASS test/picture.scheduler.spec.js
+------------------------------|---------|----------|---------|---------|-------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------|---------|----------|---------|---------|-------------------
+All files                     |    90.4 |    87.75 |   88.88 |   90.76 |                   
+ app                          |   57.69 |       50 |       0 |      60 |                   
+  app.js                      |   57.69 |       50 |       0 |      60 | 21-22,32-40       
+ app/constants                |     100 |      100 |     100 |     100 |                   
+  constants.js                |     100 |      100 |     100 |     100 |                   
+ app/controllers              |   94.11 |    66.66 |     100 |   93.75 |                   
+  measure.controller.js       |   94.11 |    66.66 |     100 |   93.75 | 28,36             
+ app/middleware               |   81.81 |       70 |     100 |      80 |                   
+  internal-auth.middleware.js |   81.81 |       70 |     100 |      80 | 17,33             
+ app/models                   |     100 |      100 |     100 |     100 |                   
+  measure.model.js            |     100 |      100 |     100 |     100 |                   
+ app/routes                   |     100 |      100 |     100 |     100 |                   
+  measure.routes.js           |     100 |      100 |     100 |     100 |                   
+ app/schedulers               |      96 |      100 |     100 |   95.45 |                   
+  picture.scheduler.js        |      96 |      100 |     100 |   95.45 | 50                
+ config                       |     100 |      100 |     100 |     100 |                   
+  mongodb.config.js           |     100 |      100 |     100 |     100 |                   
+ database                     |   86.36 |      100 |      80 |   89.47 |                   
+  dao.js                      |   86.36 |      100 |      80 |   89.47 | 46-47             
+ database/models              |     100 |      100 |     100 |     100 |                   
+  humidity.model.js           |     100 |      100 |     100 |     100 |                   
+  light.model.js              |     100 |      100 |     100 |     100 |                   
+  picture.model.js            |     100 |      100 |     100 |     100 |                   
+  temperature.model.js        |     100 |      100 |     100 |     100 |                   
+ modules                      |     100 |      100 |     100 |     100 |                   
+  microcontrollers.module.js  |     100 |      100 |     100 |     100 |                   
+------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       2 failed, 30 passed, 32 total
+Snapshots:   0 total
+Time:        1.424 s
+Ran all test suites.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

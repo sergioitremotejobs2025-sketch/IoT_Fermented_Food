@@ -1,0 +1,162 @@
+@import '../../../colors.less';
+
+.measure-section {
+  margin-bottom: 48px;
+
+  &:last-of-type {
+    margin-bottom: 80px;
+  }
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-loading {
+  .loading-card {
+    padding: 24px;
+    margin-bottom: 48px;
+    border-radius: 24px;
+    
+    .skeleton-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+      
+      .header-text {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    .skeleton-body {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 
+        "chart chart"
+        "stats ai";
+
+      .skeleton-chart { grid-area: chart; height: 400px; }
+      .skeleton-stats { grid-area: stats; height: 320px; }
+      .skeleton-ai    { grid-area: ai;    height: 320px; }
+
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        grid-template-areas: "chart" "stats" "ai";
+      }
+    }
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+    "chart chart"
+    "stats ai"
+    "history history";
+  align-items: stretch;
+
+  .card {
+    min-height: 380px;
+
+    &.chart-card { 
+      grid-area: chart; 
+      height: 550px; 
+    }
+    &.stats-card { 
+      grid-area: stats; 
+      height: 420px; 
+    }
+    &.ai-card { 
+      grid-area: ai; 
+      height: 420px; 
+    }
+    &.picture-card { 
+      grid-area: chart; 
+      height: 620px; 
+    }
+    &.history-chart-card {
+      grid-area: history;
+      height: 450px;
+    }
+  }
+
+  &.full-width {
+    grid-template-columns: 1fr;
+    grid-template-areas: "chart";
+  }
+
+  &.focused-view {
+    .card.chart-card {
+      height: 600px;
+    }
+    .card.stats-card, .card.ai-card {
+      height: 450px;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "chart"
+      "stats"
+      "ai"
+      "history";
+    
+    .card.chart-card {
+      height: 500px;
+    }
+    .card.stats-card, .card.ai-card {
+      height: auto;
+      min-height: 380px;
+    }
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  text-align: center;
+  border-radius: 24px;
+  margin: 40px 0;
+
+  .empty-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    background: var(--color-surface);
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  p {
+    max-width: 400px;
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+}
+
+.chart-card,
+.stats-card,
+.ai-card,
+.picture-card {
+  display: flex;
+  flex-direction: column;
+}

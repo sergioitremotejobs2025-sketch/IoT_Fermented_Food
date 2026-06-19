@@ -1,0 +1,27 @@
+# Cilium Helm Values for GKE (Secondary US Cluster)
+# These values configure the secondary mesh participant to connect back to the EU hub.
+
+cluster:
+  name: iot-cluster-us
+  id: 2
+
+# GKE-Specific configurations
+gke:
+  enabled: true
+
+clusterMesh:
+  enabled: true
+  # In a peering scenario, both clusters can expose their mesh configuration
+  serviceType: LoadBalancer
+
+globalService:
+  enabled: true
+
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
+
+operator:
+  replicas: 2

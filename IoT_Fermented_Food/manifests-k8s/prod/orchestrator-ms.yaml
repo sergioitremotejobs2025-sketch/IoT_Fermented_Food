@@ -1,0 +1,166 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator-ms
+  annotations:
+    io.cilium/global-service: "true"
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http-orch
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: orchestrator-ms
+    tier: backend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orchestrator-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orchestrator-ms
+      tier: backend
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+        prometheus.io/path: "/metrics"
+      labels:
+        app: orchestrator-ms
+        tier: backend
+    spec:
+      containers:
+      - env:
+        - name: AUTH_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: AUTH_MS_HOSTNAME
+              name: env-configmap
+        - name: AUTH_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: AUTH_MS_SERVICE_PORT
+              name: env-configmap
+        - name: MEASURE_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MEASURE_MS_HOSTNAME
+              name: env-configmap
+        - name: MEASURE_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MEASURE_MS_SERVICE_PORT
+              name: env-configmap
+        - name: MICROCONTROLLERS_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_HOSTNAME
+              name: env-configmap
+        - name: MICROCONTROLLERS_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_SERVICE_PORT
+              name: env-configmap
+        - name: AI_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: AI_MS_HOSTNAME
+              name: env-configmap
+        - name: AI_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: AI_MS_SERVICE_PORT
+              name: env-configmap
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_SERVICE_PORT
+              name: env-configmap
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_USER
+              name: secrets
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_PASS
+              name: secrets
+        - name: QUEUE_HUMIDITY_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_HUMIDITY_NAME
+              name: env-configmap
+        - name: QUEUE_LIGHT_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_LIGHT_NAME
+              name: env-configmap
+        - name: QUEUE_TEMPERATURE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_TEMPERATURE_NAME
+              name: env-configmap
+        - name: INTERNAL_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: INTERNAL_API_KEY
+              name: secrets
+        - name: PORT
+          value: '3000'
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/orchestrator-ms:latest
+        imagePullPolicy: Always
+        name: orchestrator-ms
+        ports:
+        - name: http-orch
+          containerPort: 3000
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}

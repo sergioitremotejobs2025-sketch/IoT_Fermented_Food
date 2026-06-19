@@ -1,0 +1,32 @@
+# Cilium Helm Values for GKE (Primary EU Cluster)
+# These values configure Cilium to operate as the primary mesh hub with ClusterMesh enabled.
+
+cluster:
+  name: iot-cluster-eu
+  id: 1
+
+# GKE-Specific configurations 
+# (Note: On GKE Autopilot, Google Dataplane V2 is already Cilium. If installing OSS Cilium on GKE Standard, nodeinit is required)
+gke:
+  enabled: true
+
+# Enable ClusterMesh for cross-continent routing
+clusterMesh:
+  enabled: true
+  # The ClusterMesh control plane will be exposed to allow the US cluster to connect
+  serviceType: LoadBalancer
+
+# Global Service Discovery
+globalService:
+  enabled: true
+
+# Enable Prometheus metrics for SRE dashboard integration
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
+
+# High Availability for the Cilium Operator
+operator:
+  replicas: 2

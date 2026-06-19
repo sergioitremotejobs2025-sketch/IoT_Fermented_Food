@@ -1,0 +1,22 @@
+<mat-card class="glass shadow-sm">
+  <div class="card-header">
+    <mat-card-title>Tiempo real</mat-card-title>
+    <button mat-icon-button (click)="getCurrentMeasure(false)" class="refresh-btn">
+      <mat-icon>sync</mat-icon>
+    </button>
+  </div>
+  <mat-card-content class="light-content">
+    <div class="light-viz">
+      <img class="light-image" [src]="'assets/images/light_' + lightStatus() + '.png'">
+      <div class="switch-container">
+        <app-switch
+          [checked]="isLightOn()"
+          [disabled]="disabledBtn()"
+          (toggleChange)="slideChange($event)">
+          <span class="off-label">OFF</span>
+          <span>ON</span>
+        </app-switch>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

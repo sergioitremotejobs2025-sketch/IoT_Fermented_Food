@@ -1,0 +1,167 @@
+
+> microcontrollers-ms@1.0.0 test
+> jest --coverage
+
+PASS test/microcontrollers.controller.branch.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:14:42.783Z - GET / - undefined
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.811Z - GET / - undefined
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.817Z - GET /temperature - undefined
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.822Z - GET /pressure - undefined
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.839Z - POST / - {"ip":"1.1.1.1","measure":"temp","sensor":"s","username":"u"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.845Z - POST / - {"ip":"2.2.2.2","measure":"temp","sensor":"s","username":"u"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.850Z - POST / - {"ip":"3.3.3.3","measure":"temp","sensor":"s","username":"u"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.855Z - POST / - {"ip":"4.4.4.4","measure":"temp"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.860Z - PUT / - {"ip":"5.5.5.5","measure":"temp","old_ip":"5.5.5.4","sensor":"s","username":"u"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.866Z - PUT / - {"ip":"6.6.6.6","measure":"temp","old_ip":"6.6.6.5","sensor":"s","username":"u"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.870Z - PUT / - {"ip":"7.7.7.7","measure":"temp","old_ip":"7.7.7.6","sensor":"s","username":"u"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.874Z - PUT / - {"ip":"8.8.8.8","measure":"temp"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.878Z - DELETE / - {"ip":"9.9.9.9","measure":"temp"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.882Z - DELETE / - {"ip":"10.10.10.10","measure":"temp"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:42.887Z - DELETE / - {"ip":"11.11.11.11","measure":"temp"}
+
+      at log (src/app/app.js:20:13)
+
+PASS test/microcontrollers.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:14:43.233Z - GET /temperature - undefined
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.244Z - GET /?username=Rocky - undefined
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.259Z - POST / - {"ip":"192.168.1.222","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.264Z - POST / - {"ip":"fake-arduino-iot.eu-gb.mybluemix.net","measure":"temperature","sensor":"Fake Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.269Z - POST / - {"ip":"192.168.1.50","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.273Z - POST / - {"ip":"192.168.1.350","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.277Z - PUT / - {"ip":"192.168.1.222","measure":"temperature","old_ip":"192.168.1.50","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.281Z - PUT / - {"ip":"192.168.1.50","measure":"temperature","old_ip":"192.168.1.200","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.285Z - PUT / - {"ip":"192.168.1.350","measure":"temperature","old_ip":"192.168.1.50","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.294Z - DELETE / - {"ip":"192.168.1.50","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-02-28T16:14:43.299Z - DELETE / - {"ip":"192.168.1.222","measure":"temperature","sensor":"Grove - Temperature","username":"Rocky"}
+
+      at log (src/app/app.js:20:13)
+
+PASS test/dao.spec.js
+PASS test/dao.error.spec.js
+PASS test/dao.connect.spec.js
+PASS test/microcontrollers.controller.spec.js
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+All files                        |   97.45 |    93.33 |    91.3 |   98.13 |                   
+ app                             |      85 |      100 |   33.33 |   89.47 |                   
+  app.js                         |      85 |      100 |   33.33 |   89.47 | 27-28             
+ app/controllers                 |     100 |       90 |     100 |     100 |                   
+  microcontrollers.controller.js |     100 |       90 |     100 |     100 | 18,29             
+ app/routes                      |     100 |      100 |     100 |     100 |                   
+  microcontrollers.routes.js     |     100 |      100 |     100 |     100 |                   
+ config                          |     100 |      100 |     100 |     100 |                   
+  mysql.config.js                |     100 |      100 |     100 |     100 |                   
+ database                        |     100 |      100 |     100 |     100 |                   
+  dao.js                         |     100 |      100 |     100 |     100 |                   
+ helpers                         |     100 |     87.5 |     100 |     100 |                   
+  helpers.js                     |     100 |     87.5 |     100 |     100 | 8                 
+---------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 6 passed, 6 total
+Tests:       48 passed, 48 total
+Snapshots:   0 total
+Time:        2.071 s
+Ran all test suites.

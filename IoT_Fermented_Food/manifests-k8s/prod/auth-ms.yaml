@@ -1,0 +1,122 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-ms
+  annotations:
+    io.cilium/global-service: "true"
+spec:
+  ports:
+  - name: http-auth
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: auth-ms
+    tier: backend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-ms
+      tier: backend
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+        prometheus.io/path: "/metrics"
+      labels:
+        app: auth-ms
+        tier: backend
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_DATABASE_NAME
+              name: env-configmap
+        - name: MYSQL_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_HOSTNAME
+              name: env-configmap
+        - name: MYSQL_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_SERVICE_PORT
+              name: env-configmap
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MYSQL_ROOT_PASSWORD
+              name: secrets
+        - name: MYSQL_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: MYSQL_ROOT_USERNAME
+              name: secrets
+        - name: PORT
+          value: '3000'
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/auth-ms:latest
+        imagePullPolicy: IfNotPresent
+        name: auth-ms
+        ports:
+        - name: http-auth
+          containerPort: 3000
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            memory: 64Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      initContainers:
+      - command:
+        - 'sh'
+        - '-c'
+        - 'until nslookup $MYSQL_HOSTNAME; do :; sleep 2; done;'
+        env:
+        - name: MYSQL_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_HOSTNAME
+              name: env-configmap
+        image: busybox:1.28
+        name: init-auth-ms

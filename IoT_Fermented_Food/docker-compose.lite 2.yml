@@ -1,0 +1,221 @@
+version: '3.8'
+
+services:
+  # Infrastructure (Resource Constrained)
+  mysql:
+    image: mysql:8.0
+    container_name: iot_mysql_lite
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=iot
+    ports:
+      - "33066:3306"
+    volumes:
+      - ./mysql-iot/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo:
+    image: mongo:latest
+    container_name: iot_mongo_lite
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_DATABASE=iot
+    ports:
+      - "37017:27017"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: iot_rabbitmq_lite
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - "35672:5672"
+      - "31567:15672"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Core Microservices
+  auth-ms:
+    build:
+      context: ./auth-ms
+      dockerfile: Dockerfile
+    container_name: iot_auth_ms_lite
+    environment:
+      - MYSQL_HOSTNAME=mysql
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_DATABASE_NAME=iot
+      - MYSQL_ROOT_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - PORT=80
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  microcontrollers-ms:
+    build:
+      context: ./microcontrollers-ms
+      dockerfile: Dockerfile
+    container_name: iot_microcontrollers_ms_lite
+    environment:
+      - MYSQL_HOSTNAME=mysql
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_DATABASE_NAME=iot
+      - MYSQL_ROOT_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - INTERNAL_API_KEY=testkey
+      - PORT=80
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  measure-ms:
+    build:
+      context: ./measure-ms
+      dockerfile: Dockerfile
+    container_name: iot_measure_ms_lite
+    environment:
+      - MONGO_HOSTNAME=mongo
+      - MONGO_SERVICE_PORT=27017
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_DATABASE_NAME=iot
+      - MICROCONTROLLERS_MS_HOSTNAME=microcontrollers-ms
+      - MICROCONTROLLERS_MS_SERVICE_PORT=80
+      - INTERNAL_API_KEY=testkey
+      - PORT=80
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  publisher-ms:
+    build:
+      context: ./publisher-ms
+      dockerfile: Dockerfile
+    container_name: iot_publisher_ms_lite
+    environment:
+      - MICROCONTROLLERS_MS_HOSTNAME=microcontrollers-ms
+      - MICROCONTROLLERS_MS_SERVICE_PORT=80
+      - MEASURE_MS_HOSTNAME=measure-ms
+      - MEASURE_MS_SERVICE_PORT=80
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_SERVICE_PORT=5672
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+      - INTERNAL_API_KEY=testkey
+      - PORT=80
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    depends_on:
+      - rabbitmq
+      - microcontrollers-ms
+      - measure-ms
+
+  stats-ms:
+    build:
+      context: ./stats-ms
+      dockerfile: Dockerfile
+    container_name: iot_stats_ms_lite
+    environment:
+      - MONGO_HOSTNAME=mongo
+      - MONGO_SERVICE_PORT=27017
+      - MONGO_DATABASE_NAME=iot
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_SERVICE_PORT=5672
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+      - PORT=80
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    depends_on:
+      - rabbitmq
+      - mongo
+
+  orchestrator-ms:
+    build:
+      context: ./orchestrator-ms
+      dockerfile: Dockerfile
+    container_name: iot_orchestrator_ms_lite
+    environment:
+      - AUTH_MS_HOSTNAME=auth-ms
+      - AUTH_MS_SERVICE_PORT=80
+      - MEASURE_MS_HOSTNAME=measure-ms
+      - MEASURE_MS_SERVICE_PORT=80
+      - MICROCONTROLLERS_MS_HOSTNAME=microcontrollers-ms
+      - MICROCONTROLLERS_MS_SERVICE_PORT=80
+      - INTERNAL_API_KEY=testkey
+      - JWT_SECRET=test_jwt_secret
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_SERVICE_PORT=5672
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+      - PORT=80
+    ports:
+      - "3000:80"
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    depends_on:
+      - auth-ms
+      - measure-ms
+      - microcontrollers-ms
+      - rabbitmq
+
+  angular-ms:
+    image: nginx:alpine
+    container_name: iot_angular_ms_lite
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./angular-ms/iot-app/dist/v15-app/browser:/usr/share/nginx/html
+      - ./angular-ms/default.conf:/etc/nginx/conf.d/default.conf
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+    depends_on:
+      - orchestrator-ms

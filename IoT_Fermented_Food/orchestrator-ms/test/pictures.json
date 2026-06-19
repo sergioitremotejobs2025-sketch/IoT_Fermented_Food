@@ -1,0 +1,13 @@
+[
+    {
+        "ip": "192.168.1.50",
+        "measure": "pictures",
+        "sensor": "ESP32-CAM",
+        "username": "sergio",
+        "stage": "Seedling",
+        "stage_id": 1,
+        "image_url": "http://example.com/image.jpg",
+        "timestamp": 1628965942,
+        "date": "14/08/2021"
+    }
+]

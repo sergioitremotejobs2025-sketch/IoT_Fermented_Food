@@ -1,0 +1,153 @@
+
+> orchestrator-ms@1.0.0 test
+> jest --coverage test/auth.spec.js
+
+  console.log
+    2026-02-28T10:40:21.931Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:21.980Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:21.989Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:21.996Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:22.006Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:22.012Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:22.019Z - PUT /change-password
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:22.046Z - PUT /change-password
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:22.056Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:23.068Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:24.077Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:25.084Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:25.091Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+  console.log
+    2026-02-28T10:40:25.099Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+FAIL test/auth.spec.js
+  Auth endpoints
+    ✓ Login correct (100 ms)
+    ✓ Bad login (9 ms)
+    ✓ Login incorrect (8 ms)
+    ✓ Register correct (9 ms)
+    ✓ Bad register (6 ms)
+    ✓ Register incorrect (7 ms)
+    ✕ Change password correct (13 ms)
+    ✓ Change password without password (17 ms)
+  Refresh token endpoint
+    ✓ should change refresh token and access token (1010 ms)
+    ✓ should not change refresh token and access token (1007 ms)
+    ✓ wrong access token (1006 ms)
+    ✓ should refresh token (8 ms)
+    ✓ should not refresh token because of time limit (6 ms)
+
+  ● Auth endpoints › Change password correct
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 400
+
+      56 |   it('Change password correct', async () => {
+      57 |     const res = await request(app).put('/change-password').send({ password: 'newpassword' }).set('Authorization', `Bearer ${accessToken}`)
+    > 58 |     expect(res.statusCode).toBe(200)
+         |                            ^
+      59 |     expect(res.body.success).toBe(true)
+      60 |   })
+      61 |
+
+      at Object.toBe (test/auth.spec.js:58:28)
+
+  ● Auth endpoints › Change password correct
+
+    Cannot set headers after they are sent to the client
+
+      124 |
+      125 |     const response = await servicesController.putToConnectedService(res, AUTH_MS, 'change-password', body, null, true)
+    > 126 |     if (!response.data) return res.sendStatus(400)
+          |                                    ^
+      127 |     return res.json({ success: response.data === 'true' })
+      128 |   }
+      129 |
+
+      at ServerResponse.header (node_modules/express/lib/response.js:794:10)
+      at ServerResponse.contentType (node_modules/express/lib/response.js:624:15)
+      at ServerResponse.sendStatus (node_modules/express/lib/response.js:373:8)
+      at sendStatus (src/app/controllers/orchestrator.controller.js:126:36)
+
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |    78.4 |    59.72 |   60.71 |   79.62 |                   
+ app                         |   90.32 |      100 |   33.33 |   93.33 |                   
+  app.js                     |   90.32 |      100 |   33.33 |   93.33 | 81-82             
+ app/controllers             |   65.21 |       50 |   52.94 |   65.43 |                   
+  orchestrator.controller.js |    59.7 |       60 |   45.45 |   58.62 | 27-52,84-104,127  
+  services.controller.js     |      80 |     37.5 |   66.66 |    82.6 | 38-39,53-54       
+ app/routes                  |      88 |        0 |       0 |      88 |                   
+  orchestrator.routes.js     |      88 |        0 |       0 |      88 | 240-243           
+ config                      |     100 |      100 |     100 |     100 |                   
+  jwt.config.js              |     100 |      100 |     100 |     100 |                   
+  services.config.js         |     100 |      100 |     100 |     100 |                   
+ helpers                     |     100 |      100 |     100 |     100 |                   
+  helpers.js                 |     100 |      100 |     100 |     100 |                   
+ modules                     |     100 |      100 |     100 |     100 |                   
+  jwt.module.js              |     100 |      100 |     100 |     100 |                   
+-----------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for statements (85%) not met: 78.4%
+Jest: "global" coverage threshold for branches (85%) not met: 59.72%
+Jest: "global" coverage threshold for lines (85%) not met: 79.62%
+Jest: "global" coverage threshold for functions (85%) not met: 60.71%
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 12 passed, 13 total
+Snapshots:   0 total
+Time:        4.388 s, estimated 5 s
+Ran all test suites matching test/auth.spec.js.

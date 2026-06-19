@@ -1,0 +1,85 @@
+<div class="pictures-container">
+  <!-- Camera offline state -->
+  @if (!lastPicture() && micro?.isInactive) {
+    <div class="camera-offline glass">
+      <mat-icon class="offline-icon">videocam_off</mat-icon>
+      <p class="offline-msg">Cámara no disponible</p>
+      <p class="offline-sub text-muted">El dispositivo no responde en este momento</p>
+    </div>
+  }
+
+  <!-- Loading state -->
+  @if (!lastPicture() && !micro?.isInactive) {
+    <div class="camera-loading glass">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p class="loading-msg">Conectando con la cámara…</p>
+    </div>
+  }
+
+  @if (selectedPicture()) {
+    <div class="picture-card-wrapper glass shadow-sm">
+      <div class="main-display">
+        <div class="display-header">
+          <div class="stage-badge" [attr.data-stage]="selectedPicture()!.stage">{{ selectedPicture()!.stage | titlecase }}</div>
+          <span class="elapsed-time text-muted">
+            <mat-icon>timer</mat-icon>
+            {{ selectedPicture()!.elapsed_minutes }} min
+          </span>
+          <span class="current-timestamp" *ngIf="selectedPicture()?.timestamp !== lastPicture()?.timestamp">
+            (Histórico)
+          </span>
+        </div>
+        <div class="img-frame" (click)="openLightbox(selectedPicture()!)" style="cursor: zoom-in;">
+          <img [src]="selectedPicture()!.image_url" alt="Plant growth stage" class="main-img">
+          <div class="overlay">
+            <mat-icon>zoom_in</mat-icon>
+          </div>
+        </div>
+        
+        <div class="timeline-scrubber glass" *ngIf="history().length > 1">
+          <app-slider
+            [min]="0"
+            [max]="history().length - 1"
+            [step]="1"
+            [value]="history().indexOf(selectedPicture()!)"
+            (valueChange)="selectFromHistory($event)">
+          </app-slider>
+          <div class="timeline-labels">
+            <span>Pasado</span>
+            <span>Ahora</span>
+          </div>
+        </div>
+
+        <div class="display-footer">
+          <button mat-button color="primary" *ngIf="selectedPicture()?.timestamp !== lastPicture()?.timestamp" (click)="selectedPicture.set(lastPicture())">
+             Volver al directo
+          </button>
+          <button mat-flat-button color="accent" (click)="goToHistory()">
+            <mat-icon>history</mat-icon>
+            Ver historial completo
+          </button>
+        </div>
+      </div>
+
+      @if (history().length > 0) {
+        <div class="history-footer">
+          <h4 class="footer-title">Actividad reciente</h4>
+          <div class="history-scroll custom-scrollbar">
+            @for (item of history(); track item.timestamp) {
+              <div class="history-item" (click)="selectedPicture.set(item)" [class.active-item]="item.timestamp === selectedPicture()?.timestamp" style="cursor: pointer;">
+                <div class="thumb-frame">
+                  <img [src]="item.image_url" class="thumb-img">
+                </div>
+                <div class="item-info">
+                  <span class="item-time">{{ item.timestamp | date:'HH:mm:ss' }}</span>
+                  <span class="item-stage text-muted">{{ item.stage | titlecase }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+</div>

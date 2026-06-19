@@ -1,0 +1,7 @@
+{
+    "pictures": 5,
+    "stage": "ripe_fruit",
+    "stage_id": 5,
+    "elapsed_minutes": "120.5",
+    "image_url": "http://localhost:3005/images/stage_5.png"
+}

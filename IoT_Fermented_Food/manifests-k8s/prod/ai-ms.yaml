@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-ms
+  namespace: default
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: ai-ms
+  template:
+    metadata:
+      labels:
+        app: ai-ms
+    spec:
+      containers:
+      - name: ai-ms
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/ai-ms:latest
+
+
+
+
+
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URL
+          value: "mongo"
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: MONGO_INITDB_ROOT_PASSWORD
+        - name: MONGO_DB
+          value: "iot"
+        - name: INTERNAL_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: INTERNAL_API_KEY
+        - name: MODEL_DIR
+          value: "/app/data/models"
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "768Mi"
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - name: ai-models-volume
+          mountPath: /app/data/models
+        - name: tmp-volume
+          mountPath: /tmp
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+      tolerations:
+      - key: "cloud.google.com/gke-spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+      - name: ai-models-volume
+        persistentVolumeClaim:
+          claimName: ai-models-pvc
+      - name: tmp-volume
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-ms
+  namespace: default
+  annotations:
+    io.cilium/global-service: "true"
+spec:
+  selector:
+    app: ai-ms
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP

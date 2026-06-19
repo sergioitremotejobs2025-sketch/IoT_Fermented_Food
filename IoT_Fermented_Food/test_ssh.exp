@@ -1,0 +1,42 @@
+#!/usr/bin/expect -f
+set timeout 10
+set user [lindex $argv 0]
+set password [lindex $argv 1]
+set ip [lindex $argv 2]
+
+spawn ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $user@$ip "echo SUCCESS"
+expect {
+    "password:" {
+        send "$password\r"
+        expect {
+            "SUCCESS" {
+                puts "\nRESULT: SUCCESS"
+                exit 0
+            }
+            "Current password" {
+                puts "\nRESULT: PWD_CHANGE_REQUIRED"
+                exit 5
+            }
+            "Permission denied" {
+                puts "\nRESULT: AUTH_FAILED"
+                exit 1
+            }
+            "Terminal type?" {
+                send "vt100\r"
+                exp_continue
+            }
+            timeout {
+                puts "\nRESULT: TIMEOUT"
+                exit 2
+            }
+        }
+    }
+    "Connection refused" {
+        puts "\nRESULT: REFUSED"
+        exit 3
+    }
+    timeout {
+        puts "\nRESULT: TIMEOUT"
+        exit 4
+    }
+}

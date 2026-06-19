@@ -1,0 +1,302 @@
+
+> orchestrator-ms@1.0.0 test
+> INTERNAL_API_KEY=testkey jest --coverage
+
+PASS test/services.controller.branch.spec.js
+PASS test/pictures.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:26:34.806Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.846Z - GET /pictures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.857Z - GET /pictures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.871Z - GET /pictures?path=pictures/history&ip=192.168.1.50&init_timestamp=0&end_timestamp=9999999999999
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.883Z - GET /health
+
+      at log (src/app/app.js:74:13)
+
+PASS test/microcontrollers.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:26:34.806Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.851Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.865Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.873Z - POST /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.890Z - POST /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.897Z - PUT /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.905Z - PUT /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.910Z - DELETE /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.917Z - DELETE /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+PASS test/measures.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:26:34.809Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.853Z - GET /temperature
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.864Z - GET /temperature
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.886Z - GET /temperature?path=temperatures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.897Z - GET /temperature?path=temperatures
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.904Z - POST /light
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.912Z - POST /light
+
+      at log (src/app/app.js:74:13)
+
+FAIL test/app.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:26:34.799Z - GET /health
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.832Z - GET /metrics
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.857Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.864Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.870Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.884Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.891Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.897Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.902Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.907Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.912Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.917Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.925Z - GET /microcontrollers
+
+      at log (src/app/app.js:74:13)
+
+  ● App endpoints and Rate Limiting › should forward non-UnauthorizedErrors to the default error handler
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 429
+
+      45 |             .send('{ "malformed json }')
+      46 |
+    > 47 |         expect(res.statusCode).toBe(400) // body-parser syntax error sets 400
+         |                                ^
+      48 |     })
+      49 | })
+      50 |
+
+      at Object.toBe (test/app.spec.js:47:32)
+
+PASS test/auth.spec.js
+  ● Console
+
+    console.log
+      2026-02-28T16:26:34.820Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.856Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.864Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.872Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.890Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.898Z - POST /register
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.905Z - PUT /change-password
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.914Z - PUT /change-password
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:34.920Z - POST /login
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:35.929Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:36.936Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:37.941Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:37.947Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+    console.log
+      2026-02-28T16:26:37.955Z - POST /refresh
+
+      at log (src/app/app.js:74:13)
+
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   98.29 |    90.41 |     100 |   99.38 |                   
+ app                         |     100 |      100 |     100 |     100 |                   
+  app.js                     |     100 |      100 |     100 |     100 |                   
+ app/controllers             |   97.82 |    89.09 |     100 |     100 |                   
+  orchestrator.controller.js |   97.01 |    86.66 |     100 |     100 | 34,50,76,126      
+  services.controller.js     |     100 |       92 |     100 |     100 | 18                
+ app/routes                  |      96 |       50 |     100 |      96 |                   
+  orchestrator.routes.js     |      96 |       50 |     100 |      96 | 243               
+ config                      |     100 |      100 |     100 |     100 |                   
+  jwt.config.js              |     100 |      100 |     100 |     100 |                   
+  services.config.js         |     100 |      100 |     100 |     100 |                   
+ helpers                     |     100 |      100 |     100 |     100 |                   
+  helpers.js                 |     100 |      100 |     100 |     100 |                   
+ modules                     |     100 |      100 |     100 |     100 |                   
+  jwt.module.js              |     100 |      100 |     100 |     100 |                   
+-----------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 1 failed, 5 passed, 6 total
+Tests:       1 failed, 40 passed, 41 total
+Snapshots:   0 total
+Time:        4.798 s, estimated 5 s
+Ran all test suites.

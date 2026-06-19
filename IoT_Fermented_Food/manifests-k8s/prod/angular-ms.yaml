@@ -1,0 +1,105 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-ms
+  annotations:
+    io.cilium/global-service: "true"
+spec:
+  ports:
+  - name: http-angular
+    nodePort: 31600
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: angular-ms
+    tier: frontend
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-ms
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: angular-ms
+        tier: frontend
+    spec:
+      containers:
+      - image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/angular-ms:latest
+        imagePullPolicy: IfNotPresent
+        name: angular-ms
+        ports:
+        - name: http-angular
+          containerPort: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 101 # nginx uid in alpine
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        - name: cache-volume
+          mountPath: /var/cache/nginx
+        - name: run-volume
+          mountPath: /var/run
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d
+        resources:
+          limits:
+            cpu: 100m
+            memory: 64Mi
+          requests:
+            memory: 8Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      securityContext:
+        fsGroup: 101
+        runAsNonRoot: true
+        runAsUser: 101
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      - name: cache-volume
+        emptyDir: {}
+      - name: run-volume
+        emptyDir: {}
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config
+      initContainers:
+      - command:
+        - 'sh'
+        - '-c'
+        - 'until nslookup $ORCHESTRATOR_MS_HOSTNAME; do :; sleep 2; done;'
+        env:
+        - name: ORCHESTRATOR_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: ORCHESTRATOR_MS_HOSTNAME
+              name: env-configmap
+        image: busybox:1.28
+        name: init-angular-ms

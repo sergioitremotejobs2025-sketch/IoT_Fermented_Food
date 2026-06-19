@@ -1,0 +1,28 @@
+{
+  "author": "Rocky",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "description": "Fake Arduino",
+  "engines": {
+    "node": "16.3.0",
+    "npm": "7.17.0"
+  },
+  "license": "ISC",
+  "main": "src/index.js",
+  "name": "fake-arduino-iot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7Rocky/IoT_Microservices.git"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "version": "1.0.0",
+  "devDependencies": {
+    "jest": "^25.5.4",
+    "supertest": "^4.0.2"
+  }
+}

@@ -1,0 +1,48 @@
+<div class="ai-container glass">
+    <div class="ai-controls">
+        <mat-form-field appearance="outline" class="limit-selector">
+            <mat-select [ngModel]="trainingLimit()" 
+                        (ngModelChange)="trainingLimit.set($event)" 
+                        matTooltip="Rango de historial para entrenar">
+                <mat-option *ngFor="let limit of limits" [value]="limit.value">
+                    {{ limit.label }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-icon-button (click)="train()" [disabled]="training()" matTooltip="Entrenar Modelo con este rango">
+            <mat-icon [class.rotating]="training()">psychology</mat-icon>
+        </button>
+    </div>
+
+    <div class="ai-content">
+        <div class="performance-badge" *ngIf="performance()">
+            <span class="mae">Error medio: {{ performance()?.mae | number:'1.1-3' }}</span>
+            <span class="samples">Basado en {{ performance()?.sample_count }} muestras</span>
+        </div>
+
+        <div class="prediction-box" *ngIf="prediction() !== null; else noPrediction">
+            <span class="label">Próxima lectura estimada:</span>
+            <span class="value">{{ prediction() | number:'1.1-2' }}</span>
+            
+            <div class="confidence-container" *ngIf="performance()">
+                <span class="conf-label">Confianza: {{ confidenceScore() }}%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="confidenceScore()" 
+                         [style.background-color]="confidenceScore() > 70 ? '#4caf50' : '#ffa000'"></div>
+                </div>
+            </div>
+
+            <div class="ai-suggestion glass" *ngIf="suggestion()">
+                {{ suggestion() }}
+            </div>
+        </div>
+        <ng-template #noPrediction>
+            <p class="hint">Analiza tendencias usando redes neuronales LSTM.</p>
+        </ng-template>
+    </div>
+
+    <button mat-stroked-button color="accent" (click)="predict()" [disabled]="loading() || recentValues().length < 10">
+        {{ loading() ? 'Calculando...' : 'Predecir Futuro' }}
+    </button>
+</div>

@@ -1,0 +1,31 @@
+<button mat-icon-button [matMenuTriggerFor]="inboxMenu" matTooltip="Alertas recientes">
+    <mat-icon [matBadge]="history().length" matBadgeColor="warn" [matBadgeHidden]="history().length === 0">
+        notifications
+    </mat-icon>
+</button>
+
+<mat-menu #inboxMenu="matMenu" class="alert-inbox-menu">
+    <div class="inbox-header">
+        <span class="title">Centro de Alertas</span>
+        <button mat-button color="warn" (click)="$event.stopPropagation(); clearHistory()" *ngIf="history().length > 0">
+            Limpiar todo
+        </button>
+    </div>
+    
+    <mat-divider></mat-divider>
+
+    <div class="inbox-content" (click)="$event.stopPropagation()">
+        <div class="empty-inbox" *ngIf="history().length === 0">
+            <mat-icon>notifications_none</mat-icon>
+            <p>No hay alertas recientes</p>
+        </div>
+
+        <mat-list *ngIf="history().length > 0">
+            <mat-list-item *ngFor="let alert of history()" [class]="'alert-item alert-' + alert.type">
+                <mat-icon mat-list-icon>{{ alert.type === 'error' ? 'error' : 'warning' }}</mat-icon>
+                <div mat-line class="alert-message">{{ alert.message }}</div>
+                <div mat-line class="alert-date">{{ alert.timestamp | date:'short' }}</div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</mat-menu>

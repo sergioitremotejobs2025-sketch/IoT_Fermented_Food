@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ai-ms.fullname" . }}
+  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "ai-ms.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "ai-ms.name" . }}
+    spec:
+      containers:
+      - name: {{ include "ai-ms.name" . }}
+        image: {{ .Values.image }}
+        imagePullPolicy: {{ .Values.global.imagePullPolicy }}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URL
+          value: "mongo"
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: MONGO_INITDB_ROOT_PASSWORD
+        - name: MONGO_DB
+          value: "iot"
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}

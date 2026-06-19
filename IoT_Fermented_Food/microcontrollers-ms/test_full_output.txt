@@ -1,0 +1,397 @@
+
+> microcontrollers-ms@1.0.0 test
+> jest --coverage
+
+PASS test/helpers.spec.js
+PASS test/dao.error.spec.js
+PASS test/microcontrollers.v2.spec.js
+PASS test/dao.spec.js
+PASS test/dao.connect.spec.js
+PASS test/microcontrollers.controller.spec.js
+  ● Console
+
+    console.error
+      Error in postMicrocontrollers: Error: db
+          at Object.<anonymous> (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/test/microcontrollers.controller.spec.js:105:67)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+      71 |       return res.status(201).json(microcontroller)
+      72 |     } catch (error) {
+    > 73 |       console.error('Error in postMicrocontrollers:', error)
+         |               ^
+      74 |       return res.sendStatus(400)
+      75 |     }
+      76 |
+
+      at OrchestratorController.error [as postMicrocontrollers] (src/app/controllers/microcontrollers.controller.js:73:15)
+      at Object.<anonymous> (test/microcontrollers.controller.spec.js:106:9)
+
+PASS test/app_extra.spec.js
+  ● Console
+
+    console.log
+      2026-03-27T09:09:24.888Z - GET /health - Headers: {"host":"127.0.0.1:50383","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.920Z - GET /metrics - Headers: {"host":"127.0.0.1:50390","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.933Z - GET /non-existent-measure - Headers: {"host":"127.0.0.1:50397","accept-encoding":"gzip, deflate","x-internal-api-key":"testkey","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.960Z - POST / - Headers: {"host":"127.0.0.1:50406","accept-encoding":"gzip, deflate","content-type":"application/json","x-internal-api-key":"testkey","content-length":"61","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.error
+      Error in postMicrocontrollers: Error: DB Error
+          at Object.<anonymous> (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/test/app_extra.spec.js:32:67)
+          at Promise.finally.completed (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+          at _callCircusTest (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+          at _runTest (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+          at /Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+          at _runTestsForDescribeBlock (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+          at _runTestsForDescribeBlock (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+          at run (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+          at runAndTransformResultsToJestFormat (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+          at jestAdapter (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/runner.js:101:19)
+          at runTestInternal (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-runner/build/testWorker.js:275:16)
+          at runTest (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-runner/build/testWorker.js:343:7)
+          at Object.worker (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-runner/build/testWorker.js:497:12)
+
+      71 |       return res.status(201).json(microcontroller)
+      72 |     } catch (error) {
+    > 73 |       console.error('Error in postMicrocontrollers:', error)
+         |               ^
+      74 |       return res.sendStatus(400)
+      75 |     }
+      76 |
+
+      at error (src/app/controllers/microcontrollers.controller.js:73:15)
+
+    console.log
+      2026-03-27T09:09:24.986Z - PUT / - Headers: {"host":"127.0.0.1:50420","accept-encoding":"gzip, deflate","content-type":"application/json","x-internal-api-key":"testkey","content-length":"80","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.995Z - DELETE / - Headers: {"host":"127.0.0.1:50424","accept-encoding":"gzip, deflate","content-type":"application/json","x-internal-api-key":"testkey","content-length":"61","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+FAIL test/microcontrollers.spec.js
+  ● Console
+
+    console.log
+      2026-03-27T09:09:24.882Z - GET / - Headers: {"host":"127.0.0.1:50382","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.915Z - GET / - Headers: {"host":"127.0.0.1:50388","accept-encoding":"gzip, deflate","x-internal-api-key":"testkey","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.923Z - GET /temperature - Headers: {"host":"127.0.0.1:50394","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.933Z - GET /?username=Rocky - Headers: {"host":"127.0.0.1:50396","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.954Z - POST / - Headers: {"host":"127.0.0.1:50402","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"96","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.968Z - POST / - Headers: {"host":"127.0.0.1:50410","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"124","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.975Z - POST / - Headers: {"host":"127.0.0.1:50414","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"95","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.983Z - POST / - Headers: {"host":"127.0.0.1:50418","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"96","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.990Z - PUT / - Headers: {"host":"127.0.0.1:50422","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"120","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.014Z - PUT / - Headers: {"host":"127.0.0.1:50426","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"120","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.019Z - PUT / - Headers: {"host":"127.0.0.1:50430","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"120","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.024Z - DELETE / - Headers: {"host":"127.0.0.1:50434","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"95","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.030Z - DELETE / - Headers: {"host":"127.0.0.1:50438","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"96","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+  ● Microcontrollers endpoints from UI › should update a microcontroller
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 404
+
+      144 |       })
+      145 |
+    > 146 |     expect(res.statusCode).toBe(201)
+          |                            ^
+      147 |     expect(res.body).toEqual(
+      148 |       expect.objectContaining({
+      149 |         ip: expect.any(String),
+
+      at Object.toBe (test/microcontrollers.spec.js:146:28)
+
+PASS test/microcontrollers.controller.branch.spec.js
+  ● Console
+
+    console.log
+      2026-03-27T09:09:24.889Z - GET / - Headers: {"host":"127.0.0.1:50384","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.922Z - GET / - Headers: {"host":"127.0.0.1:50392","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.936Z - GET /temperature - Headers: {"host":"127.0.0.1:50400","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.944Z - GET /pressure - Headers: {"host":"127.0.0.1:50404","accept-encoding":"gzip, deflate","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.963Z - POST / - Headers: {"host":"127.0.0.1:50408","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"61","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.970Z - POST / - Headers: {"host":"127.0.0.1:50412","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"61","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:24.977Z - POST / - Headers: {"host":"127.0.0.1:50416","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"61","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.error
+      Error in postMicrocontrollers: Error: DB_ERROR
+          at Object.<anonymous> (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/test/microcontrollers.controller.branch.spec.js:102:65)
+          at Promise.finally.completed (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+          at _callCircusTest (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+          at _runTest (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+          at /Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+          at _runTestsForDescribeBlock (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+          at run (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+          at runAndTransformResultsToJestFormat (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+          at jestAdapter (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-circus/build/runner.js:101:19)
+          at runTestInternal (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-runner/build/testWorker.js:275:16)
+          at runTest (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-runner/build/testWorker.js:343:7)
+          at Object.worker (/Users/sergioabad/Desktop/ProjectsToWorkOn/IoT/Arduino_Antiguo/Code/IoT_Microservices-master/microcontrollers-ms/node_modules/jest-runner/build/testWorker.js:497:12)
+
+      71 |       return res.status(201).json(microcontroller)
+      72 |     } catch (error) {
+    > 73 |       console.error('Error in postMicrocontrollers:', error)
+         |               ^
+      74 |       return res.sendStatus(400)
+      75 |     }
+      76 |
+
+      at error (src/app/controllers/microcontrollers.controller.js:73:15)
+
+    console.log
+      2026-03-27T09:09:25.014Z - POST / - Headers: {"host":"127.0.0.1:50427","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"33","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.021Z - PUT / - Headers: {"host":"127.0.0.1:50432","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"80","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.027Z - PUT / - Headers: {"host":"127.0.0.1:50436","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"80","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.033Z - PUT / - Headers: {"host":"127.0.0.1:50440","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"80","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.038Z - PUT / - Headers: {"host":"127.0.0.1:50442","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"33","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.043Z - DELETE / - Headers: {"host":"127.0.0.1:50444","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"33","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.049Z - DELETE / - Headers: {"host":"127.0.0.1:50446","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"37","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:25.054Z - DELETE / - Headers: {"host":"127.0.0.1:50448","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"37","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+2026-03-27T09:09:25.914915Z  INFO ThreadId(17) pact_verifier: Running setup provider state change handler 'microcontrollers exist' for 'a request for all microcontrollers for a user'
+2026-03-27T09:09:26.380147Z  INFO ThreadId(17) pact_verifier: Running provider verification for 'a request for all microcontrollers for a user'
+2026-03-27T09:09:26.381185Z  INFO ThreadId(17) pact_verifier::provider_client: Sending request to provider at http://127.0.0.1:50450/
+2026-03-27T09:09:26.381219Z  INFO ThreadId(17) pact_verifier::provider_client: Sending request HTTP Request ( method: GET, path: /, query: Some({"username": [Some("testuser")]}), headers: Some({"x-internal-api-key": ["testkey"]}), body: Missing )
+2026-03-27T09:09:26.412989Z  INFO ThreadId(17) pact_verifier::provider_client: Received response: HTTP Response ( status: 200, headers: Some({"etag": ["W/\"52-YrSar8YiyLE7ePMZF7ioqvc/Fio\""], "date": ["Fri, 27 Mar 2026 09:09:26 GMT"], "x-powered-by": ["Express"], "connection": ["close"], "access-control-allow-origin": ["*"], "content-type": ["application/json; charset=utf-8"], "content-length": ["82"]}), body: Present(82 bytes, application/json;charset=utf-8) )
+2026-03-27T09:09:26.418501Z  INFO ThreadId(17) pact_verifier: Running teardown provider state change handler 'microcontrollers exist' for 'a request for all microcontrollers for a user'
+2026-03-27T09:09:27.418150Z  INFO ThreadId(17) pact_verifier: Running setup provider state change handler 'microcontroller does not exist' for 'a request to create a microcontroller'
+2026-03-27T09:09:27.866378Z  INFO ThreadId(17) pact_verifier: Running provider verification for 'a request to create a microcontroller'
+2026-03-27T09:09:27.866431Z  INFO ThreadId(17) pact_verifier::provider_client: Sending request to provider at http://127.0.0.1:50450/
+2026-03-27T09:09:27.866437Z  INFO ThreadId(17) pact_verifier::provider_client: Sending request HTTP Request ( method: POST, path: /, query: None, headers: Some({"x-internal-api-key": ["testkey"], "Content-Type": ["application/json"]}), body: Present(86 bytes) )
+2026-03-27T09:09:27.874107Z  INFO ThreadId(17) pact_verifier::provider_client: Received response: HTTP Response ( status: 201, headers: Some({"content-length": ["86"], "date": ["Fri, 27 Mar 2026 09:09:27 GMT"], "x-powered-by": ["Express"], "access-control-allow-origin": ["*"], "content-type": ["application/json; charset=utf-8"], "etag": ["W/\"56-rFOohnSoUHLJeQ7H8Uay0biiqPY\""], "connection": ["close"]}), body: Present(86 bytes, application/json;charset=utf-8) )
+2026-03-27T09:09:27.875378Z  INFO ThreadId(17) pact_verifier: Running teardown provider state change handler 'microcontroller does not exist' for 'a request to create a microcontroller'
+2026-03-27T09:09:28.332664Z  WARN ThreadId(17) pact_matching::metrics: 
+
+Please note:
+We are tracking events anonymously to gather important usage statistics like Pact version and operating system. To disable tracking, set the 'PACT_DO_NOT_TRACK' environment variable to 'true'.
+
+
+PASS test/pact.provider.spec.js
+  ● Console
+
+    console.log
+      Microcontrollers-MS Provider listening on port 4020
+
+      at Server.log (test/pact.provider.spec.js:28:21)
+
+    console.log
+      [10:09:25.350] INFO (18637): pact@16.2.0: Verifying provider
+
+      at Object.write (node_modules/@pact-foundation/pact-core/src/logger/pino.ts:17:17)
+
+    console.log
+      [10:09:25.374] INFO (18637): pact-core@18.1.0: Verifying Pacts.
+
+      at Object.write (node_modules/@pact-foundation/pact-core/src/logger/pino.ts:17:17)
+
+    console.log
+      [10:09:25.376] INFO (18637): pact-core@18.1.0: Verifying Pact Files
+
+      at Object.write (node_modules/@pact-foundation/pact-core/src/logger/pino.ts:17:17)
+
+    console.log
+      [10:09:25.397] INFO (18637): 0.4.28: pact native library successfully found, and the correct version
+
+      at Object.write (node_modules/@pact-foundation/pact-core/src/logger/pino.ts:17:17)
+          at Array.every (<anonymous>)
+
+    console.log
+      2026-03-27T09:09:26.402Z - GET /?username=testuser - Headers: {"host":"127.0.0.1:50450","accept-encoding":"gzip, deflate","accept":"*/*","x-internal-api-key":"testkey","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      2026-03-27T09:09:27.870Z - POST / - Headers: {"content-length":"86","host":"127.0.0.1:50450","accept-encoding":"gzip, deflate","accept":"*/*","content-type":"application/json","x-internal-api-key":"testkey","connection":"close"}
+
+      at log (src/app/app.js:20:13)
+
+    console.log
+      [10:09:28.916] INFO (18637): pact-core@18.1.0: Verification successful
+
+      at Object.write (node_modules/@pact-foundation/pact-core/src/logger/pino.ts:17:17)
+
+    console.log
+      Pact Verification Complete!
+
+      at log (test/pact.provider.spec.js:53:21)
+
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+All files                        |   97.41 |    97.22 |   92.85 |   97.84 |                   
+ app                             |     100 |      100 |     100 |     100 |                   
+  app.js                         |     100 |      100 |     100 |     100 |                   
+ app/controllers                 |   98.59 |    93.93 |     100 |     100 |                   
+  microcontrollers.controller.js |   98.59 |    93.93 |     100 |     100 | 16-19             
+ app/middleware                  |     100 |      100 |     100 |     100 |                   
+  internal-auth.middleware.js    |     100 |      100 |     100 |     100 |                   
+ app/routes                      |     100 |      100 |     100 |     100 |                   
+  microcontrollers.routes.js     |     100 |      100 |     100 |     100 |                   
+ config                          |     100 |      100 |     100 |     100 |                   
+  mysql.config.js                |     100 |      100 |     100 |     100 |                   
+ database                        |      90 |      100 |    87.5 |   89.65 |                   
+  dao.js                         |      90 |      100 |    87.5 |   89.65 | 57,72-76          
+ helpers                         |     100 |      100 |     100 |     100 |                   
+  helpers.js                     |     100 |      100 |     100 |     100 |                   
+---------------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for statements (100%) not met: 97.41%
+Jest: "global" coverage threshold for branches (100%) not met: 97.22%
+Jest: "global" coverage threshold for lines (100%) not met: 97.84%
+Jest: "global" coverage threshold for functions (100%) not met: 92.85%
+
+Test Suites: 1 failed, 9 passed, 10 total
+Tests:       1 failed, 72 passed, 73 total
+Snapshots:   0 total
+Time:        5.6 s, estimated 6 s
+Ran all test suites.
+
+Verifying a pact between [1mOrchestratorMS[0m and [1mMicrocontrollersMS[0m
+
+  a request for all microcontrollers for a user (8ms loading, 1s 502ms verification)
+     Given microcontrollers exist
+    returns a response which
+      has status code [1m200[0m ([32mOK[0m)
+      includes headers
+        "[1mContent-Type[0m" with value "[1mapplication/json; charset=utf-8[0m" ([32mOK[0m)
+      has a matching body ([32mOK[0m)
+
+  a request to create a microcontroller (8ms loading, 1s 396ms verification)
+     Given microcontroller does not exist
+    returns a response which
+      has status code [1m201[0m ([32mOK[0m)
+      includes headers
+        "[1mContent-Type[0m" with value "[1mapplication/json; charset=utf-8[0m" ([32mOK[0m)
+      has a matching body ([32mOK[0m)
+
+

@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/angular-ms:latest', '-f', 'Dockerfile.build', '.']
+images:
+- 'europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/angular-ms:latest'
+timeout: '1200s'

@@ -1,0 +1,41 @@
+
+> orchestrator-ms@1.0.0 test
+> INTERNAL_API_KEY=testkey jest --coverage --coverage --silent --coverageReporters=text-summary
+
+2026-04-07T10:09:36.161382Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /train
+2026-04-07T10:09:36.163789Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.185453Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.214631Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /predict
+2026-04-07T10:09:36.216722Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.220594Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.266456Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request GET /humidity
+2026-04-07T10:09:36.267125Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.303899Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request GET /
+2026-04-07T10:09:36.304538Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.326996Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.356929Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /humidity
+2026-04-07T10:09:36.357962Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.359053Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.363185Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.375109Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /
+2026-04-07T10:09:36.377207Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.380299Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.570156Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /login
+2026-04-07T10:09:36.572576Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.625259Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.651980Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /register
+2026-04-07T10:09:36.654015Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.660974Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.671239Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request POST /refresh
+2026-04-07T10:09:36.673204Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.677080Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+2026-04-07T10:09:36.689109Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Received request PUT /change-password
+2026-04-07T10:09:36.691072Z  INFO tokio-runtime-worker pact_mock_server::hyper_server: Request matched, sending response
+2026-04-07T10:09:36.694907Z  WARN ThreadId(02) pact_models::pact: Note: Existing pact is an older specification version (V3), and will be upgraded
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 206/206 )
+Branches     : 100% ( 108/108 )
+Functions    : 100% ( 32/32 )
+Lines        : 100% ( 192/192 )
+================================================================================

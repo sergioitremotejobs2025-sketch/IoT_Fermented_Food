@@ -1,0 +1,283 @@
+
+> measure-ms@1.0.0 test
+> NODE_ENV=test jest --coverage --forceExit test/app.spec.js
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+  console.log
+    Connection successful
+
+      at log (src/database/dao.js:25:40)
+
+  console.log
+    error
+
+      at log (src/database/dao.js:26:42)
+
+FAIL test/app.spec.js
+  Humidity endpoints
+    ✓ should return current humidity (48 ms)
+    ✓ should return an empty array (5 ms)
+    ✓ should return previous humidities (4 ms)
+    ✓ should not return previous humidities (3 ms)
+    ✓ should not return previous humidities (4 ms)
+    ✕ handles axios errors yielding undefined measure (26 ms)
+    ✕ should return 400 when getMeasures (findMeasures) throws an error (4 ms)
+  Light endpoints
+    ✕ should return current light (4 ms)
+    ✕ should return an empty array (6 ms)
+    ✓ should return previous lights (4 ms)
+    ✓ should not return previous lights (4 ms)
+    ✓ should not return previous lights (3 ms)
+    ✕ should turn light off (18 ms)
+    ✕ should turn light on (3 ms)
+  Temperature endpoints
+    ✕ should return current temperature (4 ms)
+    ✕ should return an empty array (3 ms)
+    ✓ should return previous temperatures (4 ms)
+    ✓ should not return previous temperatures (3 ms)
+    ✓ should not return previous temperatures (3 ms)
+  Pictures endpoints
+    ✕ should return current pictures (3 ms)
+    ✕ should return an empty array when no username provided (5 ms)
+    ✓ should return previous pictures (history) (4 ms)
+    ✓ should not return history without username (3 ms)
+  Internal Auth Middleware
+    ✓ should reject requests lacking x-internal-api-key when not testing environment (1 ms)
+    ✓ should pass requests with correct x-internal-api-key when not testing environment
+
+  ● Humidity endpoints › handles axios errors yielding undefined measure
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      111 |     axios.get = jest.fn().mockRejectedValue(new Error('Down'))
+      112 |     const res = await request(app).get('/humidity?username=Rocky')
+    > 113 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      114 |     expect(res.body).toEqual([null]) // the Promise catch yields `return`, mapped to undefined -> res.json strips or sends null
+      115 |     axios.get = originalGet
+      116 |   }, 100000)
+
+      at Object.toBe (test/app.spec.js:113:28)
+
+  ● Humidity endpoints › should return 400 when getMeasures (findMeasures) throws an error
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 200
+
+      121 |     MeasureModel.prototype.findMeasures = jest.fn().mockRejectedValue(new Error('MongoError'))
+      122 |     const res = await request(app).get('/humidities?username=Rocky&init_timestamp=1587855634077&end_timestamp=1587862713879')
+    > 123 |     expect(res.statusCode).toBe(400)
+          |                            ^
+      124 |     MeasureModel.prototype.findMeasures = originalFindMeasures
+      125 |   }, 100000)
+      126 | })
+
+      at Object.toBe (test/app.spec.js:123:28)
+
+  ● Light endpoints › should return current light
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      130 |     await new Promise(r => setTimeout(r, REFRESH_TIME / 3))
+      131 |     const res = await request(app).get('/light?username=Rocky')
+    > 132 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      133 |     expect(res.body).toEqual(
+      134 |       expect.arrayContaining([
+      135 |         expect.objectContaining({
+
+      at Object.toBe (test/app.spec.js:132:28)
+
+  ● Light endpoints › should return an empty array
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      151 |     await new Promise(r => setTimeout(r, REFRESH_TIME / 3))
+      152 |     const res = await request(app).get('/light')
+    > 153 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      154 |     expect(res.body).toEqual(
+      155 |       expect.arrayContaining([])
+      156 |     )
+
+      at Object.toBe (test/app.spec.js:153:28)
+
+  ● Light endpoints › should turn light off
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      232 |         username: 'Rocky'
+      233 |       })
+    > 234 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      235 |     expect(res.body).toEqual(
+      236 |       expect.objectContaining({
+      237 |         date: expect.any(String),
+
+      at Object.toBe (test/app.spec.js:234:28)
+
+  ● Light endpoints › should turn light on
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      257 |         username: 'Rocky'
+      258 |       })
+    > 259 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      260 |     expect(res.body).toEqual(
+      261 |       expect.objectContaining({
+      262 |         date: expect.any(String),
+
+      at Object.toBe (test/app.spec.js:259:28)
+
+  ● Temperature endpoints › should return current temperature
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      279 |     await new Promise(r => setTimeout(r, REFRESH_TIME / 3))
+      280 |     const res = await request(app).get('/temperature?username=Rocky')
+    > 281 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      282 |     expect(res.body).toEqual(
+      283 |       expect.arrayContaining([
+      284 |         expect.objectContaining({
+
+      at Object.toBe (test/app.spec.js:281:28)
+
+  ● Temperature endpoints › should return an empty array
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      301 |     await new Promise(r => setTimeout(r, REFRESH_TIME / 3))
+      302 |     const res = await request(app).get('/temperature')
+    > 303 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      304 |     expect(res.body).toEqual(
+      305 |       expect.arrayContaining([])
+      306 |     )
+
+      at Object.toBe (test/app.spec.js:303:28)
+
+  ● Pictures endpoints › should return current pictures
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      382 |     await new Promise(r => setTimeout(r, REFRESH_TIME / 3))
+      383 |     const res = await request(app).get('/pictures?username=Rocky')
+    > 384 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      385 |     expect(res.body).toEqual(
+      386 |       expect.arrayContaining([
+      387 |         expect.objectContaining({
+
+      at Object.toBe (test/app.spec.js:384:28)
+
+  ● Pictures endpoints › should return an empty array when no username provided
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      405 |     await new Promise(r => setTimeout(r, REFRESH_TIME / 3))
+      406 |     const res = await request(app).get('/pictures')
+    > 407 |     expect(res.statusCode).toBe(200)
+          |                            ^
+      408 |     expect(res.body).toEqual(expect.arrayContaining([]))
+      409 |   }, 100000)
+      410 |
+
+      at Object.toBe (test/app.spec.js:407:28)
+
+------------------------------|---------|----------|---------|---------|-------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------|---------|----------|---------|---------|-------------------
+All files                     |   84.39 |    71.73 |   82.14 |   85.18 |                   
+ app                          |   57.69 |       50 |       0 |      60 |                   
+  app.js                      |   57.69 |       50 |       0 |      60 | 21-22,32-40       
+ app/constants                |     100 |      100 |     100 |     100 |                   
+  constants.js                |     100 |      100 |     100 |     100 |                   
+ app/controllers              |   76.47 |    16.66 |   85.71 |   78.12 |                   
+  measure.controller.js       |   76.47 |    16.66 |   85.71 |   78.12 | 28,36,44-49       
+ app/middleware               |   81.81 |       70 |     100 |      80 |                   
+  internal-auth.middleware.js |   81.81 |       70 |     100 |      80 | 17,33             
+ app/models                   |   92.85 |       75 |     100 |   91.66 |                   
+  measure.model.js            |   92.85 |       75 |     100 |   91.66 | 35-36             
+ app/routes                   |     100 |      100 |     100 |     100 |                   
+  measure.routes.js           |     100 |      100 |     100 |     100 |                   
+ config                       |     100 |      100 |     100 |     100 |                   
+  mongodb.config.js           |     100 |      100 |     100 |     100 |                   
+ database                     |   86.36 |      100 |      80 |   89.47 |                   
+  dao.js                      |   86.36 |      100 |      80 |   89.47 | 46-47             
+ database/models              |     100 |      100 |     100 |     100 |                   
+  humidity.model.js           |     100 |      100 |     100 |     100 |                   
+  light.model.js              |     100 |      100 |     100 |     100 |                   
+  picture.model.js            |     100 |      100 |     100 |     100 |                   
+  temperature.model.js        |     100 |      100 |     100 |     100 |                   
+ modules                      |      90 |       50 |     100 |      90 |                   
+  microcontrollers.module.js  |      90 |       50 |     100 |      90 | 18                
+------------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for statements (85%) not met: 84.39%
+Jest: "global" coverage threshold for branches (85%) not met: 71.73%
+Jest: "global" coverage threshold for functions (85%) not met: 82.14%
+Test Suites: 1 failed, 1 total
+Tests:       10 failed, 15 passed, 25 total
+Snapshots:   0 total
+Time:        1.201 s, estimated 2 s
+Ran all test suites matching test/app.spec.js.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

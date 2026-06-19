@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: publisher-ms
+  labels:
+    app: publisher-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: publisher-ms
+  template:
+    metadata:
+      labels:
+        app: publisher-ms
+    spec:
+      containers:
+      - name: publisher-ms
+        image: europe-west1-docker.pkg.dev/iot-microservices-gcp/iot-repo/publisher-ms:latest
+        imagePullPolicy: Always
+        env:
+        - name: MICROCONTROLLERS_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_HOSTNAME
+              name: env-configmap
+        - name: MICROCONTROLLERS_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MICROCONTROLLERS_MS_SERVICE_PORT
+              name: env-configmap
+        - name: QUEUE_HUMIDITY_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_HUMIDITY_NAME
+              name: env-configmap
+        - name: QUEUE_LIGHT_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_LIGHT_NAME
+              name: env-configmap
+        - name: QUEUE_TEMPERATURE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_TEMPERATURE_NAME
+              name: env-configmap
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_USER
+              name: secrets
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              key: RABBITMQ_DEFAULT_PASS
+              name: secrets
+        - name: RABBITMQ_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_HOSTNAME
+              name: env-configmap
+        - name: RABBITMQ_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: RABBITMQ_SERVICE_PORT
+              name: env-configmap
+        - name: MEASURE_MS_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MEASURE_MS_HOSTNAME
+              name: env-configmap
+        - name: MEASURE_MS_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MEASURE_MS_SERVICE_PORT
+              name: env-configmap
+        - name: INTERNAL_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: INTERNAL_API_KEY
+              name: secrets
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+      tolerations:
+      - key: "cloud.google.com/gke-spot"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
