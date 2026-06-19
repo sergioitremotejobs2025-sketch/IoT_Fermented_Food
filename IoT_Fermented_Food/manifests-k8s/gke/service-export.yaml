@@ -1,0 +1,11 @@
+apiVersion: net.gke.io/v1
+kind: ServiceExport
+metadata:
+  name: measure-ms-svc
+  namespace: default
+---
+apiVersion: net.gke.io/v1
+kind: ServiceExport
+metadata:
+  name: microcontrollers-ms-svc
+  namespace: default

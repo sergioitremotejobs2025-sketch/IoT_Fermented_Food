@@ -38,6 +38,10 @@
     </div>
   }
 
+  @if (!isLoading() && hasFakeMicros()) {
+    <app-environment-simulator></app-environment-simulator>
+  }
+
   @for (micro of microcontrollers(); track micro.ip) {
     <div class="measure-section" [hidden]="isLoading()">
       <div class="section-header">

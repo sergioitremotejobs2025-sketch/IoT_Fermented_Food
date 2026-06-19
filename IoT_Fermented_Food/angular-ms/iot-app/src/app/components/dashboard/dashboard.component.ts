@@ -24,6 +24,7 @@ import { SkeletonComponent } from '@components/skeleton/skeleton.component';
 import { LottieAnimationComponent } from '../../shared/lottie-animation/lottie-animation.component';
 import { PipesModule } from '@modules/pipes.module';
 import { TimeHistoryChartComponent } from '@components/time-history-chart/time-history-chart.component';
+import { EnvironmentSimulatorComponent } from '@components/environment-simulator/environment-simulator.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -46,7 +47,8 @@ import { TimeHistoryChartComponent } from '@components/time-history-chart/time-h
     SkeletonComponent,
     LottieAnimationComponent,
     PipesModule,
-    TimeHistoryChartComponent
+    TimeHistoryChartComponent,
+    EnvironmentSimulatorComponent
   ],
   styleUrls: ['./dashboard.component.less'],
   templateUrl: './dashboard.component.html'
@@ -64,6 +66,9 @@ export class DashboardComponent implements OnInit {
     const measure = this.measureSignal()
     return measure ? micros.filter(m => m.measure === measure) : micros
   })
+  hasFakeMicros = computed(() => {
+    return this.microcontrollers().some(m => m.sensor === 'FAKE');
+  });
   isLoading = this.isLoadingSignal.asReadonly()
   measure = this.measureSignal.asReadonly()
 

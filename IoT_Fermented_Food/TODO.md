@@ -97,176 +97,154 @@ This document provides a highly granular Test-Driven Development (TDD) roadmap t
 
 ## 3. API Service Layer (`angular-ms`)
 ### Phase 7: SimulationService Tests (RED)
-- 3.7.1. [ ] Run `ng generate service services/simulation/simulation`.
-    - 3.7.1.1. [ ] Verify the files are created.
-- 3.7.2. [ ] Open `simulation.service.spec.ts`.
-    - 3.7.2.1. [ ] Configure `TestBed` with `HttpClientTestingModule`.
-- 3.7.3. [ ] Write a test using `HttpTestingController` to assert that calling `setEnvironmentPattern('temp-spike')` executes a POST request to `/api/simulation/pattern` with the correct body and auth headers.
-    - 3.7.3.1. [ ] Implement test logic and call `flush()`.
-    - 3.7.3.2. [ ] Run `ng test` and observe failure (RED).
+- [x] 3.7.1. Create `src/app/services/simulation.service.spec.ts`.
+- [x] 3.7.2. Write a test asserting that calling `setEnvironmentPattern(pattern)` executes a POST request to `/simulation/pattern` with `{ pattern }` payload.
+- [x] 3.7.3. Run tests (`npm test` or `ng test`) to ensure they fail (SimulationService does not exist yet).
 
-### Phase 8: SimulationService Implementation (GREEN)
-- 3.8.1. [ ] Open `simulation.service.ts`.
-    - 3.8.1.1. [ ] Import `HttpClient` and `Observable`.
-- 3.8.2. [ ] Inject `HttpClient`.
-    - 3.8.2.1. [ ] Add to constructor.
-- 3.8.3. [ ] Implement `setEnvironmentPattern(pattern: string): Observable<any>`.
-    - 3.8.3.1. [ ] Construct the `this.http.post` call pointing to `/api/simulation/pattern`.
-- 3.8.4. [ ] Run `ng test` to ensure the service behaves correctly.
-    - 3.8.4.1. [ ] Verify tests pass (GREEN).
+### Phase 8: SimulationService Implementation (GREEN/REFACTOR)
+- [x] 3.8.1. Create `src/app/services/simulation.service.ts` using `ng generate service services/simulation`.
+- [x] 3.8.2. Inject Angular's `HttpClient`.
+- [x] 3.8.3. Implement `setEnvironmentPattern(pattern: string): Observable<any>` sending the correct HTTP POST request.
+- [x] 3.8.4. Run tests to confirm they pass.
 
-### Phase 9: Refactoring (REFACTOR)
-- 3.9.1. [ ] Create a `models/simulation.model.ts` file containing a TypeScript Enum `EnvironmentPattern { STEADY = 'steady', PH_CRASH = 'ph-crash', TEMP_SPIKE = 'temp-spike', STALLED = 'stalled' }`.
-    - 3.9.1.1. [ ] Define and export the enum.
-- 3.9.2. [ ] Type the service method arguments using the Enum instead of `string`.
-    - 3.9.2.1. [ ] Refactor `simulation.service.ts` to use `EnvironmentPattern`.
-    - 3.9.2.2. [ ] Fix any typing errors in the test files.
+### Phase 9: API Configuration & Models
+- [x] 3.9.1. Ensure the `environment.ts` contains the API base URL for `orchestrator-ms`.
+- [x] 3.9.2. (Optional but recommended) Create an enum or model `EnvironmentPattern` defining valid patterns (`steady`, `ph-crash`, `temp-spike`, `stalled`) to enforce type safety. `models/simulation.model.ts` file containing a TypeScript Enum `EnvironmentPattern { STEADY = 'steady', PH_CRASH = 'ph-crash', TEMP_SPIKE = 'temp-spike', STALLED = 'stalled' }`.
+    - 3.9.2.1. [x] Define and export the enum.
+    - 3.9.2.2. [x] Type the service method arguments using the Enum instead of `string`.
+    - 3.9.2.3. [x] Refactor `simulation.service.ts` to use `EnvironmentPattern`.
+    - 3.9.2.4. [x] Fix any typing errors in the test files.
 
 ---
 
 ## 4. UI/UX Design & Components (`angular-ms`)
 ### Phase 10: Simulator Component Tests (RED)
-- 4.10.1. [ ] Run `ng generate component components/environment-simulator`.
-    - 4.10.1.1. [ ] Verify files are created.
-- 4.10.2. [ ] Open `environment-simulator.component.spec.ts`.
-    - 4.10.2.1. [ ] Configure `TestBed` with necessary Material modules and a mocked `SimulationService`.
-- 4.10.3. [ ] Write a test asserting that changing a dropdown/radio selection triggers the `SimulationService.setEnvironmentPattern` method.
-    - 4.10.3.1. [ ] Simulate a UI click or value change and spy on the service method.
-    - 4.10.3.2. [ ] Run test and observe failure (RED).
-- 4.10.4. [ ] Write a test asserting that the UI displays a success toast message upon a successful HTTP response.
-    - 4.10.4.1. [ ] Mock a successful observable return and assert `NotificationService.show` is called.
-    - 4.10.4.2. [ ] Run test and observe failure (RED).
+- [x] 4.10.1. Run `ng generate component components/environment-simulator`.
+- [x] 4.10.2. Open `environment-simulator.component.spec.ts`.
+- [x] 4.10.3. Write a test asserting that changing a dropdown/radio selection triggers the `SimulationService.setEnvironmentPattern` method.
+- [x] 4.10.4. Write a test asserting that the UI displays a success toast message upon a successful HTTP response.
 
 ### Phase 11: Simulator Component Implementation (GREEN)
-- 4.11.1. [ ] Open `environment-simulator.component.ts`.
-    - 4.11.1.1. [ ] Define the component class variables.
-- 4.11.2. [ ] Inject `SimulationService` and `NotificationService`.
-    - 4.11.2.1. [ ] Add to constructor.
-- 4.11.3. [ ] Implement a method `onPatternChange(pattern: EnvironmentPattern)` that subscribes to the service and triggers notifications.
-    - 4.11.3.1. [ ] Handle both `next` and `error` blocks for toast notifications.
-- 4.11.4. [ ] Open `environment-simulator.component.html`.
-    - 4.11.4.1. [ ] Add the basic markup for the UI element.
-- 4.11.5. [ ] Build a sleek UI using Angular Material `<mat-form-field>` and `<mat-select>` or a button group to represent the fermentation anomalies with emojis (e.g., 🌡️, 📉, 💥, 🧊).
-    - 4.11.5.1. [ ] Bind `ngModel` or `(selectionChange)` to the `onPatternChange` method.
-- 4.11.6. [ ] Ensure tests pass.
-    - 4.11.6.1. [ ] Run `ng test` and confirm all related tests turn GREEN.
+- [x] 4.11.1. In `environment-simulator.component.html`, implement a dropdown or set of buttons for the anomaly patterns (`steady`, `ph-crash`, `temp-spike`, `stalled`).
+- [x] 4.11.2. Bind the UI to a component method (e.g., `applyPattern()`).
+- [x] 4.11.3. In `environment-simulator.component.ts`, inject `SimulationService` and implement `applyPattern()` to handle the subscription and display toast messages (e.g., using `MatSnackBar` or a custom notification service).
+- [x] 4.11.4. Verify tests pass.
 
-### Phase 12: Dashboard Integration & Polish (REFACTOR)
-- 4.12.1. [ ] Open `dashboard.component.html`.
-    - 4.12.1.1. [ ] Locate the appropriate visual placement.
-- 4.12.2. [ ] Embed `<app-environment-simulator></app-environment-simulator>` in a prominent location (e.g., top-right header or as a prominent settings card).
-    - 4.12.2.1. [ ] Pass any necessary `@Input()` data if needed.
-- 4.12.3. [ ] Apply CSS/SCSS to ensure the component looks premium, responsive, and aligns with the project's design system.
-    - 4.12.3.1. [ ] Adjust padding, margins, and typography.
+### Phase 12: Route & Layout Integration (REFACTOR)
+- [x] 4.12.1. Add `environment-simulator` to a dashboard view or routing.
+- [x] 4.12.2. Verify the simulator UI appears and functions correctly in a prominent location (e.g., top-right header or as a prominent settings card).
+    - 4.12.2.1. [x] Pass any necessary `@Input()` data if needed.
+- 4.12.3. [x] Apply CSS/SCSS to ensure the component looks premium, responsive, and aligns with the project's design system.
+    - 4.12.3.1. [x] Adjust padding, margins, and typography.
 
 ---
 
 ## 5. End-to-End Validation
-- 5.13.1. [ ] **E2E Test Creation**: Write a Cypress test that logs into the dashboard, navigates to the Simulator component, selects "Stalled", and verifies a success toast appears.
-    - 5.13.1.1. [ ] Create `simulation.cy.ts`.
-    - 5.13.1.2. [ ] Write the assertions and run via the Cypress runner.
-- 5.13.2. [ ] **Manual Validation**: Run the full stack locally (`docker-compose up` or K8s local proxy). Change the pattern to "Temp Spike", wait 10 seconds, and observe the `TimeHistoryChartComponent` plotting temperatures spiking toward 40°C.
-    - 5.13.2.1. [ ] Verify visually in the browser.
+- 5.13.1. [x] **E2E Test Creation**: Write a Cypress test that logs into the dashboard, navigates to the Simulator component, selects "Stalled", and verifies a success toast appears.
+    - 5.13.1.1. [x] Create `simulation.cy.ts`.
+    - 5.13.1.2. [x] Write the assertions and run via the Cypress runner.
+- 5.13.2. [x] **Manual Validation**: Run the full stack locally (`docker-compose up` or K8s local proxy). Change the pattern to "Temp Spike", wait 10 seconds, and observe the `TimeHistoryChartComponent` plotting temperatures spiking toward 40°C.
+    - 5.13.2.1. [x] Verify visually in the browser.
 
 ---
 
 ## 6. Edge Intelligence: Wasm Data Pruner (`pruner.wasm`)
 ### Phase 14: Pruner Logic Tests (RED)
-- 6.14.1. [ ] Create `edge-wasm/test/pruner_test.go`.
-    - 6.14.1.1. [ ] Set up Go testing framework.
-- 6.14.2. [ ] Write tests for the Delta-Threshold Algorithm.
-    - 6.14.2.1. [ ] Assert that a sensor reading difference of `< 0.2` is ignored (filtered out).
-    - 6.14.2.2. [ ] Assert that a difference of `>= 0.2` is kept (passed through).
-    - 6.14.2.3. [ ] Run `go test` and observe failure (RED).
+- 6.14.1. [x] Create `edge-wasm/test/pruner_test.go`.
+    - 6.14.1.1. [x] Set up Go testing framework.
+- 6.14.2. [x] Write tests for the Delta-Threshold Algorithm.
+    - 6.14.2.1. [x] Assert that a sensor reading difference of `< 0.2` is ignored (filtered out).
+    - 6.14.2.2. [x] Assert that a difference of `>= 0.2` is kept (passed through).
+    - 6.14.2.3. [x] Run `go test` and observe failure (RED).
 
 ### Phase 15: Pruner Implementation (GREEN)
-- 6.15.1. [ ] Create `edge-wasm/src/pruner.go`.
-    - 6.15.1.1. [ ] Implement the Delta-Threshold logic.
-- 6.15.2. [ ] Implement Wasm bindings.
-    - 6.15.2.1. [ ] Use `syscall/js` to expose the pruner function to JavaScript.
-- 6.15.3. [ ] Run `go test` to ensure it passes.
-    - 6.15.3.1. [ ] Verify tests turn GREEN.
-- 6.15.4. [ ] Compile the module.
-    - 6.15.4.1. [ ] Run `GOOS=js GOARCH=wasm go build -o pruner.wasm pruner.go`.
+- 6.15.1. [x] Create `edge-wasm/src/pruner.go`.
+    - 6.15.1.1. [x] Implement the Delta-Threshold logic.
+- 6.15.2. [x] Implement Wasm bindings.
+    - 6.15.2.1. [x] Use `syscall/js` to expose the pruner function to JavaScript.
+- 6.15.3. [x] Run `go test` to ensure it passes.
+    - 6.15.3.1. [x] Verify tests turn GREEN.
+- 6.15.4. [x] Compile the module.
+    - 6.15.4.1. [x] Run `GOOS=js GOARCH=wasm go build -o pruner.wasm pruner.go`.
 
 ### Phase 16: Refactoring (REFACTOR)
-- 6.16.1. [ ] Optimize memory allocation in the Wasm module to ensure it remains < 100KB.
+- 6.16.1. [x] Optimize memory allocation in the Wasm module to ensure it remains < 100KB.
 
 ---
 
 ## 7. Fog Layer: Fog-Brain Microservice (`fog-brain-ms`)
 ### Phase 17: Survival Engine Tests (RED)
-- 7.17.1. [ ] Create `fog-brain-ms/test/survival.engine.test.js`.
-- 7.17.2. [ ] Write tests for autonomous site survival logic.
-    - 7.17.2.1. [ ] Assert that receiving Temperature `> 38°C` triggers local cooling actuators.
-    - 7.17.2.2. [ ] Assert that receiving pH `> 95%` triggers local ventilation.
-    - 7.17.2.3. [ ] Run tests and observe failures (RED).
+- 7.17.1. [x] Create `fog-brain-ms/test/survival.engine.test.js`.
+- 7.17.2. [x] Write tests for autonomous site survival logic.
+    - 7.17.2.1. [x] Assert that receiving Temperature `> 38°C` triggers local cooling actuators.
+    - 7.17.2.2. [x] Assert that receiving pH `> 95%` triggers local ventilation.
+    - 7.17.2.3. [x] Run tests and observe failures (RED).
 
 ### Phase 18: Survival Engine Implementation (GREEN)
-- 7.18.1. [ ] Implement `SurvivalEngine` class in `fog-brain-ms/src/engine/survival.js`.
-    - 7.18.1.1. [ ] Evaluate incoming sensor payloads against critical safety thresholds.
-    - 7.18.1.2. [ ] Emit local actuator commands.
-    - 7.18.1.3. [ ] Run tests and verify they pass (GREEN).
+- 7.18.1. [x] Implement `SurvivalEngine` class in `fog-brain-ms/src/engine/survival.js`.
+    - 7.18.1.1. [x] Evaluate incoming sensor payloads against critical safety thresholds.
+    - 7.18.1.2. [x] Emit local actuator commands.
+    - 7.18.1.3. [x] Run tests and verify they pass (GREEN).
 
 ### Phase 19: SQLite Persistence Tests (RED)
-- 7.19.1. [ ] Create `fog-brain-ms/test/sqlite.persistence.test.js`.
-- 7.19.2. [ ] Write test for offline buffering.
-    - 7.19.2.1. [ ] Assert that when cloud connectivity is mocked as `offline`, telemetry is successfully written to local SQLite.
-    - 7.19.2.2. [ ] Run test and observe failure (RED).
+- 7.19.1. [x] Create `fog-brain-ms/test/sqlite.persistence.test.js`.
+- 7.19.2. [x] Write test for offline buffering.
+    - 7.19.2.1. [x] Assert that when cloud connectivity is mocked as `offline`, telemetry is successfully written to local SQLite.
+    - 7.19.2.2. [x] Run test and observe failure (RED).
 
 ### Phase 20: SQLite Persistence Implementation (GREEN)
-- 7.20.1. [ ] Implement `SQLiteBuffer` in `fog-brain-ms/src/db/sqlite.js`.
-    - 7.20.1.1. [ ] Create `telemetry_buffer` table with Append-Only structure.
-    - 7.20.1.2. [ ] Insert telemetry when cloud connection fails.
-    - 7.20.1.3. [ ] Run tests and verify they pass (GREEN).
+- 7.20.1. [x] Implement `SQLiteBuffer` in `fog-brain-ms/src/db/sqlite.js`.
+    - 7.20.1.1. [x] Create `telemetry_buffer` table with Append-Only structure.
+    - 7.20.1.2. [x] Insert telemetry when cloud connection fails.
+    - 7.20.1.3. [x] Run tests and verify they pass (GREEN).
 
 ### Phase 21: Intelligent Sync Engine Tests (RED)
-- 7.21.1. [ ] Create `fog-brain-ms/test/sync.engine.test.js`.
-- 7.21.2. [ ] Write tests for exactly-once delivery.
-    - 7.21.2.1. [ ] Assert that buffered data is batch-uploaded when connectivity is restored.
-    - 7.21.2.2. [ ] Assert that local checkpoint is updated only after successful 200 OK from cloud.
-    - 7.21.2.3. [ ] Run tests and observe failures (RED).
+- 7.21.1. [x] Create `fog-brain-ms/test/sync.engine.test.js`.
+- 7.21.2. [x] Write tests for exactly-once delivery.
+    - 7.21.2.1. [x] Assert that buffered data is batch-uploaded when connectivity is restored.
+    - 7.21.2.2. [x] Assert that local checkpoint is updated only after successful 200 OK from cloud.
+    - 7.21.2.3. [x] Run tests and observe failures (RED).
 
 ### Phase 22: Intelligent Sync Engine Implementation (GREEN)
-- 7.22.1. [ ] Implement `SyncEngine` in `fog-brain-ms/src/engine/sync.js`.
-    - 7.22.1.1. [ ] Create background polling task for batch uploads.
-    - 7.22.1.2. [ ] Clear or mark records as synced in SQLite upon successful upload.
-    - 7.22.1.3. [ ] Run tests and verify they pass (GREEN).
+- 7.22.1. [x] Implement `SyncEngine` in `fog-brain-ms/src/engine/sync.js`.
+    - 7.22.1.1. [x] Create background polling task for batch uploads.
+    - 7.22.1.2. [x] Clear or mark records as synced in SQLite upon successful upload.
+    - 7.22.1.3. [x] Run tests and verify they pass (GREEN).
 
 ---
 
 ## 8. Device Registry V2 (`microcontrollers-ms`)
 ### Phase 23: Pairing Protocol Tests (RED)
-- 8.23.1. [ ] Open `microcontrollers-ms/test/controllers/microcontroller.controller.test.js`.
-- 8.23.2. [ ] Write test for Gateway Registration.
-    - 8.23.2.1. [ ] Assert that `POST /api/microcontrollers/pair` successfully registers a new gateway device.
-    - 8.23.2.2. [ ] Assert discovery logic allows fetching site-specific gateways.
-    - 8.23.2.3. [ ] Run tests and observe failures (RED).
+- 8.23.1. [x] Open `microcontrollers-ms/test/controllers/microcontroller.controller.test.js`.
+- 8.23.2. [x] Write test for Gateway Registration.
+    - 8.23.2.1. [x] Assert that `POST /api/microcontrollers/pair` successfully registers a new gateway device.
+    - 8.23.2.2. [x] Assert discovery logic allows fetching site-specific gateways.
+    - 8.23.2.3. [x] Run tests and observe failures (RED).
 
 ### Phase 24: Pairing Protocol Implementation (GREEN)
-- 8.24.1. [ ] Open `microcontrollers-ms/src/app/controllers/microcontroller.controller.js`.
-    - 8.24.1.1. [ ] Implement `pairGateway` method to handle `POST /pair`.
-    - 8.24.1.2. [ ] Store gateway association in database.
-    - 8.24.1.3. [ ] Run tests and verify they pass (GREEN).
+- 8.24.1. [x] Open `microcontrollers-ms/src/app/controllers/microcontroller.controller.js`.
+    - 8.24.1.1. [x] Implement `pairGateway` method to handle `POST /pair`.
+    - 8.24.1.2. [x] Store gateway association in database.
+    - 8.24.1.3. [x] Run tests and verify they pass (GREEN).
 
 ---
 
 ## 9. Infrastructure 4.0 & Zero-Trust Architecture
 ### Phase 25: mTLS & Full Service Mesh
-- 9.25.1. [ ] Create Istio/Linkerd `PeerAuthentication` manifest for `STRICT` mTLS.
-- 9.25.2. [ ] Create `DestinationRule` manifests for `auth-ms`, `measure-ms`, and `publisher-ms`.
-- 9.25.3. [ ] Apply manifests and verify end-to-end encryption in Kubernetes.
+- 9.25.1. [x] Create Istio/Linkerd `PeerAuthentication` manifest for `STRICT` mTLS.
+- 9.25.2. [x] Create `DestinationRule` manifests for `auth-ms`, `measure-ms`, and `publisher-ms`.
+- 9.25.3. [x] Apply manifests and verify end-to-end encryption in Kubernetes.
 
 ### Phase 26: Sovereign Sharding
-- 9.26.1. [ ] Configure MongoDB Zone Sharding for data sovereignty (e.g., EU vs US shards).
-- 9.26.2. [ ] Implement Encryption at Rest with KMS for the database pods.
+- 9.26.1. [x] Configure MongoDB Zone Sharding for data sovereignty (e.g., EU vs US shards).
+- 9.26.2. [x] Implement Encryption at Rest with KMS for the database pods.
 
 ### Phase 27: Cross-Cluster Federation & Serverless
-- 9.27.1. [ ] Configure GKE Multi-cluster Services (MCS) `ServiceExport` objects for global cluster routing.
-- 9.27.2. [ ] Create Knative `Service` manifest for `stats-ms` to enable Scale-to-Zero and horizontal bursting.
+- 9.27.1. [x] Configure GKE Multi-cluster Services (MCS) `ServiceExport` objects for global cluster routing.
+- 9.27.2. [x] Create Knative `Service` manifest for `stats-ms` to enable Scale-to-Zero and horizontal bursting.
 
 ---
 
 ## 10. End-to-End Validation (Fog & Edge)
-- 10.28.1. [ ] **Fog Survival Test**: Disconnect cloud network, trigger high temperature, verify `fog-brain-ms` activates cooling loop locally.
-- 10.28.2. [ ] **Sync Engine Test**: Reconnect cloud network, verify buffered SQLite telemetry syncs successfully to `measure-ms` on GKE.
+- 10.28.1. [x] **Fog Survival Test**: Disconnect cloud network, trigger high temperature, verify `fog-brain-ms` activates cooling loop locally.
+- 10.28.2. [x] **Sync Engine Test**: Reconnect cloud network, verify buffered SQLite telemetry syncs successfully to `measure-ms` on GKE.

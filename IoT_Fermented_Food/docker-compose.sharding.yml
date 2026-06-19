@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mongo-config:
+    image: mongo:latest
+    container_name: mongo_config
+    command: mongod --configsvr --replSet configReplSet --port 27019 --bind_ip_all
+    ports:
+      - "27019:27019"
+
+  mongo-shard-eu:
+    image: mongo:latest
+    container_name: mongo_shard_eu
+    command: mongod --shardsvr --replSet euReplSet --port 27018 --bind_ip_all
+    ports:
+      - "27018:27018"
+
+  mongo-shard-us:
+    image: mongo:latest
+    container_name: mongo_shard_us
+    command: mongod --shardsvr --replSet usReplSet --port 27020 --bind_ip_all
+    ports:
+      - "27020:27020"
+
+  mongos:
+    image: mongo:latest
+    container_name: mongos_router
+    command: mongos --configdb configReplSet/mongo-config:27019 --bind_ip_all --port 27017
+    ports:
+      - "27017:27017"
+    depends_on:
+      - mongo-config
+      - mongo-shard-eu
+      - mongo-shard-us

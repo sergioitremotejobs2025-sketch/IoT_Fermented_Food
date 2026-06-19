@@ -1,0 +1,18 @@
+<div class="simulator-container mat-elevation-z4">
+  <h2>Fermentation Environment Simulator</h2>
+  
+  <p>Select a simulation pattern to observe how the AI model reacts to anomalies across all connected fake sensors.</p>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Environment Pattern</mat-label>
+    <mat-select [(ngModel)]="selectedPattern">
+      <mat-option *ngFor="let pattern of patterns" [value]="pattern.value">
+        {{ pattern.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-color="primary" mat-raised-button color="primary" (click)="applyPattern()" [disabled]="!selectedPattern">
+    Apply Pattern
+  </button>
+</div>

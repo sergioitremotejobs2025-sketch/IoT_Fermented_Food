@@ -8,6 +8,6 @@ export default defineConfig({
         },
         supportFile: false,
         video: false,
-        screenshotOnRunFailure: false
+        screenshotOnRunFailure: true
     },
 });
