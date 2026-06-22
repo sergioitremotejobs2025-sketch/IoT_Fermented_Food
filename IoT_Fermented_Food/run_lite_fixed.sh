@@ -84,6 +84,8 @@ if [[ "$START_SIM" =~ ^[Yy]$ ]]; then
     run_sql "INSERT IGNORE INTO iot.microcontrollers (username, ip, measure, sensor) VALUES ('Rocky', 'host.docker.internal:3100', 'temperature', 'Fake Temp');"
     run_sql "INSERT IGNORE INTO iot.microcontrollers (username, ip, measure, sensor) VALUES ('Rocky', 'host.docker.internal:3101', 'humidity',    'Fake Humid');"
     run_sql "INSERT IGNORE INTO iot.microcontrollers (username, ip, measure, sensor) VALUES ('Rocky', 'host.docker.internal:3105', 'pictures',    'Fake Camera');"
+    run_sql "INSERT IGNORE INTO iot.microcontrollers (username, ip, measure, sensor) VALUES ('Rocky', 'fake-fermentation-1:3000', 'temperature', 'Fermentation Temp 1');"
+    run_sql "INSERT IGNORE INTO iot.microcontrollers (username, ip, measure, sensor) VALUES ('Rocky', 'fake-fermentation-2:3001', 'temperature', 'Fermentation Temp 2');"
     
     echo "📻 Starting Simulator processes in background..."
     NODE_BIN=$(which node || echo "/usr/local/bin/node")

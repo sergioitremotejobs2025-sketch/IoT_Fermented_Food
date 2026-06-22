@@ -37,8 +37,8 @@ module.exports = class OrchestratorController {
       if (path === 'temperature') {
         const microsModule = new MicrocontrollersModule(path);
         response.data = response.data.map(item => {
-          if (item.digital_value !== undefined) {
-            item.value = microsModule.digitalToReal(item.digital_value, item.sensor);
+          if (item && item.digital_value !== undefined) {
+            item.real_value = microsModule.digitalToReal(item.digital_value, item.sensor);
             delete item.digital_value;
           }
           return item;

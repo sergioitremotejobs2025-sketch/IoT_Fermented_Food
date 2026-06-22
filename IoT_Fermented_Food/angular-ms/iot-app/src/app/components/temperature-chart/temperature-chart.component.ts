@@ -39,9 +39,13 @@ export class TemperatureChartComponent extends MeasureChart {
     this.chartOptions = {
         ...this.chartOptions,
         scales: {
-            ...this.chartOptions.scales,
+            ...this.chartOptions?.scales,
             y: {
-                ...this.chartOptions.scales.y,
+                ...this.chartOptions?.scales?.y,
+                ticks: {
+                    ...this.chartOptions?.scales?.y?.ticks,
+                    callback: (value: any) => value + ' ºC'
+                }
             }
         }
     }
